@@ -1,0 +1,338 @@
+/* Variáveis de cores para consistência */
+:root {
+    --verde-escuro: #025940;
+    --verde-medio: #277E65;
+    --verde-claro: #60BF81;
+    --verde-muito-claro: #C8E6C9;
+    --branco: #FFFFFF;
+    --cinza-claro: #F5F5F5;
+    --sombra: rgba(0, 0, 0, 0.1);
+}
+
+/* Reset e estilos base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--cinza-claro);
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Cabeçalho */
+header {
+    background-color: var(--verde-escuro);
+    color: var(--branco);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px var(--sombra);
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+/* Menu (sem funcionalidade ainda) */
+.menu-placeholder {
+    width: 30px;
+    height: 30px;
+    background-color: var(--verde-claro);
+    border-radius: 4px;
+    cursor: not-allowed;
+}
+
+/* Conteúdo principal */
+.hero {
+    background-color: var(--verde-medio);
+    color: var(--branco);
+    padding: 2rem;
+    text-align: center;
+}
+
+.hero h1 {
+    margin-bottom: 1rem;
+    font-size: 2rem;
+}
+
+.hero p {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    justify-content: center;
+}
+
+.coluna {
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.card {
+    background-color: var(--branco);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px var(--sombra);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    text-align: center;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-header {
+    background-color: var(--verde-escuro);
+    color: var(--branco);
+    padding: 1rem;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.card-content {
+    padding: 1.5rem;
+    background-color: var(--verde-muito-claro);
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.mapa-container {
+    width: 100%;
+    height: 250px;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+#mapa-norte-pioneiro {
+    width: 100%;
+    height: 100%;
+}
+
+.card-simples {
+    background-color: var(--verde-escuro);
+    color: var(--branco);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px var(--sombra);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    text-align: center;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-simples:hover {
+    transform: translateY(-5px);
+}
+
+.icone-grande {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.titulo-card {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.descricao-card {
+    font-size: 0.9rem;
+}
+
+/* Rodapé */
+footer {
+    background-color: var(--verde-escuro);
+    color: var(--branco);
+    text-align: center;
+    padding: 1.5rem;
+    margin-top: 2rem;
+}
+/* Ícone do menu */
+.menu-icon {
+    width: 35px;
+    height: 35px;
+    background-color: var(--verde-claro);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.menu-icon:hover {
+    background-color: var(--verde-medio);
+}
+
+.menu-icon i {
+    color: var(--branco);
+    font-size: 1.2rem;
+}
+
+/* Menu de sobreposição */
+.menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: none;
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu-container {
+    background-color: var(--verde-escuro);
+    border-radius: 15px;
+    padding: 2rem;
+    width: 90%;
+    max-width: 400px;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+}
+
+.menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.fechar-menu {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
+
+.fechar-menu:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.menu-section {
+    margin-bottom: 2rem;
+}
+
+.section-title {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.section-icon {
+    margin-right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+}
+
+.leaf-icon {
+    color: var(--verde-muito-claro);
+}
+
+.plus-icon {
+    background-color: var(--verde-muito-claro);
+    color: var(--verde-escuro);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu-button {
+    background-color: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: var(--branco);
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    width: 100%;
+    text-align: left;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+.menu-button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.menu-button i {
+    margin-right: 10px;
+    width: 20px;
+    text-align: center;
+}
+
+.menu-footer {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.footer-icon {
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: var(--branco);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.footer-icon:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.card-link {
+    text-decoration: none;
+    display: block;
+}

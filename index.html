@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoLaço - Conectando você com a sustentabilidade</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <header>
+        <div class="menu-icon" onclick="abrirMenu()" title="Abrir menu">
+            <i class="fas fa-bars"></i>
+        </div>
+        <div class="logo">EcoLaço</div>
+    </header>
+    
+    <section class="hero">
+        <h1>Conectando você com a sustentabilidade de Jacarezinho</h1>
+        <p>Encontre pontos de coleta, horários de coleta seletiva, indicadores ambientais e muito mais!</p>
+    </section>
+    
+    <div class="container">
+        <div class="coluna">
+            <!-- Primeira coluna: MAPA, PEV, DICAS SUSTENTÁVEIS -->
+            <div class="card" id="mapa-card">
+                <div class="card-header">MAPA</div>
+                <div class="card-content">
+                    <div class="mapa-container">
+                        <div id="mapa-norte-pioneiro"></div>
+                    </div>
+                    <p style="margin-top: 10px;">Jacarezinho</p>
+                </div>
+            </div>
+            
+            <div class="card" id="pev-card">
+                <div class="card-header">PEV</div>
+                <div class="card-content">
+                    Pontos de Entrega Voluntária próximos e saiba o que eles aceitam.
+                </div>
+            </div>
+            
+            <div class="card-simples" id="dicas-card">
+                <div class="icone-grande">
+                    <i class="fas fa-leaf"></i>
+                </div>
+                <div class="titulo-card">DICAS SUSTENTÁVEIS</div>
+                <div class="descricao-card">Aprenda práticas sustentáveis para o seu dia a dia</div>
+            </div>
+        </div>
+        
+        <div class="coluna">
+            <!-- Segunda coluna: CAMPANHA, DIAS DE COLETA, INDICADORES -->
+            <div class="card" id="campanha-card">
+                <div class="card-header">CAMPANHA DE ARRECADAÇÃO</div>
+                <div class="card-content">
+                    Pontos de coleta criados em campanhas especiais para receber materiais recicláveis.
+                </div>
+            </div>
+            
+            <a href="coleta.html" class="card-link">
+             <div class="card-simples" id="coleta-card">
+                 <div class="icone-grande">
+                     <i class="fas fa-calendar-alt"></i>
+                 </div>
+                 <div class="titulo-card">DIAS DE COLETA</div>
+                 <div class="descricao-card">Saiba os dias e horários de coleta do seu bairro</div>
+             </div>
+           </a>
+            
+            <div class="card-simples" id="indicadores-card">
+                <div class="icone-grande">
+                    <i class="fas fa-chart-bar"></i>
+                </div>
+                <div class="titulo-card">INDICADORES AMBIENTAIS</div>
+                <div class="descricao-card">Acompanhe os indicadores de sustentabilidade da sua cidade</div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>EcoLaço - Conectando você com a sustentabilidade</p>
+        <p>© 2025 - Todos os direitos reservados</p>
+    </footer>
+ <!-- Menu de sobreposição -->
+    <div id="menu-overlay" class="menu-overlay">
+        <div class="menu-container">
+            <div class="menu-header">
+                <div class="logo">EcoLaço</div>
+                <div class="fechar-menu" onclick="fecharMenu()">
+                    <i class="fas fa-times"></i>
+                </div>
+            </div>
+            
+            <div class="menu-section">
+                <div class="section-title">
+                    <div class="section-icon leaf-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <span>FUNCIONALIDADES</span>
+                </div>
+                
+                <button class="menu-button">
+                    <i class="far fa-clock"></i>Horários de funcionamento dos pontos de coleta
+                </button>
+                
+                <button class="menu-button">
+                    <i class="fas fa-map-marker-alt"></i>Localização por material
+                </button>
+                
+                <button class="menu-button">
+                    <i class="fas fa-video"></i>Vídeos curtos com dicas sustentáveis
+                </button>
+                
+                <button class="menu-button">
+                    <i class="fas fa-users"></i>Acesso Público
+                </button>
+                
+                <button class="menu-button">
+                    <i class="fas fa-chart-bar"></i>Comparativo entre bairros
+                </button>
+                
+                <button class="menu-button">
+                    <i class="fas fa-lock"></i>Acesso Privado - Prefeitura
+                </button>
+            </div>
+            
+            <div class="menu-section">
+                <div class="section-title">
+                    <div class="section-icon plus-icon">
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <span>EXTRAS</span>
+                </div>
+                
+                <button class="menu-button">
+                    <i class="fas fa-gamepad"></i>Quiz ecológico e jogos
+                </button>
+                
+                <button class="menu-button">
+                    <i class="fas fa-trophy"></i>Sistema de gamificação
+                </button>
+                
+                <button class="menu-button">
+                    <i class="fas fa-lightbulb"></i>Seção de "Sabia que..."
+                </button>
+                
+                <button class="menu-button">
+                    <i class="fas fa-robot"></i>Chatbot para dúvidas sobre reciclagem
+                </button>
+                
+                <button class="menu-button">
+                    <i class="fas fa-star"></i>Nos dê sua avaliação como utilizador!
+                </button>
+            </div>
+            
+            <div class="menu-footer">
+                <div class="footer-icon">
+                    <i class="fas fa-info"></i>
+                </div>
+                <div class="footer-icon">
+                    <i class="fas fa-bell"></i>
+                </div>
+                <div class="footer-icon">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

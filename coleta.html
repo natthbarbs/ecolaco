@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dias de Coleta - EcoLaço</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        :root {
+            --verde-escuro: #025940;
+            --verde-medio: #277E65;
+            --verde-claro: #60BF81;
+            --verde-muito-claro: #C8E6C9;
+            --branco: #FFFFFF;
+            --cinza-claro: #F5F5F5;
+            --sombra: rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--cinza-claro);
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: var(--verde-escuro);
+            color: var(--branco);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px var(--sombra);
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+        
+        .back-button {
+            color: var(--branco);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+        
+        .back-button:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .hero {
+            background-color: var(--verde-medio);
+            color: var(--branco);
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+        
+        .hero p {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .mapa-section {
+            margin-bottom: 2rem;
+        }
+        
+        .mapa-container {
+            background-color: var(--branco);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px var(--sombra);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .mapa-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .mapa-header h2 {
+            color: var(--verde-escuro);
+        }
+        
+        .search-box {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 12px 45px 12px 15px;
+            border: 2px solid var(--verde-claro);
+            border-radius: 25px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+        
+        .search-input:focus {
+            border-color: var(--verde-escuro);
+        }
+        
+        .search-icon {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--verde-escuro);
+            cursor: pointer;
+        }
+        
+        #mapa-regiao {
+            width: 100%;
+            height: 400px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .cidade-selecionada {
+            background-color: var(--branco);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px var(--sombra);
+            padding: 2rem;
+            margin-top: 2rem;
+            display: none;
+        }
+        
+        .cidade-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--verde-muito-claro);
+        }
+        
+        .cidade-header h2 {
+            color: var(--verde-escuro);
+            font-size: 1.5rem;
+        }
+        
+        .btn-voltar {
+            background-color: var(--verde-claro);
+            color: var(--branco);
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: background-color 0.3s ease;
+        }
+        
+        .btn-voltar:hover {
+            background-color: var(--verde-escuro);
+        }
+        
+        .search-bairros-container {
+            margin: 1.5rem 0;
+        }
+        
+        .search-bairros-box {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+        }
+        
+        .dias-coleta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+        
+        .dia-card {
+            background-color: var(--branco);
+            border-radius: 12px;
+            box-shadow: 0 4px 8px var(--sombra);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            border: 2px solid var(--verde-muito-claro);
+        }
+        
+        .dia-card:hover {
+            transform: translateY(-3px);
+        }
+        
+        .dia-header {
+            background-color: var(--verde-escuro);
+            color: var(--branco);
+            padding: 1.2rem;
+            text-align: center;
+        }
+        
+        .dia-header h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .dias-semana {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        .bairros-list {
+            padding: 1.2rem;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .bairro-item {
+            padding: 10px 0;
+            border-bottom: 1px solid var(--cinza-claro);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .bairro-item:last-child {
+            border-bottom: none;
+        }
+        
+        .bairro-item i {
+            color: var(--verde-medio);
+            width: 18px;
+        }
+        
+        .info-box {
+            background-color: var(--verde-muito-claro);
+            border-left: 4px solid var(--verde-medio);
+            padding: 1.2rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .info-box i {
+            color: var(--verde-escuro);
+            font-size: 1.3rem;
+        }
+        
+        .aviso {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 1.2rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .aviso i {
+            color: #856404;
+            font-size: 1.3rem;
+        }
+        
+        footer {
+            background-color: var(--verde-escuro);
+            color: var(--branco);
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .dias-coleta {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            header {
+                padding: 1rem;
+            }
+            
+            .logo {
+                font-size: 1.5rem;
+            }
+            
+            #mapa-regiao {
+                height: 300px;
+            }
+            
+            .mapa-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .search-box {
+                max-width: 100%;
+            }
+            
+            .cidade-header {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: flex-start;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero {
+                padding: 1.5rem 1rem;
+            }
+            
+            .dia-header {
+                padding: 1rem;
+            }
+            
+            .bairros-list {
+                padding: 1rem;
+                max-height: 250px;
+            }
+            
+            .bairro-item {
+                padding: 8px 0;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="back-button">
+            <i class="fas fa-arrow-left"></i>
+            Voltar
+        </a>
+        <div class="logo">EcoLaço</div>
+    </header>
+    
+    <section class="hero">
+        <h1>Dias de Coleta - Norte Pioneiro</h1>
+        <p>Selecione sua cidade no mapa para ver os dias e horários de coleta</p>
+    </section>
+    
+    <div class="container">
+        <div class="info-box">
+            <i class="fas fa-info-circle"></i>
+            <div>
+                <strong>Como usar:</strong> Clique no mapa em cima da sua cidade para ver os dias de coleta. 
+                Use a busca para encontrar cidades rapidamente.
+            </div>
+        </div>
+        
+        <div class="mapa-section">
+            <div class="mapa-container">
+                <div class="mapa-header">
+                    <h2>Mapa do Norte Pioneiro do Paraná</h2>
+                    <div class="search-box">
+                        <input type="text" class="search-input" placeholder="Buscar cidade..." id="searchCidade">
+                        <i class="fas fa-search search-icon" id="btnBuscar"></i>
+                    </div>
+                </div>
+                <div id="mapa-regiao"></div>
+            </div>
+        </div>
+        
+        <div id="cidade-selecionada" class="cidade-selecionada">
+            <!-- Conteúdo será preenchido dinamicamente -->
+        </div>
+    </div>
+    
+    <footer>
+        <p>EcoLaço - Conectando você com a sustentabilidade</p>
+        <p>© 2025 - Todos os direitos reservados</p>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        // Dados das cidades
+        const cidadesRegiao = {
+            'jacarezinho': {
+                nome: 'Jacarezinho',
+                coordenadas: [-23.1600, -49.9698],
+                temInfo: true,
+                diasColeta: {
+                    'segunda-quarta-sexta': [
+                        'Aeroporto', 'V. Nossa Senhora das Graças', 'Alto da Boa Vista', 'Centro',
+                        'Parque Industrial III', 'Loteamento São Sebastião', 'Arboris', 'Residencial Riviera',
+                        'Jd. Alves', 'Loteamento Parque Ecológico', 'Jd. América', 'Jd. Arruda', 'Jd. Barão',
+                        'Jd. Cabral', 'Jd. Canadá I e II', 'Jd. Castro', 'Jd. Cristo Rei', 'Jd. Ismênia',
+                        'Jd. Kirei', 'Jd. Maria Lúcia', 'Jd. Marimar', 'Jd. Popular', 'Jd. São Francisco',
+                        'Jd. São Luis I e II', 'Jd. São Paulo', 'V. N. S. das Graças', 'Parque dos Ipês',
+                        'Novo Aeroporto', 'Jardim Alto Aeroporto', 'Papagaios', 'Paraiso', 'Pq. Alvorada',
+                        'Pq. Bela Vista', 'Pq. Dos Mirantes', 'Pq. Santa Albertina', 'Scyllas Peixoto',
+                        'V. Maria Angélica', 'Vila Alves', 'Vila Ema', 'Vila Leão', 'Novo Texas', 'Vila Rosa',
+                        'Residencial Tonet', 'Vila São Pedro', 'J. Paraiso II', 'Parque das Flores', 'Vila Scyllas'
+                    ],
+                    'terca-quinta-sabado': [
+                        'Centro', 'Arboris', 'Residencial Riviera', 'Parque Industrial III', 
+                        'Loteamento São Sebastião', 'Ch. Maravilha', 'Cj. H. Anita Moreira', 
+                        'Residencial Unigarden', 'Parque dos Estudantes II', 'Country Club', 
+                        'D. Pedro Filipak', 'Jardim Primavera', 'Inocoop', 'Jardim Batista', 
+                        'Jd. Alto da Boa Vista', 'Jd. Europa', 'Jd. João Afonso', 'Jd. Miguel Afonso',
+                        'Jd. Lamura', 'Jd. Leonor', 'Jd. Maria Estela', 'Jd. Marina', 'Jd. Maristela',
+                        'Jd. Marumbi', 'Jd. Morada do Sol', 'Jd. Panorama', 'Jd. Santa Rita',
+                        'Nova Alcântara', 'Nova Jacarezinho', 'Pedro Scandolo', 'Pq. dos Estudantes',
+                        'Res. Campo Belo', 'Res. Campo Belo II', 'Res. Pompéia II', 'Res. Pompéia III',
+                        'Vila Aggêo', 'Vila Delamura', 'Vila Delminda', 'Vila Jardim', 'Vila Maria',
+                        'Vila Prestes', 'Vila Ribeiro', 'Vila Rondon', 'Vila Santana', 'Vila Setti'
+                    ],
+                    'especiais': [
+                        { dias: 'TERÇAS E SÁBADOS', bairros: ['Marques dos Reis', 'Cadd', 'Cofadd'] },
+                        { dias: 'QUARTAS E SÁBADOS', bairros: ['Vila Rural'] }
+                    ]
+                }
+            },
+            'cambara': {
+                nome: 'Cambará',
+                coordenadas: [-23.0444, -50.0733],
+                temInfo: true,
+                diasColeta: {
+                    'segunda-sexta': [
+                        'Av. Getúlio Vargas',
+                        'Rua Dona Úrsula', 
+                        'Rua João Francisco Ritter'
+                    ],
+                    'terca-quinta': [
+                        'Sede'
+                    ],
+                    'quarta-regular': [
+                        'Vila Unidos',
+                        'Vila Ouro Verde', 
+                        'Vila Santana',
+                        'Vila Osvaldo Kroeff'
+                    ],
+                    'especiais': [
+                        { dias: '1ª QUARTA-FEIRA DO MÊS', bairros: ['Vila Nova/Bom Retiro'] }
+                    ]
+                }
+            },
+            'andira': {
+                nome: 'Andirá',
+                coordenadas: [-23.0533, -50.2269],
+                temInfo: false
+            },
+            'santo-antonio-platina': {
+                nome: 'Santo Antônio da Platina',
+                coordenadas: [-23.2950, -50.0778],
+                temInfo: false
+            },
+            'cornelio-procopio': {
+                nome: 'Cornélio Procópio',
+                coordenadas: [-23.1811, -50.6467],
+                temInfo: false
+            },
+            'bandeirantes': {
+                nome: 'Bandeirantes',
+                coordenadas: [-23.1108, -50.3675],
+                temInfo: false
+            }
+        };
+
+        // Inicializar mapa
+        const mapa = L.map('mapa-regiao').setView([-23.1600, -50.1439], 10);
+        
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(mapa);
+
+        // Adicionar marcadores para cada cidade
+        Object.values(cidadesRegiao).forEach(cidade => {
+            const marker = L.marker(cidade.coordenadas)
+                .addTo(mapa)
+                .bindPopup(`
+                    <strong>${cidade.nome}</strong><br>
+                    ${cidade.temInfo ? '✅ Informações disponíveis' : '⚠️ Em implementação'}
+                `)
+                .on('click', function() {
+                    selecionarCidade(cidade);
+                });
+        });
+
+        // Função para selecionar cidade
+        function selecionarCidade(cidade) {
+            const container = document.getElementById('cidade-selecionada');
+            
+            if (!cidade.temInfo) {
+                container.innerHTML = `
+                    <div class="aviso">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <div>
+                            <strong>Cidade em implementação</strong><br>
+                            As informações de coleta para ${cidade.nome} ainda estão sendo cadastradas.
+                            Volte em breve!
+                        </div>
+                    </div>
+                `;
+                container.style.display = 'block';
+                return;
+            }
+
+            // Gerar HTML para os dias de coleta
+            let diasColetaHTML = '';
+            
+            // Para Jacarezinho
+            if (cidade.nome === 'Jacarezinho') {
+                if (cidade.diasColeta['segunda-quarta-sexta']) {
+                    diasColetaHTML += `
+                        <div class="dia-card">
+                            <div class="dia-header">
+                                <h3>Coleta Regular</h3>
+                                <div class="dias-semana">SEGUNDAS, QUARTAS E SEXTAS-FEIRAS</div>
+                            </div>
+                            <div class="bairros-list" id="bairros-seg-qua-sex">
+                                ${cidade.diasColeta['segunda-quarta-sexta'].map(bairro => 
+                                    `<div class="bairro-item"><i class="fas fa-leaf"></i>${bairro}</div>`
+                                ).join('')}
+                            </div>
+                        </div>
+                    `;
+                }
+
+                if (cidade.diasColeta['terca-quinta-sabado']) {
+                    diasColetaHTML += `
+                        <div class="dia-card">
+                            <div class="dia-header">
+                                <h3>Coleta Regular</h3>
+                                <div class="dias-semana">TERÇAS, QUINTAS E SÁBADOS</div>
+                            </div>
+                            <div class="bairros-list" id="bairros-ter-qui-sab">
+                                ${cidade.diasColeta['terca-quinta-sabado'].map(bairro => 
+                                    `<div class="bairro-item"><i class="fas fa-leaf"></i>${bairro}</div>`
+                                ).join('')}
+                            </div>
+                        </div>
+                    `;
+                }
+            } 
+            // Para Cambará (versão consolidada)
+            else if (cidade.nome === 'Cambará') {
+                // Segunda e Sexta
+                if (cidade.diasColeta['segunda-sexta']) {
+                    diasColetaHTML += `
+                        <div class="dia-card">
+                            <div class="dia-header">
+                                <h3>Coleta Regular</h3>
+                                <div class="dias-semana">SEGUNDAS E SEXTAS-FEIRAS</div>
+                            </div>
+                            <div class="bairros-list" id="bairros-seg-sex">
+                                ${cidade.diasColeta['segunda-sexta'].map(bairro => 
+                                    `<div class="bairro-item"><i class="fas fa-leaf"></i>${bairro}</div>`
+                                ).join('')}
+                            </div>
+                        </div>
+                    `;
+                }
+
+                // Terça e Quinta
+                if (cidade.diasColeta['terca-quinta']) {
+                    diasColetaHTML += `
+                        <div class="dia-card">
+                            <div class="dia-header">
+                                <h3>Coleta Regular</h3>
+                                <div class="dias-semana">TERÇAS E QUINTAS-FEIRAS</div>
+                            </div>
+                            <div class="bairros-list" id="bairros-ter-qui">
+                                ${cidade.diasColeta['terca-quinta'].map(bairro => 
+                                    `<div class="bairro-item"><i class="fas fa-leaf"></i>${bairro}</div>`
+                                ).join('')}
+                            </div>
+                        </div>
+                    `;
+                }
+
+                // Quarta Regular
+                if (cidade.diasColeta['quarta-regular']) {
+                    diasColetaHTML += `
+                        <div class="dia-card">
+                            <div class="dia-header">
+                                <h3>Coleta Regular</h3>
+                                <div class="dias-semana">QUARTAS-FEIRAS</div>
+                            </div>
+                            <div class="bairros-list" id="bairros-quarta">
+                                ${cidade.diasColeta['quarta-regular'].map(bairro => 
+                                    `<div class="bairro-item"><i class="fas fa-leaf"></i>${bairro}</div>`
+                                ).join('')}
+                            </div>
+                        </div>
+                    `;
+                }
+            }
+
+            // Dias especiais (para ambas as cidades)
+            if (cidade.diasColeta.especiais) {
+                cidade.diasColeta.especiais.forEach((especial, index) => {
+                    diasColetaHTML += `
+                        <div class="dia-card">
+                            <div class="dia-header">
+                                <h3>Coleta Especial</h3>
+                                <div class="dias-semana">${especial.dias}</div>
+                            </div>
+                            <div class="bairros-list" id="bairros-especiais-${index}">
+                                ${especial.bairros.map(bairro => 
+                                    `<div class="bairro-item"><i class="fas fa-recycle"></i>${bairro}</div>`
+                                ).join('')}
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+
+            container.innerHTML = `
+                <div class="cidade-header">
+                    <h2>Dias de Coleta - ${cidade.nome}</h2>
+                    <button class="btn-voltar" onclick="voltarParaMapa()">
+                        <i class="fas fa-arrow-left"></i> Voltar ao Mapa
+                    </button>
+                </div>
+                <div class="info-box">
+                    <i class="fas fa-info-circle"></i>
+                    <div>
+                        <strong>Informações importantes:</strong> A coleta é realizada nos períodos da manhã e tarde. 
+                        Coloque o lixo para coleta sempre nos dias e horários corretos.
+                    </div>
+                </div>
+                <div class="search-bairros-container">
+                    <div class="search-bairros-box">
+                        <input type="text" class="search-input" placeholder="Buscar bairro em ${cidade.nome}..." id="searchBairro">
+                        <i class="fas fa-search search-icon" id="btnBuscarBairro"></i>
+                    </div>
+                </div>
+                <div class="dias-coleta">
+                    ${diasColetaHTML}
+                </div>
+            `;
+            
+            container.style.display = 'block';
+            container.scrollIntoView({ behavior: 'smooth' });
+            
+            // Adicionar event listener para busca de bairros
+            document.getElementById('btnBuscarBairro').addEventListener('click', buscarBairros);
+            document.getElementById('searchBairro').addEventListener('input', buscarBairros);
+        }
+
+        // Função para buscar bairros
+        function buscarBairros() {
+            const termo = document.getElementById('searchBairro').value.toLowerCase();
+            const bairroItems = document.querySelectorAll('.bairro-item');
+            
+            bairroItems.forEach(item => {
+                const textoBairro = item.textContent.toLowerCase();
+                if (textoBairro.includes(termo)) {
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Função para voltar ao mapa
+        function voltarParaMapa() {
+            document.getElementById('cidade-selecionada').style.display = 'none';
+        }
+
+        // Função de busca de cidades
+        document.getElementById('btnBuscar').addEventListener('click', buscarCidade);
+        document.getElementById('searchCidade').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                buscarCidade();
+            }
+        });
+
+        function buscarCidade() {
+            const termo = document.getElementById('searchCidade').value.toLowerCase();
+            const cidadeEncontrada = Object.values(cidadesRegiao).find(cidade => 
+                cidade.nome.toLowerCase().includes(termo)
+            );
+            
+            if (cidadeEncontrada) {
+                mapa.setView(cidadeEncontrada.coordenadas, 13);
+                selecionarCidade(cidadeEncontrada);
+            } else {
+                alert('Cidade não encontrada!');
+            }
+        }
+    </script>
+</body>
+</html>
