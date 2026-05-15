@@ -172,3 +172,35 @@ document.addEventListener('DOMContentLoaded', function() {
     };
     
 });
+
+let slideAtual = 0;
+const slides = document.querySelectorAll('.carousel-item');
+const carousel = document.querySelector('.carousel');
+
+function atualizarCarrossel() {
+    const largura = slides[0].clientWidth;
+    carousel.style.transform = `translateX(-${slideAtual * largura}px)`;
+}
+
+function mudarSlide(direcao) {
+    slideAtual += direcao;
+
+    if (slideAtual >= slides.length) {
+        slideAtual = 0;
+    }
+
+    if (slideAtual < 0) {
+        slideAtual = slides.length - 1;
+    }
+
+    atualizarCarrossel();
+}
+
+// Auto play
+setInterval(() => {
+    mudarSlide(1);
+}, 4000);
+
+// Ajustar ao redimensionar tela
+window.addEventListener('resize', atualizarCarrossel);
+

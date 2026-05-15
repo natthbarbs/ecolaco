@@ -1,0 +1,599 @@
+/* =========================
+   ECO LAÇO • COLETA.CSS
+========================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+:root{
+    --verde-escuro:#163020;
+    --verde:#2f5d3b;
+    --verde-claro:#7fa36b;
+    --verde-soft:#d8e4ce;
+
+    --bg:#eef2e7;
+    --bg2:#dfe7d3;
+
+    --white:#ffffff;
+    --text:#1f1f1f;
+    --muted:#5d665d;
+
+    --glass:rgba(255,255,255,0.18);
+    --glass-border:rgba(255,255,255,0.25);
+
+    --shadow:
+        0 10px 30px rgba(0,0,0,0.08);
+
+    --radius:28px;
+}
+
+/* RESET */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Inter',sans-serif;
+
+    background:
+        radial-gradient(circle at top left,
+        #f7fbf2 0%,
+        var(--bg) 40%,
+        var(--bg2) 100%);
+
+    color:var(--text);
+
+    min-height:100vh;
+
+    overflow-x:hidden;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header{
+    position:sticky;
+    top:0;
+    z-index:999;
+
+    margin:20px;
+
+    padding:18px 28px;
+
+    border-radius:24px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    background:rgba(255,255,255,0.16);
+
+    backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,0.25);
+
+    box-shadow:var(--shadow);
+}
+
+.logo{
+    font-size:1.7rem;
+    font-weight:800;
+
+    color:var(--verde-escuro);
+
+    letter-spacing:-1px;
+}
+
+.back-button{
+    text-decoration:none;
+
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    color:var(--verde-escuro);
+
+    font-weight:600;
+
+    padding:12px 18px;
+
+    border-radius:18px;
+
+    background:rgba(255,255,255,0.2);
+
+    transition:.3s;
+}
+
+.back-button:hover{
+    transform:translateY(-2px);
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero-calendario{
+    position:relative;
+
+    margin:25px;
+
+    min-height:380px;
+
+    border-radius:35px;
+
+    overflow:hidden;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:
+        linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+        url('https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?q=80&w=1600');
+
+    background-size:cover;
+    background-position:center;
+
+    box-shadow:0 20px 40px rgba(0,0,0,0.12);
+}
+
+.hero-overlay{
+    position:absolute;
+    inset:0;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(2,89,64,0.55),
+            rgba(96,191,129,0.25)
+        );
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+
+    text-align:center;
+
+    padding:40px;
+
+    color:white;
+
+    max-width:850px;
+}
+
+.hero-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+
+    padding:12px 20px;
+
+    border-radius:999px;
+
+    background:rgba(255,255,255,0.15);
+
+    backdrop-filter:blur(10px);
+
+    border:1px solid rgba(255,255,255,0.25);
+
+    margin-bottom:25px;
+
+    font-size:.95rem;
+    font-weight:600;
+}
+
+.hero-badge i{
+    color:#9AEBA3;
+}
+
+.hero-calendario h1{
+    font-size:4rem;
+    font-weight:800;
+
+    line-height:1;
+
+    margin-bottom:20px;
+
+    letter-spacing:-2px;
+}
+
+.hero-calendario p{
+    font-size:1.15rem;
+
+    line-height:1.8;
+
+    opacity:.95;
+}
+
+/* =========================
+   CONTAINER
+========================= */
+
+.container{
+    width:calc(100% - 40px);
+
+    max-width:1400px;
+
+    margin:auto;
+
+    padding-bottom:50px;
+}
+
+/* =========================
+   INFO BOX
+========================= */
+
+.info-box,
+.aviso{
+    display:flex;
+    align-items:flex-start;
+    gap:15px;
+
+    padding:22px;
+
+    border-radius:24px;
+
+    margin-bottom:25px;
+
+    backdrop-filter:blur(12px);
+
+    box-shadow:var(--shadow);
+}
+
+.info-box{
+    background:rgba(255,255,255,0.18);
+
+    border:1px solid rgba(255,255,255,0.25);
+}
+
+.info-box i{
+    font-size:1.4rem;
+    color:var(--verde);
+}
+
+.aviso{
+    background:#fff4d6;
+    border-left:5px solid #ffc107;
+}
+
+.aviso i{
+    color:#9b6a00;
+    font-size:1.3rem;
+}
+
+/* =========================
+   MAPA
+========================= */
+
+.mapa-container{
+    background:rgba(255,255,255,0.18);
+
+    backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,0.25);
+
+    border-radius:32px;
+
+    padding:30px;
+
+    box-shadow:var(--shadow);
+
+    margin-bottom:35px;
+}
+
+.mapa-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    gap:20px;
+
+    margin-bottom:25px;
+
+    flex-wrap:wrap;
+}
+
+.mapa-header h2{
+    color:var(--verde-escuro);
+
+    font-size:1.5rem;
+}
+
+.search-box{
+    position:relative;
+
+    width:100%;
+    max-width:380px;
+}
+
+.search-input{
+    width:100%;
+
+    border:none;
+
+    outline:none;
+
+    padding:16px 50px 16px 20px;
+
+    border-radius:20px;
+
+    background:rgba(255,255,255,0.7);
+
+    font-size:1rem;
+
+    color:var(--text);
+}
+
+.search-icon{
+    position:absolute;
+
+    right:18px;
+    top:50%;
+
+    transform:translateY(-50%);
+
+    color:var(--verde);
+}
+
+#mapa-regiao{
+    width:100%;
+    height:480px;
+
+    border-radius:24px;
+
+    overflow:hidden;
+}
+
+/* =========================
+   CIDADE SELECIONADA
+========================= */
+
+.cidade-selecionada{
+    display:none;
+
+    margin-top:35px;
+
+    padding:35px;
+
+    border-radius:32px;
+
+    background:rgba(255,255,255,0.18);
+
+    backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,0.25);
+
+    box-shadow:var(--shadow);
+}
+
+.cidade-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    gap:20px;
+
+    flex-wrap:wrap;
+
+    margin-bottom:30px;
+}
+
+.cidade-header h2{
+    color:var(--verde-escuro);
+
+    font-size:2rem;
+}
+
+.btn-voltar{
+    border:none;
+
+    padding:14px 20px;
+
+    border-radius:18px;
+
+    background:var(--verde);
+
+    color:white;
+
+    cursor:pointer;
+
+    font-weight:600;
+
+    transition:.3s;
+
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.btn-voltar:hover{
+    transform:translateY(-2px);
+
+    background:var(--verde-escuro);
+}
+
+/* =========================
+   CARDS DIAS
+========================= */
+
+.dias-coleta{
+    display:grid;
+
+    grid-template-columns:
+        repeat(auto-fit,minmax(320px,1fr));
+
+    gap:28px;
+
+    margin-top:30px;
+}
+
+.dia-card{
+    overflow:hidden;
+
+    border-radius:28px;
+
+    background:rgba(255,255,255,0.2);
+
+    backdrop-filter:blur(16px);
+
+    border:1px solid rgba(255,255,255,0.25);
+
+    box-shadow:var(--shadow);
+
+    transition:.35s;
+}
+
+.dia-card:hover{
+    transform:translateY(-6px);
+}
+
+.dia-header{
+    padding:24px;
+
+    background:
+        linear-gradient(135deg,
+        var(--verde-escuro),
+        var(--verde));
+
+    color:white;
+}
+
+.dia-header h3{
+    font-size:1.2rem;
+
+    margin-bottom:8px;
+}
+
+.dias-semana{
+    opacity:.9;
+
+    font-size:.95rem;
+}
+
+.bairros-list{
+    padding:24px;
+
+    max-height:340px;
+
+    overflow-y:auto;
+}
+
+.bairro-item{
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    padding:12px 0;
+
+    border-bottom:1px solid rgba(0,0,0,0.06);
+
+    color:var(--text);
+}
+
+.bairro-item:last-child{
+    border-bottom:none;
+}
+
+.bairro-item i{
+    color:var(--verde);
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    margin:40px 20px 20px;
+
+    border-radius:30px;
+
+    padding:40px;
+
+    background:#13261a;
+
+    color:white;
+
+    text-align:center;
+}
+
+footer p:first-child{
+    font-size:1.2rem;
+    font-weight:700;
+    margin-bottom:8px;
+}
+
+/* =========================
+   RESPONSIVO
+========================= */
+
+@media(max-width:768px){
+
+    header{
+        margin:15px;
+        padding:15px 20px;
+    }
+
+    .hero-calendario{
+        min-height:300px;
+        margin:15px;
+    }
+
+    .hero-content{
+        padding:25px;
+    }
+
+    .hero-calendario h1{
+        font-size:2.5rem;
+    }
+
+    .hero-calendario p{
+        font-size:1rem;
+    }
+
+    .mapa-header{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .search-box{
+        max-width:100%;
+    }
+
+    .cidade-header{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    #mapa-regiao{
+        height:340px;
+    }
+
+}
+
+@media(max-width:480px){
+
+    .hero-calendario h1{
+        font-size:2rem;
+    }
+
+    .cidade-selecionada{
+        padding:25px;
+    }
+
+    .dia-header{
+        padding:20px;
+    }
+
+    .bairros-list{
+        padding:20px;
+    }
+
+}

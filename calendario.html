@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Calendário - EcoLaço</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+<header>
+    <div class="menu-icon" onclick="abrirMenu()">
+        <i class="fas fa-bars"></i>
+    </div>
+
+    <div class="header-direita">
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="calendario.html">Calendário</a>
+        </nav>
+        <div class="logo">EcoLaço</div>
+    </div>
+</header>
+
+
+<!-- CALENDÁRIO -->
+<div class="container">
+    <div class="layout-calendario">
+
+        <h2> Calendário Verde 2026</h2>
+            <div class="container-calendario" id="calendario-container">
+        </div>
+
+        <div class="lado-legenda">
+
+            <section class="eventos-container">
+                <h2>🌱 Eventos Ambientais</h2>
+
+                <div class="eventos-grid">
+
+                    <div class="evento-card">
+                        <h3>Janeiro</h3>
+                        <p><strong>11/01</strong> – Dia do Combate à Poluição por Agrotóxicos</p>
+                        <p><strong>26/01</strong> – Dia Mundial da Educação Ambiental</p>
+                    </div>
+
+                    <div class="evento-card">
+                        <h3>Fevereiro</h3>
+                        <p><strong>06/02</strong> – Dia do Agente de Defesa Ambiental</p>
+                        <p><strong>22/02</strong> – Aniversário do IBAMA</p>
+                    </div>
+
+                    <div class="evento-card">
+                        <h3>Março</h3>
+                        <p><strong>01/03</strong> – Dia do Turismo Ecológico</p>
+                        <p><strong>16/03</strong> – Dia Nacional das Mudanças Climáticas</p>
+                        <p><strong>21/03</strong> – Dia Mundial das Florestas</p>
+                        <p><strong>22/03</strong> – Dia Mundial da Água</p>
+                    </div>
+
+                    <div class="evento-card">
+                        <h3>Abril</h3>
+                        <p><strong>15/04</strong> – Dia Nacional da Conservação do Solo</p>
+                        <p><strong>22/04</strong> – Dia da Terra</p>
+                        <p><strong>28/04</strong> – Dia da Caatinga</p>
+                    </div>
+
+                    <div class="evento-card">
+                        <h3>Maio</h3>
+                        <p><strong>03/05</strong> – Dia do Solo</p>
+                        <p><strong>17/05</strong> – Dia Mundial da Reciclagem</p>
+                        <p><strong>22/05</strong> – Dia Internacional da Biodiversidade</p>
+                        <p><strong>27/05</strong> – Dia da Mata Atlântica</p>
+                    </div>
+
+                    <div class="evento-card">
+                        <h3>Junho</h3>
+                        <p><strong>03/06</strong> – Dia Nacional da Educação Ambiental</p>
+                        <p><strong>05/06</strong> – Dia do Meio Ambiente</p>
+                        <p><strong>08/06</strong> – Dia dos Oceanos</p>
+                        <p><strong>17/06</strong> – Dia do Combate à Seca</p>
+                    </div>
+
+                    <div class="evento-card">
+                        <h3>Julho</h3>
+                        <p><strong>17/07</strong> – Dia da Proteção das Florestas</p>
+                    </div>
+
+                    <div class="evento-card">
+                        <h3>Agosto</h3>
+                        <p><strong>14/08</strong> – Dia do Controle da Poluição Industrial</p>
+                    </div>
+
+                    <div class="evento-card">
+                        <h3>Setembro</h3>
+                        <p><strong>03/09</strong> – Dia Nacional do Biólogo</p>
+                        <p><strong>05/09</strong> – Dia da Amazônia</p>
+                        <p><strong>11/09</strong> – Dia Nacional Cerrado</p>
+                        <p><strong>16/09</strong> – Dia Internacional de Preservação da Camada de Ozônio</p>
+                        <p><strong>21/09</strong> – Dia da Árvore</p>
+                        <p><strong>22/09</strong> – Dia da Defesa da Fauna</p>
+                    </div>
+
+                    <div class="evento-card">
+                        <h3>Outubro</h3>
+                        <p><strong>03/10</strong> – Dia Nacional das Abelhas</p>
+                        <p><strong>04/10</strong> – Dia da Natureza</p>
+                        <p><strong>05/10</strong> – Dia das Aves</p>
+                        <p><strong>12/10</strong> – Dia do Mar</p>
+                        <p><strong>15/10</strong> – Dia do Consumo Consciente</p>
+                    </div>
+
+                    <div class="evento-card">
+                        <h3>Novembro</h3>
+                        <p><strong>24/11</strong> – Dia Nacional do Rio</p>
+                        <p><strong>30/11</strong> – Dia do Estatuto da Terra</p>
+                    </div>
+
+                    <div class="evento-card">
+                        <h3>Dezembro</h3>
+                        <p><strong>29/12</strong> – Dia Mundial da Biodiversidade</p>
+                    </div>
+
+    </div>
+</section>
+
+        </div>
+    </div>
+
+</div>
+
+<!--MENU-->
+
+<div id="menu-overlay" class="menu-overlay">
+    <div class="menu-container">
+        <div class="menu-header">
+            <div class="logo">EcoLaço</div>
+            <div class="fechar-menu" onclick="fecharMenu()">
+                <i class="fas fa-times"></i>
+            </div>
+        </div>
+        
+        <div class="menu-section">
+            <div class="section-title">
+                <div class="section-icon leaf-icon">
+                    <i class="fas fa-leaf"></i>
+                </div>
+                <span>FUNCIONALIDADES</span>
+            </div>
+            
+            <button class="menu-button">
+                <i class="far fa-clock"></i>Horários de funcionamento dos pontos de coleta
+            </button>
+            
+            <button class="menu-button">
+                <i class="fas fa-map-marker-alt"></i>Localização por material
+            </button>
+            
+            <button class="menu-button">
+                <i class="fas fa-video"></i>Vídeos curtos com dicas sustentáveis
+            </button>
+            
+            <button class="menu-button">
+                <i class="fas fa-users"></i>Acesso Público
+            </button>
+            
+            <button class="menu-button">
+                <i class="fas fa-chart-bar"></i>Comparativo entre bairros
+            </button>
+            
+            <button class="menu-button">
+                <i class="fas fa-lock"></i>Acesso Privado - Prefeitura
+            </button>
+        </div>
+        
+        <div class="menu-section">
+            <div class="section-title">
+                <div class="section-icon plus-icon">
+                    <i class="fas fa-plus"></i>
+                </div>
+                <span>EXTRAS</span>
+            </div>
+            
+            <button class="menu-button">
+                <i class="fas fa-gamepad"></i>Quiz ecológico e jogos
+            </button>
+            
+            <button class="menu-button">
+                <i class="fas fa-trophy"></i>Sistema de gamificação
+            </button>
+            
+            <button class="menu-button">
+                <i class="fas fa-lightbulb"></i>Seção de "Sabia que..."
+            </button>
+            
+            <button class="menu-button">
+                <i class="fas fa-robot"></i>Chatbot para dúvidas sobre reciclagem
+            </button>
+            
+            <button class="menu-button">
+                <i class="fas fa-star"></i>Nos dê sua avaliação como utilizador!
+            </button>
+        </div>
+        
+        <div class="menu-footer">
+            <div class="footer-icon">
+                <i class="fas fa-info"></i>
+            </div>
+            <div class="footer-icon">
+                <i class="fas fa-bell"></i>
+            </div>
+            <div class="footer-icon">
+                <i class="fas fa-exclamation-triangle"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/calendario.js"></script>
+</body>
+</html>

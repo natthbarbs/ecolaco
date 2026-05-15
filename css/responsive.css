@@ -1,91 +1,119 @@
-/* Responsividade */
-@media (max-width: 768px) {
-    .container {
-        flex-direction: column;
-        padding: 1rem;
+/* =========================
+   RESPONSIVO
+========================= */
+
+@media(max-width:1100px){
+
+    .hero h1{
+        font-size:3rem;
     }
-    
-    .hero h1 {
-        font-size: 1.5rem;
+
+    .container{
+        grid-template-columns:1fr;
     }
-    
-    .hero p {
-        font-size: 1rem;
-    }
-    
-    header {
-        padding: 1rem;
-    }
-    
-    .logo {
-        font-size: 1.5rem;
-    }
-    
-    .card-simples {
-        min-height: 180px;
-        padding: 1.5rem;
-    }
-    
-    .icone-grande {
-        font-size: 2.5rem;
-    }
-    
-    .mapa-container {
-        height: 200px;
+
+    .carousel-container{
+        height:450px;
     }
 }
 
-@media (max-width: 480px) {
-    .hero {
-        padding: 1.5rem 1rem;
+@media(max-width:768px){
+
+    header{
+        margin:12px;
+        padding:16px 18px;
     }
-    
-    .hero h1 {
-        font-size: 1.3rem;
+
+    .nav-links{
+        display:none;
     }
-    
-    .card-header {
-        font-size: 1.1rem;
-        padding: 0.8rem;
+
+    .hero{
+        padding:60px 30px;
+        border-radius:28px;
     }
-    
-    .card-content {
-        padding: 1rem;
-        min-height: 100px;
+
+    .hero h1{
+        font-size:2.2rem;
+        letter-spacing:-2px;
     }
-    
-    .card-simples {
-        min-height: 160px;
-        padding: 1.2rem;
+
+    .hero p{
+        font-size:1rem;
     }
-    
-    .icone-grande {
-        font-size: 2rem;
+
+    .container{
+        width:calc(100% - 24px);
+        gap:20px;
     }
-    
-    .titulo-card {
-        font-size: 1.1rem;
+
+    .card-simples{
+        min-height:200px;
+        padding:28px;
     }
-    
-    .mapa-container {
-        height: 180px;
+
+    .carousel-container{
+        height:320px;
+        border-radius:25px;
+    }
+
+    .mapa-container{
+        height:240px;
+    }
+
+    footer{
+        padding:30px 20px;
     }
 }
 
-/*menu*/
-@media (max-width: 480px) {
-    .menu-container {
-        padding: 1.5rem;
-        width: 95%;
-        max-height: 85vh;
+@media(max-width:480px){
+
+    .hero{
+        padding:45px 22px;
     }
-    
-    .menu-button {
-        padding: 10px 12px;
-        font-size: 0.9rem;
+
+    .hero h1{
+        font-size:1.8rem;
     }
-    
-    .section-title {
-        font-size: 1.1rem;
+
+    .logo{
+        font-size:1.4rem;
+    }
+
+    .menu-icon{
+        width:45px;
+        height:45px;
+    }
+
+    .card-header{
+        padding:20px;
+    }
+
+    .card-content{
+        padding:20px;
+    }
+
+    .card-simples{
+        min-height:180px;
+    }
+
+    .icone-grande{
+        font-size:2.3rem;
+    }
+
+    .titulo-card{
+        font-size:1.2rem;
+    }
+
+    .menu-container{
+        padding:25px;
+    }
+
+    .container-calendario{
+        grid-template-columns:1fr;
+    }
+
+    .eventos-grid{
+        grid-template-columns:1fr;
     }
 }

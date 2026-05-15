@@ -1,0 +1,350 @@
+/* =========================
+   CALENDÁRIO • ECOLAÇO
+========================= */
+
+:root{
+    --bg:#edf3e7;
+
+    --green-dark:#183222;
+    --green:#3d6b49;
+    --green-light:#87a878;
+    --green-soft:#dbe7d3;
+
+    --white:#ffffff;
+
+    --glass:rgba(255,255,255,0.18);
+
+    --border:rgba(255,255,255,0.25);
+
+    --shadow:
+        0 15px 35px rgba(0,0,0,0.08);
+
+    --radius:30px;
+}
+
+/* FUNDO */
+
+body{
+    background:
+        radial-gradient(circle at top left,
+        #f7fbf3 0%,
+        #edf3e7 45%,
+        #dde7d6 100%);
+}
+
+/* HERO */
+
+.hero-calendario{
+    width:calc(100% - 40px);
+
+    margin:30px auto;
+
+    padding:70px 60px;
+
+    border-radius:40px;
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:
+        linear-gradient(rgba(15,25,15,0.5),
+        rgba(15,25,15,0.5)),
+
+        url('https://images.unsplash.com/photo-1497436072909-f5e4be66e4e0?q=80&w=1600');
+
+    background-size:cover;
+    background-position:center;
+
+    color:white;
+
+    box-shadow:var(--shadow);
+}
+
+.hero-calendario h1{
+    font-size:3.5rem;
+
+    font-weight:900;
+
+    line-height:1.05;
+
+    letter-spacing:-2px;
+
+    margin-bottom:20px;
+}
+
+.hero-calendario p{
+    max-width:700px;
+
+    line-height:1.8;
+
+    font-size:1.08rem;
+
+    opacity:.92;
+}
+
+/* GRID */
+
+.container-calendario{
+    width:calc(100% - 40px);
+
+    max-width:1450px;
+
+    margin:40px auto;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(auto-fit,minmax(260px,1fr));
+
+    gap:28px;
+}
+
+/* CARD MÊS */
+
+.mes-card{
+    position:relative;
+
+    overflow:hidden;
+
+    border-radius:var(--radius);
+
+    background:var(--glass);
+
+    backdrop-filter:blur(16px);
+
+    border:1px solid var(--border);
+
+    box-shadow:var(--shadow);
+
+    transition:.35s;
+}
+
+.mes-card:hover{
+    transform:
+        translateY(-8px)
+        scale(1.01);
+}
+
+/* TOPO */
+
+.mes-card h2{
+    padding:24px;
+
+    font-size:1.3rem;
+
+    font-weight:800;
+
+    letter-spacing:-1px;
+
+    color:var(--green-dark);
+
+    background:
+        linear-gradient(to right,
+        rgba(255,255,255,0.25),
+        transparent);
+}
+
+/* GRID DO CALENDÁRIO */
+
+.calendario-grid{
+    padding:24px;
+
+    display:grid;
+
+    grid-template-columns:repeat(7,1fr);
+
+    gap:10px;
+}
+
+/* DIAS SEMANA */
+
+.calendario-grid div:nth-child(-n+7){
+    font-size:.7rem;
+
+    font-weight:700;
+
+    color:var(--green);
+
+    opacity:.8;
+}
+
+/* DIAS */
+
+.calendario-grid div{
+    aspect-ratio:1;
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    border-radius:50%;
+
+    font-size:.88rem;
+
+    font-weight:600;
+
+    transition:.25s;
+}
+
+/* HOVER DIA */
+
+.calendario-grid div:hover{
+    background:rgba(61,107,73,0.12);
+}
+
+/* EVENTO */
+
+.dia-evento{
+    background:var(--green-dark);
+
+    color:white;
+
+    box-shadow:
+        0 8px 18px rgba(24,50,34,0.25);
+}
+
+/* EVENTOS */
+
+.eventos-container{
+    width:calc(100% - 40px);
+
+    max-width:1300px;
+
+    margin:70px auto;
+}
+
+.eventos-container h2{
+    font-size:2rem;
+
+    color:var(--green-dark);
+
+    margin-bottom:30px;
+
+    font-weight:800;
+}
+
+/* GRID EVENTOS */
+
+.eventos-grid{
+    display:grid;
+
+    grid-template-columns:
+        repeat(auto-fit,minmax(280px,1fr));
+
+    gap:24px;
+}
+
+/* CARD EVENTO */
+
+.evento-card{
+    position:relative;
+
+    overflow:hidden;
+
+    padding:28px;
+
+    border-radius:28px;
+
+    background:rgba(255,255,255,0.2);
+
+    backdrop-filter:blur(14px);
+
+    border:1px solid rgba(255,255,255,0.3);
+
+    box-shadow:var(--shadow);
+
+    transition:.3s;
+}
+
+.evento-card:hover{
+    transform:translateY(-6px);
+}
+
+/* LINHA DECORATIVA */
+
+.evento-card::before{
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:6px;
+
+    background:
+        linear-gradient(to right,
+        var(--green-dark),
+        var(--green-light));
+}
+
+/* TÍTULO */
+
+.evento-card h3{
+    margin-bottom:16px;
+
+    color:var(--green-dark);
+
+    font-size:1.2rem;
+
+    font-weight:800;
+}
+
+/* TEXTO */
+
+.evento-card p{
+    margin-bottom:10px;
+
+    color:#4d5c4f;
+
+    line-height:1.6;
+}
+
+/* DATA */
+
+.evento-card strong{
+    color:var(--green-dark);
+}
+
+/* RESPONSIVO */
+
+@media(max-width:900px){
+
+    .hero-calendario{
+        padding:55px 35px;
+    }
+
+    .hero-calendario h1{
+        font-size:2.5rem;
+    }
+
+}
+
+@media(max-width:600px){
+
+    .hero-calendario{
+        padding:45px 25px;
+        border-radius:28px;
+    }
+
+    .hero-calendario h1{
+        font-size:2rem;
+    }
+
+    .hero-calendario p{
+        font-size:.95rem;
+    }
+
+    .calendario-grid{
+        gap:7px;
+        padding:18px;
+    }
+
+    .calendario-grid div{
+        font-size:.78rem;
+    }
+
+}

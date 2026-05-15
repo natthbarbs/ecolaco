@@ -8,19 +8,39 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/menu.css">
+    <link rel="stylesheet" href="css/calendario.css">
 </head>
+
+
 <body>
     <header>
-        <div class="menu-icon" onclick="abrirMenu()" title="Abrir menu">
-            <i class="fas fa-bars"></i>
-        </div>
+    <!-- Menu (continua na esquerda) -->
+    <div class="menu-icon" onclick="abrirMenu()" title="Abrir menu">
+        <i class="fas fa-bars"></i>
+    </div>
+
+    <!-- Lado direito -->
+    <div class="header-direita">
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="calendario.html">Calendário</a>
+        </nav>
         <div class="logo">EcoLaço</div>
-    </header>
+    </div>
+</header>
+
     
     <section class="hero">
         <h1>Conectando você com a sustentabilidade de Jacarezinho</h1>
         <p>Encontre pontos de coleta, horários de coleta seletiva, indicadores ambientais e muito mais!</p>
     </section>
+
+
+    </div>
+
+
+    </div>
     
     <div class="container">
         <div class="coluna">
@@ -50,8 +70,26 @@
                 <div class="descricao-card">Aprenda práticas sustentáveis para o seu dia a dia</div>
             </div>
         </div>
+
+    <div class="coluna">
+
+        <div class="carousel-container">
+            <div class="carousel">
+                <img src="imagens/imagem1.jpeg" class="carousel-item active">
+                <img src="imagens/imagem2.jpeg" class="carousel-item">
+                <img src="imagens/imagem3.jpeg" class="carousel-item">
+            </div>
+
+            <button class="carousel-btn prev" onclick="mudarSlide(-1)">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+
+            <button class="carousel-btn next" onclick="mudarSlide(1)">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+
         
-        <div class="coluna">
             <!-- Segunda coluna: CAMPANHA, DIAS DE COLETA, INDICADORES -->
             <div class="card" id="campanha-card">
                 <div class="card-header">CAMPANHA DE ARRECADAÇÃO</div>
@@ -82,7 +120,7 @@
     
     <footer>
         <p>EcoLaço - Conectando você com a sustentabilidade</p>
-        <p>© 2025 - Todos os direitos reservados</p>
+        <p>© 2026 - Todos os direitos reservados</p>
     </footer>
  <!-- Menu de sobreposição -->
     <div id="menu-overlay" class="menu-overlay">
