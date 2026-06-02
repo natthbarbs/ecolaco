@@ -3,24 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Dias de Coleta - EcoLaço</title>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+
     <link rel="stylesheet" href="css/coleta.css">
 </head>
+
 <body>
+
     <header>
         <a href="index.html" class="back-button">
             <i class="fas fa-arrow-left"></i>
             Voltar
         </a>
+
         <div class="logo">EcoLaço</div>
     </header>
-    
+
     <section class="hero-calendario">
         <div class="hero-overlay"></div>
 
         <div class="hero-content">
+
             <span class="hero-badge">
                 <i class="fas fa-recycle"></i>
                 EcoLaço • Sustentabilidade
@@ -33,350 +44,72 @@
                 campanhas ambientais e informações
                 sustentáveis da sua cidade.
             </p>
+
         </div>
     </section>
-    
+
     <div class="container">
+
         <div class="info-box">
             <i class="fas fa-info-circle"></i>
+
             <div>
-                <strong>Como usar:</strong> Clique no mapa em cima da sua cidade para ver os dias de coleta. 
-                Use a busca para encontrar cidades rapidamente.
+                <strong>Como usar:</strong>
+                Clique no mapa em cima da sua cidade
+                para visualizar os dias de coleta seletiva.
             </div>
         </div>
-        
+
         <div class="mapa-section">
+
             <div class="mapa-container">
+
                 <div class="mapa-header">
-                    <h2>Mapa do Norte Pioneiro do Paraná</h2>
+
+                    <h2>Mapa do Norte Pioneiro</h2>
+
                     <div class="search-box">
-                        <input type="text" class="search-input" placeholder="Buscar cidade..." id="searchCidade">
-                        <i class="fas fa-search search-icon" id="btnBuscar"></i>
+
+                        <input
+                            type="text"
+                            class="search-input"
+                            placeholder="Buscar cidade..."
+                            id="searchCidade"
+                        >
+
+                        <button
+                            id="btnBuscar"
+                            class="search-button"
+                        >
+                            <i class="fas fa-search"></i>
+                        </button>
+
                     </div>
+
                 </div>
+
                 <div id="mapa-regiao"></div>
+
             </div>
+
         </div>
-        
-        <div id="cidade-selecionada" class="cidade-selecionada">
-            <!-- Conteúdo será preenchido dinamicamente -->
+
+        <div
+            id="cidade-selecionada"
+            class="cidade-selecionada"
+        >
         </div>
+
     </div>
-    
+
     <footer>
         <p>EcoLaço - Conectando você com a sustentabilidade</p>
         <p>© 2026 - Todos os direitos reservados</p>
     </footer>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script>
-        // Dados das cidades
-        const cidadesRegiao = {
-            'jacarezinho': {
-                nome: 'Jacarezinho',
-                coordenadas: [-23.1600, -49.9698],
-                temInfo: true,
-                diasColeta: {
-                    'segunda-quarta-sexta': [
-                        'Aeroporto', 'V. Nossa Senhora das Graças', 'Alto da Boa Vista', 'Centro',
-                        'Parque Industrial III', 'Loteamento São Sebastião', 'Arboris', 'Residencial Riviera',
-                        'Jd. Alves', 'Loteamento Parque Ecológico', 'Jd. América', 'Jd. Arruda', 'Jd. Barão',
-                        'Jd. Cabral', 'Jd. Canadá I e II', 'Jd. Castro', 'Jd. Cristo Rei', 'Jd. Ismênia',
-                        'Jd. Kirei', 'Jd. Maria Lúcia', 'Jd. Marimar', 'Jd. Popular', 'Jd. São Francisco',
-                        'Jd. São Luis I e II', 'Jd. São Paulo', 'V. N. S. das Graças', 'Parque dos Ipês',
-                        'Novo Aeroporto', 'Jardim Alto Aeroporto', 'Papagaios', 'Paraiso', 'Pq. Alvorada',
-                        'Pq. Bela Vista', 'Pq. Dos Mirantes', 'Pq. Santa Albertina', 'Scyllas Peixoto',
-                        'V. Maria Angélica', 'Vila Alves', 'Vila Ema', 'Vila Leão', 'Novo Texas', 'Vila Rosa',
-                        'Residencial Tonet', 'Vila São Pedro', 'J. Paraiso II', 'Parque das Flores', 'Vila Scyllas'
-                    ],
-                    'terca-quinta-sabado': [
-                        'Centro', 'Arboris', 'Residencial Riviera', 'Parque Industrial III', 
-                        'Loteamento São Sebastião', 'Ch. Maravilha', 'Cj. H. Anita Moreira', 
-                        'Residencial Unigarden', 'Parque dos Estudantes II', 'Country Club', 
-                        'D. Pedro Filipak', 'Jardim Primavera', 'Inocoop', 'Jardim Batista', 
-                        'Jd. Alto da Boa Vista', 'Jd. Europa', 'Jd. João Afonso', 'Jd. Miguel Afonso',
-                        'Jd. Lamura', 'Jd. Leonor', 'Jd. Maria Estela', 'Jd. Marina', 'Jd. Maristela',
-                        'Jd. Marumbi', 'Jd. Morada do Sol', 'Jd. Panorama', 'Jd. Santa Rita',
-                        'Nova Alcântara', 'Nova Jacarezinho', 'Pedro Scandolo', 'Pq. dos Estudantes',
-                        'Res. Campo Belo', 'Res. Campo Belo II', 'Res. Pompéia II', 'Res. Pompéia III',
-                        'Vila Aggêo', 'Vila Delamura', 'Vila Delminda', 'Vila Jardim', 'Vila Maria',
-                        'Vila Prestes', 'Vila Ribeiro', 'Vila Rondon', 'Vila Santana', 'Vila Setti'
-                    ],
-                    'especiais': [
-                        { dias: 'TERÇAS E SÁBADOS', bairros: ['Marques dos Reis', 'Cadd', 'Cofadd'] },
-                        { dias: 'QUARTAS E SÁBADOS', bairros: ['Vila Rural'] }
-                    ]
-                }
-            },
-            'cambara': {
-                nome: 'Cambará',
-                coordenadas: [-23.0444, -50.0733],
-                temInfo: true,
-                diasColeta: {
-                    'segunda-sexta': [
-                        'Av. Getúlio Vargas',
-                        'Rua Dona Úrsula', 
-                        'Rua João Francisco Ritter'
-                    ],
-                    'terca-quinta': [
-                        'Sede'
-                    ],
-                    'quarta-regular': [
-                        'Vila Unidos',
-                        'Vila Ouro Verde', 
-                        'Vila Santana',
-                        'Vila Osvaldo Kroeff'
-                    ],
-                    'especiais': [
-                        { dias: '1ª QUARTA-FEIRA DO MÊS', bairros: ['Vila Nova/Bom Retiro'] }
-                    ]
-                }
-            },
-            'andira': {
-                nome: 'Andirá',
-                coordenadas: [-23.0533, -50.2269],
-                temInfo: false
-            },
-            'santo-antonio-platina': {
-                nome: 'Santo Antônio da Platina',
-                coordenadas: [-23.2950, -50.0778],
-                temInfo: false
-            },
-            'cornelio-procopio': {
-                nome: 'Cornélio Procópio',
-                coordenadas: [-23.1811, -50.6467],
-                temInfo: false
-            },
-            'bandeirantes': {
-                nome: 'Bandeirantes',
-                coordenadas: [-23.1108, -50.3675],
-                temInfo: false
-            }
-        };
 
-        // Inicializar mapa
-        const mapa = L.map('mapa-regiao').setView([-23.1600, -50.1439], 10);
-        
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(mapa);
+    <script src="js/coleta.js"></script>
 
-        // Adicionar marcadores para cada cidade
-        Object.values(cidadesRegiao).forEach(cidade => {
-            const marker = L.marker(cidade.coordenadas)
-                .addTo(mapa)
-                .bindPopup(`
-                    <strong>${cidade.nome}</strong><br>
-                    ${cidade.temInfo ? '✅ Informações disponíveis' : '⚠️ Em implementação'}
-                `)
-                .on('click', function() {
-                    selecionarCidade(cidade);
-                });
-        });
-
-        // Função para selecionar cidade
-        function selecionarCidade(cidade) {
-            const container = document.getElementById('cidade-selecionada');
-            
-            if (!cidade.temInfo) {
-                container.innerHTML = `
-                    <div class="aviso">
-                        <i class="fas fa-exclamation-triangle"></i>
-                        <div>
-                            <strong>Cidade em implementação</strong><br>
-                            As informações de coleta para ${cidade.nome} ainda estão sendo cadastradas.
-                            Volte em breve!
-                        </div>
-                    </div>
-                `;
-                container.style.display = 'block';
-                return;
-            }
-
-            // Gerar HTML para os dias de coleta
-            let diasColetaHTML = '';
-            
-            // Para Jacarezinho
-            if (cidade.nome === 'Jacarezinho') {
-                if (cidade.diasColeta['segunda-quarta-sexta']) {
-                    diasColetaHTML += `
-                        <div class="dia-card">
-                            <div class="dia-header">
-                                <h3>Coleta Regular</h3>
-                                <div class="dias-semana">SEGUNDAS, QUARTAS E SEXTAS-FEIRAS</div>
-                            </div>
-                            <div class="bairros-list" id="bairros-seg-qua-sex">
-                                ${cidade.diasColeta['segunda-quarta-sexta'].map(bairro => 
-                                    `<div class="bairro-item"><i class="fas fa-leaf"></i>${bairro}</div>`
-                                ).join('')}
-                            </div>
-                        </div>
-                    `;
-                }
-
-                if (cidade.diasColeta['terca-quinta-sabado']) {
-                    diasColetaHTML += `
-                        <div class="dia-card">
-                            <div class="dia-header">
-                                <h3>Coleta Regular</h3>
-                                <div class="dias-semana">TERÇAS, QUINTAS E SÁBADOS</div>
-                            </div>
-                            <div class="bairros-list" id="bairros-ter-qui-sab">
-                                ${cidade.diasColeta['terca-quinta-sabado'].map(bairro => 
-                                    `<div class="bairro-item"><i class="fas fa-leaf"></i>${bairro}</div>`
-                                ).join('')}
-                            </div>
-                        </div>
-                    `;
-                }
-            } 
-            // Para Cambará (versão consolidada)
-            else if (cidade.nome === 'Cambará') {
-                // Segunda e Sexta
-                if (cidade.diasColeta['segunda-sexta']) {
-                    diasColetaHTML += `
-                        <div class="dia-card">
-                            <div class="dia-header">
-                                <h3>Coleta Regular</h3>
-                                <div class="dias-semana">SEGUNDAS E SEXTAS-FEIRAS</div>
-                            </div>
-                            <div class="bairros-list" id="bairros-seg-sex">
-                                ${cidade.diasColeta['segunda-sexta'].map(bairro => 
-                                    `<div class="bairro-item"><i class="fas fa-leaf"></i>${bairro}</div>`
-                                ).join('')}
-                            </div>
-                        </div>
-                    `;
-                }
-
-                // Terça e Quinta
-                if (cidade.diasColeta['terca-quinta']) {
-                    diasColetaHTML += `
-                        <div class="dia-card">
-                            <div class="dia-header">
-                                <h3>Coleta Regular</h3>
-                                <div class="dias-semana">TERÇAS E QUINTAS-FEIRAS</div>
-                            </div>
-                            <div class="bairros-list" id="bairros-ter-qui">
-                                ${cidade.diasColeta['terca-quinta'].map(bairro => 
-                                    `<div class="bairro-item"><i class="fas fa-leaf"></i>${bairro}</div>`
-                                ).join('')}
-                            </div>
-                        </div>
-                    `;
-                }
-
-                // Quarta Regular
-                if (cidade.diasColeta['quarta-regular']) {
-                    diasColetaHTML += `
-                        <div class="dia-card">
-                            <div class="dia-header">
-                                <h3>Coleta Regular</h3>
-                                <div class="dias-semana">QUARTAS-FEIRAS</div>
-                            </div>
-                            <div class="bairros-list" id="bairros-quarta">
-                                ${cidade.diasColeta['quarta-regular'].map(bairro => 
-                                    `<div class="bairro-item"><i class="fas fa-leaf"></i>${bairro}</div>`
-                                ).join('')}
-                            </div>
-                        </div>
-                    `;
-                }
-            }
-
-            // Dias especiais (para ambas as cidades)
-            if (cidade.diasColeta.especiais) {
-                cidade.diasColeta.especiais.forEach((especial, index) => {
-                    diasColetaHTML += `
-                        <div class="dia-card">
-                            <div class="dia-header">
-                                <h3>Coleta Especial</h3>
-                                <div class="dias-semana">${especial.dias}</div>
-                            </div>
-                            <div class="bairros-list" id="bairros-especiais-${index}">
-                                ${especial.bairros.map(bairro => 
-                                    `<div class="bairro-item"><i class="fas fa-recycle"></i>${bairro}</div>`
-                                ).join('')}
-                            </div>
-                        </div>
-                    `;
-                });
-            }
-
-            container.innerHTML = `
-                <div class="cidade-header">
-                    <h2>Dias de Coleta - ${cidade.nome}</h2>
-                    <button class="btn-voltar" onclick="voltarParaMapa()">
-                        <i class="fas fa-arrow-left"></i> Voltar ao Mapa
-                    </button>
-                </div>
-                <div class="info-box">
-                    <i class="fas fa-info-circle"></i>
-                    <div>
-                        <strong>Informações importantes:</strong> A coleta é realizada nos períodos da manhã e tarde. 
-                        Coloque o lixo para coleta sempre nos dias e horários corretos.
-                    </div>
-                </div>
-                <div class="search-bairros-container">
-                    <div class="search-bairros-box">
-                        <input type="text" class="search-input" placeholder="Buscar bairro em ${cidade.nome}..." id="searchBairro">
-                        <i class="fas fa-search search-icon" id="btnBuscarBairro"></i>
-                    </div>
-                </div>
-                <div class="dias-coleta">
-                    ${diasColetaHTML}
-                </div>
-            `;
-            
-            container.style.display = 'block';
-            container.scrollIntoView({ behavior: 'smooth' });
-            
-            // Adicionar event listener para busca de bairros
-            document.getElementById('btnBuscarBairro').addEventListener('click', buscarBairros);
-            document.getElementById('searchBairro').addEventListener('input', buscarBairros);
-        }
-
-        // Função para buscar bairros
-        function buscarBairros() {
-            const termo = document.getElementById('searchBairro').value.toLowerCase();
-            const bairroItems = document.querySelectorAll('.bairro-item');
-            
-            bairroItems.forEach(item => {
-                const textoBairro = item.textContent.toLowerCase();
-                if (textoBairro.includes(termo)) {
-                    item.style.display = 'flex';
-                } else {
-                    item.style.display = 'none';
-                }
-            });
-        }
-
-        // Função para voltar ao mapa
-        function voltarParaMapa() {
-            document.getElementById('cidade-selecionada').style.display = 'none';
-        }
-
-        // Função de busca de cidades
-        document.getElementById('btnBuscar').addEventListener('click', buscarCidade);
-        document.getElementById('searchCidade').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                buscarCidade();
-            }
-        });
-
-        function buscarCidade() {
-            const termo = document.getElementById('searchCidade').value.toLowerCase();
-            const cidadeEncontrada = Object.values(cidadesRegiao).find(cidade => 
-                cidade.nome.toLowerCase().includes(termo)
-            );
-            
-            if (cidadeEncontrada) {
-                mapa.setView(cidadeEncontrada.coordenadas, 13);
-                selecionarCidade(cidadeEncontrada);
-            } else {
-                alert('Cidade não encontrada!');
-            }
-        }
-    </script>
 </body>
 </html>

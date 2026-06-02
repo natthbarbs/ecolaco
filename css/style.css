@@ -82,10 +82,15 @@ header{
     letter-spacing:-1px;
 }
 
+.header-esquerda{
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
 .header-direita{
     display:flex;
     align-items:center;
-    gap:30px;
 }
 
 .nav-links{
@@ -114,6 +119,31 @@ header{
 
 .nav-links a:hover::after{
     width:100%;
+}
+
+.menu-icon{
+    width:52px;
+    height:52px;
+
+    border-radius:18px;
+
+    background:rgba(255,255,255,0.18);
+
+    backdrop-filter:blur(15px);
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    cursor:pointer;
+
+    border:1px solid rgba(255,255,255,0.3);
+
+    transition:0.3s;
+}
+
+.menu-icon:hover{
+    transform:translateY(-3px);
 }
 
 .menu-icon{
@@ -543,3 +573,92 @@ footer p:first-child{
     text-decoration:none;
 }
 
+/* =========================
+CONTATO
+========================= */
+
+.contato-section {
+
+    padding: 80px 20px;
+
+    background: #1f3d2b;
+
+    color: white;
+
+    text-align: center;
+}
+
+.contato-container {
+
+    max-width: 800px;
+
+    margin: 0 auto;
+}
+
+.contato-container h2 {
+
+    font-size: 42px;
+
+    margin-bottom: 20px;
+}
+
+.contato-container p {
+
+    font-size: 18px;
+
+    line-height: 1.7;
+
+    margin-bottom: 40px;
+
+    color: rgba(255,255,255,0.85);
+}
+
+.contato-links {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 20px;
+
+    flex-wrap: wrap;
+}
+
+.contato-item {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 16px 24px;
+
+    background: rgba(255,255,255,0.1);
+
+    border-radius: 16px;
+
+    text-decoration: none;
+
+    color: white;
+
+    font-size: 18px;
+
+    transition: 0.3s;
+}
+
+.contato-item:hover {
+
+    background: #2e7d32;
+
+    transform: translateY(-3px);
+}
+
+.contato-item i {
+
+    font-size: 24px;
+}
+
+html {
+    scroll-behavior: smooth;
+}

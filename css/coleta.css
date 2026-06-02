@@ -333,7 +333,6 @@ header{
 }
 
 .search-icon{
-    position:absolute;
 
     right:18px;
     top:50%;
@@ -506,6 +505,17 @@ header{
     color:var(--verde);
 }
 
+.horario-coleta{
+    display: inline-block;
+    margin-top: 8px;
+    padding: 6px 12px;
+    background: #dff5e1;
+    color: #1f5c2c;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
 /* =========================
    FOOTER
 ========================= */
@@ -596,4 +606,58 @@ footer p:first-child{
         padding:20px;
     }
 
+}
+
+/* =========================
+   BUSCAS
+========================= */
+/* =========================
+BUSCA
+========================= */
+
+.search-box,
+.search-bairros-box {
+
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+}
+
+.search-input {
+
+    width: 100%;
+
+    padding: 16px 55px 16px 20px;
+
+    border: none;
+    border-radius: 20px;
+
+    background: #dfe5f3;
+
+    font-size: 18px;
+
+    outline: none;
+}
+
+.search-icon {
+
+    position: absolute;
+
+    right: 20px;
+
+    color: #2e7d32;
+
+    font-size: 22px;
+
+    cursor: pointer;
+}
+/* =========================
+   MAPA
+========================= */
+
+#mapa-regiao {
+    z-index: 1;
 }

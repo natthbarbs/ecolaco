@@ -204,3 +204,10 @@ setInterval(() => {
 // Ajustar ao redimensionar tela
 window.addEventListener('resize', atualizarCarrossel);
 
+function emDesenvolvimento() {
+
+    alert(
+        'Esta funcionalidade está em desenvolvimento e será disponibilizada em breve.'
+    );
+
+}

@@ -15,20 +15,30 @@
 
 <body>
     <header>
-    <!-- Menu (continua na esquerda) -->
-    <div class="menu-icon" onclick="abrirMenu()" title="Abrir menu">
-        <i class="fas fa-bars"></i>
-    </div>
 
-    <!-- Lado direito -->
-    <div class="header-direita">
-        <nav class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="calendario.html">Calendário</a>
-        </nav>
-        <div class="logo">EcoLaço</div>
-    </div>
-</header>
+        <div class="header-esquerda">
+
+            <div class="menu-icon" onclick="abrirMenu()">
+                <i class="fas fa-bars"></i>
+            </div>
+
+            <div class="logo">
+                EcoLaço
+            </div>
+
+        </div>
+
+        <div class="header-direita">
+
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="calendario.html">Calendário</a>
+                <a href="#contato">Contato</a>
+            </nav>
+
+        </div>
+
+    </header>
 
     
     <section class="hero">
@@ -55,14 +65,16 @@
                 </div>
             </div>
             
-            <div class="card" id="pev-card">
-                <div class="card-header">PEV</div>
+            <div class="card" id="pev-card" onclick="emDesenvolvimento()">
+                <div class="card-header">
+                    PEV
+                </div>
                 <div class="card-content">
                     Pontos de Entrega Voluntária próximos e saiba o que eles aceitam.
                 </div>
             </div>
             
-            <div class="card-simples" id="dicas-card">
+            <div class="card-simples" id="dicas-card" onclick="emDesenvolvimento()">
                 <div class="icone-grande">
                     <i class="fas fa-leaf"></i>
                 </div>
@@ -91,7 +103,7 @@
 
         
             <!-- Segunda coluna: CAMPANHA, DIAS DE COLETA, INDICADORES -->
-            <div class="card" id="campanha-card">
+            <div class="card" id="campanha-card" onclick="emDesenvolvimento()">
                 <div class="card-header">CAMPANHA DE ARRECADAÇÃO</div>
                 <div class="card-content">
                     Pontos de coleta criados em campanhas especiais para receber materiais recicláveis.
@@ -108,7 +120,7 @@
              </div>
            </a>
             
-            <div class="card-simples" id="indicadores-card">
+            <div class="card-simples" id="indicadores-card" onclick="emDesenvolvimento()">
                 <div class="icone-grande">
                     <i class="fas fa-chart-bar"></i>
                 </div>
@@ -118,6 +130,45 @@
         </div>
     </div>
     
+<section class="contato-section" id="contato">
+
+    <div class="contato-container">
+
+        <h2>Entre em Contato</h2>
+
+        <p>
+            Quer tirar dúvidas, enviar sugestões,
+            apoiar o projeto ou acompanhar nossas
+            ações ambientais?
+        </p>
+
+        <div class="contato-links">
+
+            <a
+                href="https://www.instagram.com/ecolacoifpr?igsh=MTRvNGFmbXJ0cjkzbA=="
+                target="_blank"
+                class="contato-item"
+            >
+                <i class="fab fa-instagram"></i>
+
+                @ecolacoifpr
+            </a>
+
+            <a
+                href="mailto:seuemail@gmail.com"
+                class="contato-item"
+            >
+                <i class="fas fa-envelope"></i>
+
+                ecolacositeifpr@gmail.com
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
     <footer>
         <p>EcoLaço - Conectando você com a sustentabilidade</p>
         <p>© 2026 - Todos os direitos reservados</p>
@@ -144,23 +195,23 @@
                     <i class="far fa-clock"></i>Horários de funcionamento dos pontos de coleta
                 </button>
                 
-                <button class="menu-button">
+                <button class="menu-button" onclick="emDesenvolvimento()">
                     <i class="fas fa-map-marker-alt"></i>Localização por material
                 </button>
                 
-                <button class="menu-button">
+                <button class="menu-button" onclick="emDesenvolvimento()">
                     <i class="fas fa-video"></i>Vídeos curtos com dicas sustentáveis
                 </button>
                 
-                <button class="menu-button">
+                <button class="menu-button" onclick="emDesenvolvimento()">
                     <i class="fas fa-users"></i>Acesso Público
                 </button>
                 
-                <button class="menu-button">
+                <button class="menu-button" onclick="emDesenvolvimento()">
                     <i class="fas fa-chart-bar"></i>Comparativo entre bairros
                 </button>
                 
-                <button class="menu-button">
+                <button class="menu-button" onclick="emDesenvolvimento()">
                     <i class="fas fa-lock"></i>Acesso Privado - Prefeitura
                 </button>
             </div>
@@ -173,23 +224,23 @@
                     <span>EXTRAS</span>
                 </div>
                 
-                <button class="menu-button">
+                <button class="menu-button" onclick="emDesenvolvimento()">
                     <i class="fas fa-gamepad"></i>Quiz ecológico e jogos
                 </button>
                 
-                <button class="menu-button">
+                <button class="menu-button" onclick="emDesenvolvimento()">
                     <i class="fas fa-trophy"></i>Sistema de gamificação
                 </button>
                 
-                <button class="menu-button">
+                <button class="menu-button" onclick="emDesenvolvimento()">
                     <i class="fas fa-lightbulb"></i>Seção de "Sabia que..."
                 </button>
                 
-                <button class="menu-button">
+                <button class="menu-button" onclick="emDesenvolvimento()">
                     <i class="fas fa-robot"></i>Chatbot para dúvidas sobre reciclagem
                 </button>
                 
-                <button class="menu-button">
+                <button class="menu-button" onclick="emDesenvolvimento()">
                     <i class="fas fa-star"></i>Nos dê sua avaliação como utilizador!
                 </button>
             </div>
