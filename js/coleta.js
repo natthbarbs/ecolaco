@@ -1,727 +1,482 @@
-// =========================
-// DADOS DAS CIDADES
-// =========================
+// ======================================================
+// ECO LAÇO - DIAS DE COLETA
+// ======================================================
 
-const cidadesRegiao = {
+let cidadesRegiao = {};
+let mapa;
 
-    'jacarezinho': {
-        nome: 'Jacarezinho',
-        coordenadas: [-23.1600, -49.9698],
-        temInfo: true,
+// ======================================================
+// INICIAR MAPA
+// ======================================================
 
-        diasColeta: {
+function iniciarMapa() {
+    if (mapa) return;
 
-            'segunda-quarta-sexta': [
-                'Aeroporto',
-                'V. Nossa Senhora das Graças',
-                'Alto da Boa Vista',
-                'Centro', 'Parque Industrial III',
-                'Loteamento São Sebastião',
-                'Arboris',
-                'Residencial Riviera',
-                'Jd. Alves',
-                'Loteamento Parque Ecológico',
-                'Jd. América',
-                'Jd. Arruda',
-                'Jd. Barão',
-                'Jd. Cabral',
-                'Jd. Canadá I e II',
-                'Jd. Castro',
-                'Jd. Cristo Rei',
-                'Jd. Ismênia',
-                'Jd. Kirei',
-                'Jd. Maria Lúcia',
-                'Jd. Marimar',
-                'Jd. Popular',
-                'Jd. São Francisco',
-                'Jd. São Luis I e II',
-                'Jd. São Paulo',
-                'V. N. S. das Graças',
-                'Parque dos Ipês',
-                'Novo Aeroporto',
-                'Jardim Alto Aeroporto',
-                'Papagaios',
-                'Paraiso',
-                'Pq. Alvorada',
-                'Pq. Bela Vista',
-                'Pq. Dos Mirantes',
-                'Pq. Santa Albertina',
-                'Scyllas Peixoto',
-                'V. Maria Angélica',
-                'Vila Alves',
-                'Vila Ema',
-                'Vila Leão',
-                'Novo Texas',
-                'Vila Rosa',
-                'Residencial Tonet',
-                'Vila São Pedro',
-                'J. Paraiso II',
-                'Parque das Flores',
-                'Vila Scyllas' 
-            ],
-
-            'terca-quinta-sabado': [
-                'Centro',
-                'Arboris',
-                'Residencial Riviera',
-                'Parque Industrial III',
-                'Loteamento São Sebastião',
-                'Ch. Maravilha',
-                'Cj. H. Anita Moreira',
-                'Residencial Unigarden',
-                'Parque dos Estudantes II',
-                'Country Club',
-                'D. Pedro Filipak',
-                'Jardim Primavera',
-                'Inocoop',
-                'Jardim Batista',
-                'Jd. Alto da Boa Vista',
-                'Jd. Europa',
-                'Jd. João Afonso',
-                'Jd. Miguel Afonso',
-                'Jd. Lamura',
-                'Jd. Leonor',
-                'Jd. Maria Estela',
-                'Jd. Marina',
-                'Jd. Maristela',
-                'Jd. Marumbi',
-                'Jd. Morada do Sol',
-                'Jd. Panorama',
-                'Jd. Santa Rita',
-                'Nova Alcântara',
-                'Nova Jacarezinho',
-                'Pedro Scandolo',
-                'Pq. dos Estudantes',
-                'Res. Campo Belo',
-                'Res. Campo Belo II',
-                'Res. Pompéia II',
-                'Res. Pompéia III',
-                'Vila Aggêo',
-                'Vila Delamura',
-                'Vila Delminda',
-                'Vila Jardim',
-                'Vila Maria',
-                'Vila Prestes',
-                'Vila Ribeiro',
-                'Vila Rondon',
-                'Vila Santana',
-                'Vila Setti'
-            ],
-
-            'especiais': [ 
-                { dias: 'TERÇAS E SÁBADOS', 
-                    bairros: ['Marques dos Reis', 'Cadd', 'Cofadd'] },
-
-                { dias: 'QUARTAS E SÁBADOS', 
-                    bairros: ['Vila Rural'] }
-            ]
-        }
-    },
-
-    'cambara': {
-        nome: 'Cambará',
-        coordenadas: [-23.0444, -50.0733],
-        temInfo: true,
-
-        diasColeta: {
-
-            'segunda-sexta': [
-                'Av. Getúlio Vargas',
-                'Rua Dona Úrsula'
-            ],
-
-            'terca-quinta': [
-                'Sede'
-            ],
-
-            'quarta-regular': [
-                'Vila Unidos',
-                'Vila Santana'
-            ]
-        }
-    },
-
-    'cornelio-procopio': {
-        nome: 'Cornélio Procópio',
-        coordenadas: [-23.1811, -50.6467],
-        temInfo: true,
-
-        coletaComumDiurna: {
-            horario: '07h às 16h',
-
-            segunda: [
-                'Câmpus Universitário',
-                'Vale das Margaridas',
-                'Ayrton Senna / Pe Paulo Broda',
-                'Fortunato Sibin',
-                'Sebastião Cunha',
-                'Ouro Verde',
-                'Dr. João Lima',
-                'União I e II',
-                'Florêncio Rebolho',
-                'Mutirão I e II / Seminário',
-                'Seminário',
-                'Pioneiros',
-                'Jardim Progresso',
-                'Santa Terezinha',
-                'Lago do Bosque / Maanain',
-                'Santa Rosa',
-                'Primavera / Vale do Sol',
-                'Nova Esperança / Vale Verde I e II',
-                'Vila Mariana / Vila Nova / Operários',
-                'Veneza',
-                'Royal Park / Porto Belo',
-                'Novo Horizonte',
-                'José Tiburcio',
-                'Vicentine',
-                'Independência',
-                'Odilon Seganti Athayde',
-                'Benedito Catarino / Marta Dequech',
-                'Residencial das Orquídeas',
-                'Rosário Piteli',
-                'Santa Catarina'
-            ],
-
-            terca: [
-                'Parque Industrial',
-                'BR 369',
-                'Aguativa',
-                'Royal Garden',
-                'Vila Morena',
-                'Vila da Antena',
-                'Bela Vista',
-                'Vitor Dantas',
-                'Belle Bergamasco',
-                'João Rocha',
-                'Condomínio dos Idosos',
-                'Panorama',
-                'Henrique Vitorelli',
-                'Nossa Senhora Aparecida',
-                'Ivani Paiva Gatti',
-                'São Judas Tadeu',
-                'Jardim Pérola',
-                'Residencial Atlântico',
-                'Distrito de Congonhas',
-                'Alvorada',
-                'Staiger',
-                'São Pedro',
-                'Cristo Rei',
-                'Varotto',
-                'Figueira',
-                'Vila Moreira',
-                'Vila Recreio',
-                'Setor da FAFI',
-                'Jardim Morumbi',
-                'Jardim São Silvestre I e II'
-            ]
-        },
-
-        coletaComumNoturna: {
-            horario: '16h às 01h',
-
-            diario: [
-                'Área Comercial Central',
-                'Extensão da Av. XV de Novembro até o Monumento do Cristo - Rua Bahia'
-            ],
-
-            segunda: [
-                'Novo Bandeirantes',
-                'Seugling',
-                'Jardim Europa',
-                'Inácio/Galeano',
-                'Jardim Estoril',
-                'Tauros',
-                'Vila América'
-            ],
-
-            terca: [
-                'Bandeirantes',
-                'Vila Daher',
-                'Vila Ipiranga',
-                'Vila Assad / Henriques',
-                'Vila Paraíso / Vila Haddad',
-                'João XXIII',
-                'Vitória Régia'
-            ]
-        },
-
-        coletaSeletiva: {
-            horario: '07h30 às 16h30',
-
-            segunda: [
-                'Henrique Vittorelli',
-                'João Rocha',
-                'Vitor Dantas',
-                'Bela Vista',
-                'Belle Bergamasco',
-                'Panorama',
-                'Setor da FAFI',
-                'Vila da Antena',
-                'Vila Moreira',
-                'Vila Nossa Senhora',
-                'Ivani Paiva Gatti',
-                'Royal Garden'
-            ],
-
-            terca: [
-                'Rosário Piteli',
-                'Tauros',
-                'Jardim Estoril',
-                'Jardim Europa',
-                'Novo Bandeirantes',
-                'Porto Bello',
-                'Progresso',
-                'Vila América',
-                'Vila Galeano/Inácio',
-                'Santa Catarina',
-                'Santa Terezinha',
-                'Lago do Bosque',
-                'Maanain'
-            ],
-
-            quarta: [
-                'Área Comercial Central',
-                'Vitória Régia',
-                'Morumbi',
-                'Vila Assad',
-                'Vila Henriques',
-                'São Silvestre I e II',
-                'Vila Ipiranga',
-                'Residencial Atlântico'
-            ]
-
-        }
-    },
-
-
-    'andira': {
-        nome: 'Andirá',
-        coordenadas: [-23.0533, -50.2269],
-        temInfo: false
-    },
-
-    'bandeirantes': {
-        nome: 'Bandeirantes',
-        coordenadas: [-23.1108, -50.3675],
-        temInfo: false
-    }
-};
-
-// =========================
-// MAPA
-// =========================
-
-const mapa = L.map('mapa-regiao').setView(
-    [-23.1600, -50.1439],
-    10
-);
-
-L.tileLayer(
-    'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-    {
-        attribution:
-            '&copy; OpenStreetMap contributors'
-    }
-).addTo(mapa);
-
-// =========================
-// MARCADORES
-// =========================
-
-Object.values(cidadesRegiao).forEach(cidade => {
-
-    L.marker(cidade.coordenadas)
-        .addTo(mapa)
-
-        .bindPopup(`
-            <strong>${cidade.nome}</strong><br>
-            ${
-                cidade.temInfo
-                ? '✅ Informações disponíveis'
-                : '⚠️ Em implementação'
-            }
-        `)
-
-        .on('click', () => {
-            selecionarCidade(cidade);
-        });
-});
-
-// =========================
-// SELECIONAR CIDADE
-// =========================
-
-function selecionarCidade(cidade) {
-
-    const container =
-        document.getElementById('cidade-selecionada');
-
-    // =========================
-    // CIDADE SEM INFO
-    // =========================
-
-    if (!cidade.temInfo) {
-
-        container.innerHTML = `
-            <div class="aviso">
-
-                <i class="fas fa-exclamation-triangle"></i>
-
-                <div>
-                    <strong>Cidade em implementação</strong><br>
-
-                    As informações de coleta para
-                    ${cidade.nome}
-                    ainda estão sendo cadastradas.
-                </div>
-
-            </div>
-        `;
-
-        container.style.display = 'block';
-
+    const elementoMapa = document.getElementById('mapa-regiao');
+    if (!elementoMapa) {
+        console.error('ERRO: elemento #mapa-regiao não encontrado.');
         return;
     }
 
-    let diasColetaHTML = '';
+    mapa = L.map('mapa-regiao').setView([-23.1600, -49.9698], 10);
 
-    // =========================
-    // CORNÉLIO PROCÓPIO
-    // =========================
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(mapa);
+}
 
-    if (cidade.nome === 'Cornélio Procópio') {
+// ======================================================
+// CARREGAR CIDADES
+// ======================================================
 
-        const secoes = [
+async function carregarCidades() {
+    iniciarMapa();
 
-            {
-                titulo: 'Coleta Comum • Diurna',
-                dados: cidade.coletaComumDiurna,
-                icone: 'fa-sun'
-            },
+    try {
+        // CAMINHO CORRETO: saindo de /html e indo para /api
+        const urlAPI = '../api/cidades.php';
+        
+        console.log('Buscando cidades em:', urlAPI);
 
-            {
-                titulo: 'Coleta Comum • Noturna',
-                dados: cidade.coletaComumNoturna,
-                icone: 'fa-moon'
-            },
-
-            {
-                titulo: 'Coleta Seletiva',
-                dados: cidade.coletaSeletiva,
-                icone: 'fa-recycle'
-            }
-        ];
-
-        secoes.forEach(secao => {
-
-            Object.entries(secao.dados).forEach(([dia, bairros]) => {
-
-                if (dia === 'horario') return;
-
-                diasColetaHTML += `
-
-                    <div class="dia-card">
-
-                        <div class="dia-header">
-
-                            <h3>
-                                <i class="fas ${secao.icone}"></i>
-                                ${secao.titulo}
-                            </h3>
-
-                            <div class="dias-semana">
-                                ${dia.toUpperCase()}
-                            </div>
-
-                            <span class="horario-coleta">
-                                ${secao.dados.horario}
-                            </span>
-
-                        </div>
-
-                        <div class="bairros-list">
-
-                            ${bairros.map(bairro => `
-
-                                <div class="bairro-item">
-
-                                    <i class="fas fa-leaf"></i>
-
-                                    ${bairro}
-
-                                </div>
-
-                            `).join('')}
-
-                        </div>
-
-                    </div>
-
-                `;
-            });
-
+        const resposta = await fetch(urlAPI, {
+            method: 'GET',
+            cache: 'no-cache'
         });
 
+        console.log('Status da API:', resposta.status);
+
+        if (!resposta.ok) {
+            throw new Error(`Erro HTTP ${resposta.status}`);
+        }
+
+        const texto = await resposta.text();
+        console.log('Resposta recebida da API:', texto);
+
+        if (!texto.trim()) {
+            throw new Error('A API retornou uma resposta vazia.');
+        }
+
+        let dados;
+        try {
+            dados = JSON.parse(texto);
+        } catch (erroJSON) {
+            console.error('A resposta recebida NÃO é um JSON válido:', texto);
+            throw new Error('cidades.php não retornou JSON válido.');
+        }
+
+        console.log('Cidades recebidas:', dados);
+
+        if (!Array.isArray(dados)) {
+            throw new Error('cidades.php não retornou uma lista de cidades.');
+        }
+
+        cidadesRegiao = {};
+
+        dados.forEach(cidade => {
+            const id = Number(cidade.id);
+            const latitude = Number(cidade.latitude);
+            const longitude = Number(cidade.longitude);
+
+            console.log('Processando cidade:', cidade.nome, latitude, longitude);
+
+            if (!Number.isFinite(latitude) || !Number.isFinite(longitude)) {
+                console.warn('Cidade ignorada por coordenadas inválidas:', cidade);
+                return;
+            }
+
+            cidadesRegiao[id] = {
+                id: id,
+                nome: cidade.nome,
+                coordenadas: [latitude, longitude],
+                temInfo: Number(cidade.tem_info) === 1
+            };
+        });
+
+        console.log('Cidades processadas:', cidadesRegiao);
+
+        adicionarMarcadores();
+        ajustarMapaParaCidades();
+
+    } catch (erro) {
+        console.error('ERRO AO CARREGAR CIDADES:', erro);
+        mostrarErroMapa(erro.message);
+    }
+}
+
+// ======================================================
+// ADICIONAR MARCADORES
+// ======================================================
+
+function adicionarMarcadores() {
+    if (!mapa) {
+        console.error('Não é possível adicionar marcadores: mapa não existe.');
+        return;
     }
 
-    // =========================
-    // OUTRAS CIDADES
-    // =========================
+    const cidades = Object.values(cidadesRegiao);
+    console.log(`Adicionando ${cidades.length} marcadores.`);
 
-    else {
+    if (cidades.length === 0) {
+        console.warn('Nenhuma cidade disponível para criar marcadores.');
+        return;
+    }
 
-        Object.entries(cidade.diasColeta)
-            .forEach(([grupo, bairros]) => {
+    cidades.forEach(cidade => {
+        const marcador = L.marker(cidade.coordenadas).addTo(mapa);
 
-            if (grupo === 'especiais') return;
+        marcador.bindPopup(`
+            <div style="min-width:180px; text-align:center;">
+                <strong style="font-size:17px; color:#163020;">
+                    ${cidade.nome}
+                </strong>
+                <br><br>
+                ${cidade.temInfo 
+                    ? `<span style="color:#2f5d3b; font-weight:600;">✓ Informações disponíveis</span>`
+                    : `<span style="color:#9b6a00; font-weight:600;">⚠ Informações em implementação</span>`
+                }
+            </div>
+        `);
+
+        marcador.on('click', function() {
+            selecionarCidade(cidade);
+        });
+    });
+}
+
+// ======================================================
+// AJUSTAR MAPA PARA AS CIDADES
+// ======================================================
+
+function ajustarMapaParaCidades() {
+    if (!mapa) return;
+
+    const cidades = Object.values(cidadesRegiao);
+    if (cidades.length === 0) return;
+
+    const coordenadas = cidades.map(cidade => cidade.coordenadas);
+    const limites = L.latLngBounds(coordenadas);
+    mapa.fitBounds(limites, { padding: [40, 40] });
+}
+
+// ======================================================
+// ERRO NO MAPA
+// ======================================================
+
+function mostrarErroMapa(mensagem) {
+    const mapaElemento = document.getElementById('mapa-regiao');
+    if (!mapaElemento) return;
+
+    const aviso = document.createElement('div');
+    aviso.style.position = 'absolute';
+    aviso.style.zIndex = '1000';
+    aviso.style.top = '20px';
+    aviso.style.left = '20px';
+    aviso.style.right = '20px';
+    aviso.style.padding = '15px 20px';
+    aviso.style.background = '#fff4d6';
+    aviso.style.border = '2px solid #ffc107';
+    aviso.style.borderRadius = '12px';
+    aviso.style.color = '#6b5200';
+    aviso.style.fontWeight = '600';
+    aviso.innerHTML = `
+        ⚠ Não foi possível carregar as cidades.
+        <br>
+        <small>${mensagem}</small>
+    `;
+
+    mapaElemento.style.position = 'relative';
+    mapaElemento.appendChild(aviso);
+}
+
+// ======================================================
+// SELECIONAR CIDADE
+// ======================================================
+
+async function selecionarCidade(cidade) {
+    const container = document.getElementById('cidade-selecionada');
+    if (!container) {
+        console.error('Elemento #cidade-selecionada não encontrado.');
+        return;
+    }
+
+    // CIDADE SEM INFORMAÇÃO
+    if (!cidade.temInfo) {
+        container.innerHTML = `
+            <div class="aviso">
+                <i class="fas fa-exclamation-triangle"></i>
+                <div>
+                    <strong>Cidade em implementação</strong>
+                    <br>
+                    As informações de coleta para <strong>${cidade.nome}</strong> ainda estão sendo cadastradas.
+                </div>
+            </div>
+        `;
+        container.style.display = 'block';
+        container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        return;
+    }
+
+    // CARREGANDO
+    container.innerHTML = `
+        <div class="aviso">
+            <i class="fas fa-spinner fa-spin"></i>
+            <div>
+                <strong>Carregando informações...</strong>
+                <br>
+                Buscando os dias de coleta de ${cidade.nome}.
+            </div>
+        </div>
+    `;
+    container.style.display = 'block';
+
+    // BUSCAR BAIRROS
+    try {
+        const url = `../api/bairros.php?cidade_id=${cidade.id}`;
+        console.log('Buscando bairros:', url);
+
+        const resposta = await fetch(url, {
+            method: 'GET',
+            cache: 'no-cache'
+        });
+
+        if (!resposta.ok) {
+            throw new Error(`Erro HTTP ${resposta.status}`);
+        }
+
+        const texto = await resposta.text();
+        console.log('Resposta bairros:', texto);
+
+        let bairros;
+        try {
+            bairros = JSON.parse(texto);
+        } catch (erroJSON) {
+            throw new Error('bairros.php não retornou JSON válido.');
+        }
+
+        if (!Array.isArray(bairros)) {
+            throw new Error('bairros.php não retornou uma lista válida.');
+        }
+
+        // SEM BAIRROS
+        if (bairros.length === 0) {
+            container.innerHTML = `
+                <div class="aviso">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <div>
+                        <strong>Informações de coleta não cadastradas</strong>
+                        <br>
+                        Ainda não existem bairros cadastrados para <strong>${cidade.nome}</strong>.
+                    </div>
+                </div>
+            `;
+            container.style.display = 'block';
+            container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            return;
+        }
+
+        // AGRUPAR BAIRROS
+        const grupos = {};
+        bairros.forEach(bairro => {
+            const tipo = bairro.tipo_coleta || 'Regular';
+            const dia = bairro.dia_coleta || '';
+            const horario = bairro.horario || '';
+            const observacao = bairro.observacao || '';
+            const chave = `${tipo}|${dia}|${horario}|${observacao}`;
+
+            if (!grupos[chave]) {
+                grupos[chave] = {
+                    tipo: tipo,
+                    dia: dia,
+                    horario: horario,
+                    observacao: observacao,
+                    bairros: []
+                };
+            }
+            grupos[chave].bairros.push(bairro.nome);
+        });
+
+        // GERAR CARDS
+        let diasColetaHTML = '';
+        Object.values(grupos).forEach(grupo => {
+            let icone = 'fa-recycle';
+            const tipoTexto = grupo.tipo.toLowerCase();
+            const observacaoTexto = grupo.observacao.toLowerCase();
+
+            if (observacaoTexto.includes('diurna') || grupo.horario.toLowerCase().includes('07h')) {
+                icone = 'fa-sun';
+            } else if (observacaoTexto.includes('noturna') || grupo.horario.toLowerCase().includes('16h')) {
+                icone = 'fa-moon';
+            } else if (tipoTexto.includes('especial')) {
+                icone = 'fa-star';
+            }
+
+            let titulo = 'Coleta Regular';
+            if (tipoTexto.includes('seletiva')) {
+                titulo = 'Coleta Seletiva';
+            } else if (tipoTexto.includes('especial')) {
+                titulo = 'Coleta Especial';
+            } else if (grupo.observacao) {
+                titulo = `Coleta Comum • ${grupo.observacao}`;
+            }
+
+            const bairrosHTML = grupo.bairros.map(bairro => `
+                <div class="bairro-item">
+                    <i class="fas fa-leaf"></i>
+                    <span>${bairro}</span>
+                </div>
+            `).join('');
+
+            const horarioHTML = grupo.horario ? `
+                <span class="horario-coleta">
+                    <i class="far fa-clock"></i> ${grupo.horario}
+                </span>
+            ` : '';
 
             diasColetaHTML += `
-
                 <div class="dia-card">
-
                     <div class="dia-header">
-
-                        <h3>Coleta Regular</h3>
-
-                        <div class="dias-semana">
-                            ${grupo.toUpperCase()}
-                        </div>
-
+                        <h3><i class="fas ${icone}"></i> ${titulo}</h3>
+                        ${grupo.dia ? `<div class="dias-semana">${grupo.dia.toUpperCase()}</div>` : ''}
+                        ${horarioHTML}
                     </div>
-
-                    <div class="bairros-list">
-
-                        ${bairros.map(bairro => `
-
-                            <div class="bairro-item">
-
-                                <i class="fas fa-leaf"></i>
-
-                                ${bairro}
-
-                            </div>
-
-                        `).join('')}
-
-                    </div>
-
+                    <div class="bairros-list">${bairrosHTML}</div>
                 </div>
-
             `;
         });
 
-        // =========================
-        // ESPECIAIS
-        // =========================
-
-        if (cidade.diasColeta.especiais) {
-
-            cidade.diasColeta.especiais
-                .forEach(especial => {
-
-                diasColetaHTML += `
-
-                    <div class="dia-card">
-
-                        <div class="dia-header">
-
-                            <h3>Coleta Especial</h3>
-
-                            <div class="dias-semana">
-                                ${especial.dias}
-                            </div>
-
-                        </div>
-
-                        <div class="bairros-list">
-
-                            ${especial.bairros.map(bairro => `
-
-                                <div class="bairro-item">
-
-                                    <i class="fas fa-star"></i>
-
-                                    ${bairro}
-
-                                </div>
-
-                            `).join('')}
-
-                        </div>
-
-                    </div>
-
-                `;
-            });
-        }
-    }
-
-    // =========================
-    // RENDER
-    // =========================
-
-    container.innerHTML = `
-
-        <div class="cidade-header">
-
-            <h2>
-                Dias de Coleta - ${cidade.nome}
-            </h2>
-
-            <button
-                class="btn-voltar"
-                onclick="voltarParaMapa()"
-            >
-
-                <i class="fas fa-arrow-left"></i>
-
-                Voltar
-
-            </button>
-
-        </div>
-
-        <div class="search-bairros-container">
-
-            <div class="search-bairros-box">
-
-                <input
-                    type="text"
-                    class="search-input"
-                    placeholder="Buscar bairro..."
-                    id="searchBairro"
-                >
-
-                <i
-                    class="fas fa-search search-icon"
-                ></i>
-
+        // MOSTRAR RESULTADOS
+        container.innerHTML = `
+            <div class="cidade-header">
+                <h2>Dias de Coleta - ${cidade.nome}</h2>
+                <button type="button" class="btn-voltar" onclick="voltarParaMapa()">
+                    <i class="fas fa-arrow-left"></i> Voltar
+                </button>
             </div>
+            <div class="search-bairros-container">
+                <div class="search-bairros-box">
+                    <input type="text" class="search-input" placeholder="Buscar bairro..." id="searchBairro">
+                    <i class="fas fa-search search-icon"></i>
+                </div>
+            </div>
+            <div class="dias-coleta">${diasColetaHTML}</div>
+        `;
 
-        </div>
+        container.style.display = 'block';
+        container.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
-        <div class="dias-coleta">
+        // BUSCAR BAIRRO
+        const campoBusca = document.getElementById('searchBairro');
+        if (campoBusca) {
+            campoBusca.addEventListener('input', buscarBairros);
+        }
 
-            ${diasColetaHTML}
-
-        </div>
-
-    `;
-
-    container.style.display = 'block';
-
-    container.scrollIntoView({
-        behavior: 'smooth'
-    });
-
-    const campoBusca =
-        document.getElementById('searchBairro');
-
-    if (campoBusca) {
-        campoBusca.addEventListener(
-            'input',
-            buscarBairros
-        );
+    } catch (erro) {
+        console.error('Erro ao carregar bairros:', erro);
+        container.innerHTML = `
+            <div class="aviso">
+                <i class="fas fa-exclamation-triangle"></i>
+                <div>
+                    <strong>Erro ao carregar os dados</strong>
+                    <br>
+                    Não foi possível carregar os dados de coleta de <strong>${cidade.nome}</strong>.
+                    <br><br>
+                    <small>${erro.message}</small>
+                </div>
+            </div>
+        `;
+        container.style.display = 'block';
     }
-
-
 }
 
-// =========================
+// ======================================================
 // BUSCAR BAIRRO
-// =========================
+// ======================================================
 
 function buscarBairros() {
+    const campo = document.getElementById('searchBairro');
+    if (!campo) return;
 
-    const termo =
-        document.getElementById('searchBairro')
-        .value
-        .toLowerCase();
-
-    const bairros =
-        document.querySelectorAll('.bairro-item');
+    const termo = campo.value.toLowerCase().trim();
+    const bairros = document.querySelectorAll('.bairro-item');
 
     bairros.forEach(item => {
-
-        const texto =
-            item.textContent.toLowerCase();
-
-        item.style.display =
-            texto.includes(termo)
-            ? 'flex'
-            : 'none';
+        const texto = item.textContent.toLowerCase();
+        item.style.display = texto.includes(termo) ? 'flex' : 'none';
     });
 }
 
-// =========================
-// VOLTAR
-// =========================
+// ======================================================
+// VOLTAR PARA O MAPA
+// ======================================================
 
 function voltarParaMapa() {
+    const container = document.getElementById('cidade-selecionada');
+    if (!container) return;
 
-    document.getElementById(
-        'cidade-selecionada'
-    ).style.display = 'none';
-}
-
-// =========================
-// BUSCA DE CIDADE
-// =========================
-
-const btnBuscar =
-    document.getElementById('btnBuscar');
-
-if (btnBuscar) {
-
-    btnBuscar.addEventListener(
-        'click',
-        buscarCidade
-    );
-}
-
-const campoCidade =
-    document.getElementById('searchCidade');
-
-if (campoCidade) {
-
-    campoCidade.addEventListener(
-        'keydown',
-        e => {
-
-            if (e.key === 'Enter') {
-                buscarCidade();
-            }
-        }
-    );
-}
-
-function buscarCidade() {
-
-    const termo =
-        document.getElementById('searchCidade')
-        .value
-        .toLowerCase()
-        .trim();
-
-    const cidadeEncontrada =
-        Object.values(cidadesRegiao)
-        .find(cidade =>
-            cidade.nome
-                .toLowerCase()
-                .includes(termo)
-        );
-
-    if (cidadeEncontrada) {
-
-        mapa.setView(
-            cidadeEncontrada.coordenadas,
-            13
-        );
-
-        selecionarCidade(cidadeEncontrada);
-
-    } else {
-
-        alert('Cidade não encontrada!');
+    container.style.display = 'none';
+    const mapaElemento = document.getElementById('mapa-regiao');
+    if (mapaElemento) {
+        mapaElemento.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
 }
+
+// ======================================================
+// BUSCAR CIDADE
+// ======================================================
+
+function buscarCidade() {
+    const campo = document.getElementById('searchCidade');
+    if (!campo) return;
+
+    const termo = campo.value.toLowerCase().trim();
+    if (!termo) {
+        alert('Digite o nome de uma cidade.');
+        return;
+    }
+
+    console.log('Procurando cidade:', termo);
+    console.log('Cidades disponíveis:', cidadesRegiao);
+
+    const cidadeEncontrada = Object.values(cidadesRegiao).find(cidade =>
+        cidade.nome.toLowerCase().includes(termo)
+    );
+
+    if (!cidadeEncontrada) {
+        alert('Cidade não encontrada!');
+        return;
+    }
+
+    mapa.setView(cidadeEncontrada.coordenadas, 13);
+    selecionarCidade(cidadeEncontrada);
+}
+
+// ======================================================
+// CONFIGURAR PESQUISA
+// ======================================================
+
+function configurarBuscaCidade() {
+    const botao = document.getElementById('btnBuscar');
+    const campo = document.getElementById('searchCidade');
+
+    if (botao) {
+        botao.addEventListener('click', buscarCidade);
+    }
+
+    if (campo) {
+        campo.addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                buscarCidade();
+            }
+        });
+    }
+}
+
+// ======================================================
+// INICIALIZAÇÃO
+// ======================================================
+
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('EcoLaço - Coleta iniciado.');
+    configurarBuscaCidade();
+    carregarCidades();
+});

@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EcoLaço - Conectando você com a sustentabilidade</title>
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    >
+
+    <!-- Leaflet -->
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    >
+
+    <!-- CSS DO PROJETO -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/menu.css">
+    <link rel="stylesheet" href="../css/calendario.css">
+
+</head>
+
+<body>
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+
+    <header>
+
+        <div class="header-esquerda">
+
+            <div class="menu-icon" onclick="abrirMenu()">
+
+                <i class="fas fa-bars"></i>
+
+            </div>
+
+            <div class="logo">
+
+                EcoLaço
+
+            </div>
+
+        </div>
+
+        <div class="header-direita">
+
+            <nav class="nav-links">
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="calendario.html">
+                    Calendário
+                </a>
+
+                <a href="#contato">
+                    Contato
+                </a>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================
+         HERO
+    ========================== -->
+
+    <section class="hero">
+
+        <h1>
+            Conectando você com a sustentabilidade de Jacarezinho
+        </h1>
+
+        <p>
+            Encontre pontos de coleta, horários de coleta seletiva,
+            indicadores ambientais e muito mais!
+        </p>
+
+    </section>
+
+
+    <!-- =========================
+         CONTEÚDO
+    ========================== -->
+
+    <div class="container">
+
+        <!-- PRIMEIRA COLUNA -->
+
+        <div class="coluna">
+
+            <!-- MAPA -->
+
+            <div class="card" id="mapa-card">
+
+                <div class="card-header">
+                    MAPA
+                </div>
+
+                <div class="card-content">
+
+                    <div class="mapa-container">
+
+                        <div id="mapa-norte-pioneiro"></div>
+
+                    </div>
+
+                    <p style="margin-top: 10px;">
+                        Jacarezinho
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- PEV -->
+
+            <div
+                class="card"
+                id="pev-card"
+                onclick="emDesenvolvimento()"
+            >
+
+                <div class="card-header">
+                    PEV
+                </div>
+
+                <div class="card-content">
+
+                    Pontos de Entrega Voluntária próximos
+                    e saiba o que eles aceitam.
+
+                </div>
+
+            </div>
+
+
+            <!-- DICAS -->
+
+            <div
+                class="card-simples"
+                id="dicas-card"
+                onclick="emDesenvolvimento()"
+            >
+
+                <div class="icone-grande">
+
+                    <i class="fas fa-leaf"></i>
+
+                </div>
+
+                <div class="titulo-card">
+                    DICAS SUSTENTÁVEIS
+                </div>
+
+                <div class="descricao-card">
+                    Aprenda práticas sustentáveis para o seu dia a dia
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- SEGUNDA COLUNA -->
+
+        <div class="coluna">
+
+
+            <!-- CARROSSEL -->
+
+            <div class="carousel-container">
+
+                <div class="carousel">
+
+                    <img
+                        src="../imagens/imagem1.jpeg"
+                        class="carousel-item active"
+                        alt="Imagem sustentável"
+                    >
+
+                    <img
+                        src="../imagens/imagem2.jpeg"
+                        class="carousel-item"
+                        alt="Imagem sustentável"
+                    >
+
+                    <img
+                        src="../imagens/imagem3.jpeg"
+                        class="carousel-item"
+                        alt="Imagem sustentável"
+                    >
+
+                </div>
+
+
+                <button
+                    class="carousel-btn prev"
+                    onclick="mudarSlide(-1)"
+                >
+
+                    <i class="fas fa-chevron-left"></i>
+
+                </button>
+
+
+                <button
+                    class="carousel-btn next"
+                    onclick="mudarSlide(1)"
+                >
+
+                    <i class="fas fa-chevron-right"></i>
+
+                </button>
+
+            </div>
+
+
+            <!-- CAMPANHA -->
+
+            <div
+                class="card"
+                id="campanha-card"
+                onclick="emDesenvolvimento()"
+            >
+
+                <div class="card-header">
+                    CAMPANHA DE ARRECADAÇÃO
+                </div>
+
+                <div class="card-content">
+
+                    Pontos de coleta criados em campanhas especiais
+                    para receber materiais recicláveis.
+
+                </div>
+
+            </div>
+
+
+            <!-- DIAS DE COLETA -->
+
+            <a
+                href="coleta.html"
+                class="card-link"
+            >
+
+                <div
+                    class="card-simples"
+                    id="coleta-card"
+                >
+
+                    <div class="icone-grande">
+
+                        <i class="fas fa-calendar-alt"></i>
+
+                    </div>
+
+                    <div class="titulo-card">
+                        DIAS DE COLETA
+                    </div>
+
+                    <div class="descricao-card">
+                        Saiba os dias e horários de coleta do seu bairro
+                    </div>
+
+                </div>
+
+            </a>
+
+
+            <!-- INDICADORES -->
+
+            <div
+                class="card-simples"
+                id="indicadores-card"
+                onclick="emDesenvolvimento()"
+            >
+
+                <div class="icone-grande">
+
+                    <i class="fas fa-chart-bar"></i>
+
+                </div>
+
+                <div class="titulo-card">
+                    INDICADORES AMBIENTAIS
+                </div>
+
+                <div class="descricao-card">
+                    Acompanhe os indicadores de sustentabilidade
+                    da sua cidade
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+<!-- =========================
+     PREFEITURAS PARCEIRAS - CHAMADA
+========================= -->
+
+<section class="prefeituras-chamada">
+
+    <div class="chamada-container">
+
+        <div class="chamada-texto">
+
+            <span class="chamada-badge">
+                <i class="fas fa-handshake"></i> Parceria
+            </span>
+
+            <h2>
+                Sua prefeitura quer ser parceira?
+            </h2>
+
+            <p>
+                Faça parte do EcoLaço e contribua com informações oficiais sobre
+                coleta seletiva, pontos de entrega voluntária e ações ambientais
+                no Norte Pioneiro do Paraná.
+            </p>
+
+            <ul class="chamada-beneficios">
+
+                <li>
+                    <i class="fas fa-check-circle"></i>
+                    Divulgue campanhas e eventos ambientais
+                </li>
+
+                <li>
+                    <i class="fas fa-check-circle"></i>
+                    Atualize dados de coleta em tempo real
+                </li>
+
+                <li>
+                    <i class="fas fa-check-circle"></i>
+                    Receba selo "Município Parceiro EcoLaço"
+                </li>
+
+                <li>
+                    <i class="fas fa-check-circle"></i>
+                    Contribua para um futuro mais sustentável
+                </li>
+
+            </ul>
+
+            <div class="chamada-botoes">
+
+                <a href="../html/prefeitura/termo.html" class="btn-chamada primario">
+                    <i class="fas fa-file-signature"></i>
+                    Quero ser parceiro
+                </a>
+
+                <a href="../html/prefeitura/login.html" class="btn-chamada secundario">
+                    <i class="fas fa-lock"></i>
+                    Área da Prefeitura
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="chamada-imagem">
+
+            <div class="chamada-card-destaque">
+
+                <div class="destaque-numero">
+                    12
+                </div>
+
+                <div class="destaque-texto">
+                    <span>Municípios</span>
+                    <small>Parceiros ativos</small>
+                </div>
+
+            </div>
+
+            <div class="chamada-ilustracao">
+
+                <i class="fas fa-city"></i>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+    <!-- =========================
+         CONTATO
+    ========================== -->
+
+    <section
+        class="contato-section"
+        id="contato"
+    >
+
+        <div class="contato-container">
+
+            <h2>
+                Entre em Contato
+            </h2>
+
+            <p>
+
+                Quer tirar dúvidas, enviar sugestões,
+                apoiar o projeto ou acompanhar nossas
+                ações ambientais?
+
+            </p>
+
+            <div class="contato-links">
+
+                <a
+                    href="https://www.instagram.com/ecolacoifpr?igsh=MTRvNGFmbXJ0cjkzbA=="
+                    target="_blank"
+                    class="contato-item"
+                >
+
+                    <i class="fab fa-instagram"></i>
+
+                    @ecolacoifpr
+
+                </a>
+
+
+                <a
+                    href="mailto:ecolacositeifpr@gmail.com"
+                    class="contato-item"
+                >
+
+                    <i class="fas fa-envelope"></i>
+
+                    ecolacositeifpr@gmail.com
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <p>
+            EcoLaço - Conectando você com a sustentabilidade
+        </p>
+
+        <p>
+            © 2026 - Todos os direitos reservados
+        </p>
+
+    </footer>
+
+
+    <!-- =========================
+         MENU
+    ========================== -->
+
+    <div
+        id="menu-overlay"
+        class="menu-overlay"
+    >
+
+        <div class="menu-container">
+
+
+            <div class="menu-header">
+
+                <div class="logo">
+                    EcoLaço
+                </div>
+
+                <div
+                    class="fechar-menu"
+                    onclick="fecharMenu()"
+                >
+
+                    <i class="fas fa-times"></i>
+
+                </div>
+
+            </div>
+
+
+            <!-- FUNCIONALIDADES -->
+
+            <div class="menu-section">
+
+                <div class="section-title">
+
+                    <div class="section-icon leaf-icon">
+
+                        <i class="fas fa-leaf"></i>
+
+                    </div>
+
+                    <span>
+                        FUNCIONALIDADES
+                    </span>
+
+                </div>
+
+
+                <button
+                    class="menu-button"
+                    onclick="emDesenvolvimento()"
+                >
+
+                    <i class="far fa-clock"></i>
+
+                    Horários de funcionamento dos pontos de coleta
+
+                </button>
+
+
+                <button
+                    class="menu-button"
+                    onclick="emDesenvolvimento()"
+                >
+
+                    <i class="fas fa-map-marker-alt"></i>
+
+                    Localização por material
+
+                </button>
+
+
+                <button
+                    class="menu-button"
+                    onclick="emDesenvolvimento()"
+                >
+
+                    <i class="fas fa-video"></i>
+
+                    Vídeos curtos com dicas sustentáveis
+
+                </button>
+
+
+                <button
+                    class="menu-button"
+                    onclick="emDesenvolvimento()"
+                >
+
+                    <i class="fas fa-users"></i>
+
+                    Acesso Público
+
+                </button>
+
+
+                <button
+                    class="menu-button"
+                    onclick="emDesenvolvimento()"
+                >
+
+                    <i class="fas fa-chart-bar"></i>
+
+                    Comparativo entre bairros
+
+                </button>
+
+
+                <!-- PREFEITURA -->
+
+                <a
+                    href="prefeitura/index.html"
+                    class="menu-button"
+                >
+
+                    <i class="fas fa-lock"></i>
+
+                    Acesso Privado - Prefeitura
+
+                </a>
+
+            </div>
+
+
+            <!-- EXTRAS -->
+
+            <div class="menu-section">
+
+                <div class="section-title">
+
+                    <div class="section-icon plus-icon">
+
+                        <i class="fas fa-plus"></i>
+
+                    </div>
+
+                    <span>
+                        EXTRAS
+                    </span>
+
+                </div>
+
+
+                <button
+                    class="menu-button"
+                    onclick="emDesenvolvimento()"
+                >
+
+                    <i class="fas fa-gamepad"></i>
+
+                    Quiz ecológico e jogos
+
+                </button>
+
+
+                <button
+                    class="menu-button"
+                    onclick="emDesenvolvimento()"
+                >
+
+                    <i class="fas fa-trophy"></i>
+
+                    Sistema de gamificação
+
+                </button>
+
+
+                <button
+                    class="menu-button"
+                    onclick="emDesenvolvimento()"
+                >
+
+                    <i class="fas fa-lightbulb"></i>
+
+                    Seção de "Sabia que..."
+
+                </button>
+
+
+                <button
+                    class="menu-button"
+                    onclick="emDesenvolvimento()"
+                >
+
+                    <i class="fas fa-robot"></i>
+
+                    Chatbot para dúvidas sobre reciclagem
+
+                </button>
+
+
+                <button
+                    class="menu-button"
+                    onclick="emDesenvolvimento()"
+                >
+
+                    <i class="fas fa-star"></i>
+
+                    Nos dê sua avaliação como utilizador!
+
+                </button>
+
+            </div>
+
+
+            <!-- RODAPÉ DO MENU -->
+
+            <div class="menu-footer">
+
+                <div class="footer-icon">
+
+                    <i class="fas fa-info"></i>
+
+                </div>
+
+                <div class="footer-icon">
+
+                    <i class="fas fa-bell"></i>
+
+                </div>
+
+                <div class="footer-icon">
+
+                    <i class="fas fa-exclamation-triangle"></i>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- LEAFLET -->
+
+    <script
+        src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    ></script>
+
+
+    <!-- JAVASCRIPT DO PROJETO -->
+
+    <script src="../js/script.js"></script>
+
+</body>
+
+</html>

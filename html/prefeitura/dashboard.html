@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard | EcoLaço</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/prefeitura/dashboard.css">
+
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="dashboard-header">
+
+        <div class="header-esquerda">
+
+            <a href="../index.html" class="logo-link">
+                <div class="logo">EcoLaço</div>
+            </a>
+
+        </div>
+
+        <div class="header-direita">
+
+            <span class="prefeitura-nome" id="prefeituraNome">
+                <i class="fas fa-building"></i>
+                Carregando...
+            </span>
+
+            <button class="btn-sair" onclick="logout()">
+                <i class="fas fa-sign-out-alt"></i>
+                Sair
+            </button>
+
+        </div>
+
+    </header>
+
+    <!-- DASHBOARD -->
+    <main class="dashboard-container">
+
+        <!-- SIDEBAR -->
+        <aside class="dashboard-sidebar">
+
+            <nav class="sidebar-nav">
+
+                <button class="nav-item active" data-tab="resumo">
+                    <i class="fas fa-home"></i>
+                    Resumo
+                </button>
+
+                <button class="nav-item" data-tab="coleta">
+                    <i class="fas fa-recycle"></i>
+                    Coleta Seletiva
+                </button>
+
+                <button class="nav-item" data-tab="pev">
+                    <i class="fas fa-map-marker-alt"></i>
+                    PEVs
+                </button>
+
+                <button class="nav-item" data-tab="campanhas">
+                    <i class="fas fa-bullhorn"></i>
+                    Campanhas
+                </button>
+
+                <button class="nav-item" data-tab="comunicados">
+                    <i class="fas fa-envelope"></i>
+                    Comunicados
+                </button>
+
+                <button class="nav-item" data-tab="historico">
+                    <i class="fas fa-history"></i>
+                    Histórico
+                </button>
+
+                <button class="nav-item" data-tab="perfil">
+                    <i class="fas fa-cog"></i>
+                    Perfil
+                </button>
+
+            </nav>
+
+        </aside>
+
+        <!-- CONTEÚDO -->
+        <section class="dashboard-content">
+
+            <!-- RESUME -->
+            <div id="tab-resumo" class="tab-content active">
+
+                <div class="tab-header">
+
+                    <h2>
+                        <i class="fas fa-home"></i>
+                        Resumo
+                    </h2>
+
+                    <p>
+                        Visão geral das informações da sua prefeitura
+                    </p>
+
+                </div>
+
+                <div class="stats-grid">
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon" style="background:#E8F5E9; color:#2E7D32;">
+                            <i class="fas fa-trash-alt"></i>
+                        </div>
+
+                        <div class="stat-info">
+
+                            <span class="stat-number" id="totalBairros">0</span>
+                            <span class="stat-label">Bairros com coleta</span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon" style="background:#E3F2FD; color:#1565C0;">
+                            <i class="fas fa-map-pin"></i>
+                        </div>
+
+                        <div class="stat-info">
+
+                            <span class="stat-number" id="totalPEVs">0</span>
+                            <span class="stat-label">Pontos de Entrega</span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon" style="background:#FFF3E0; color:#E65100;">
+                            <i class="fas fa-bullhorn"></i>
+                        </div>
+
+                        <div class="stat-info">
+
+                            <span class="stat-number" id="totalCampanhas">0</span>
+                            <span class="stat-label">Campanhas enviadas</span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon" style="background:#F3E5F5; color:#6A1B9A;">
+                            <i class="fas fa-clock"></i>
+                        </div>
+
+                        <div class="stat-info">
+
+                            <span class="stat-number" id="totalPendentes">0</span>
+                            <span class="stat-label">Pendentes de aprovação</span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Últimas Atividades -->
+                <div class="atividades-container">
+
+                    <h3>
+                        <i class="fas fa-clock"></i>
+                        Últimas Atividades
+                    </h3>
+
+                    <div id="ultimasAtividades" class="atividades-lista">
+
+                        <p class="sem-dados">
+                            Nenhuma atividade recente.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <!-- Status da Prefeitura -->
+                <div class="status-prefeitura">
+
+                    <div class="status-item">
+
+                        <span class="status-label">Status do Cadastro:</span>
+
+                        <span id="statusPrefeitura" class="status-badge pendente">
+                            <i class="fas fa-clock"></i>
+                            Pendente
+                        </span>
+
+                    </div>
+
+                    <div class="status-item">
+
+                        <span class="status-label">Último Login:</span>
+
+                        <span id="ultimoLogin" class="status-texto">
+                            Nunca
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- COLETA -->
+            <div id="tab-coleta" class="tab-content">
+
+                <div class="tab-header">
+
+                    <h2>
+                        <i class="fas fa-recycle"></i>
+                        Gerenciar Coleta Seletiva
+                    </h2>
+
+                    <p>
+                        Envie ou atualize as informações de coleta da sua cidade
+                    </p>
+
+                </div>
+
+                <div class="form-container">
+
+                    <form id="formColeta">
+
+                        <div class="form-row">
+
+                            <div class="form-group">
+
+                                <label for="coleta_bairro">
+                                    <i class="fas fa-map-pin"></i>
+                                    Bairro <span class="required">*</span>
+                                </label>
+
+                                <select id="coleta_bairro" required>
+
+                                    <option value="">Selecione um bairro</option>
+
+                                </select>
+
+                            </div>
+
+                            <div class="form-group">
+
+                                <label for="coleta_tipo">
+                                    <i class="fas fa-tag"></i>
+                                    Tipo de Coleta <span class="required">*</span>
+                                </label>
+
+                                <select id="coleta_tipo" required>
+
+                                    <option value="">Selecione o tipo</option>
+                                    <option value="Regular">Regular</option>
+                                    <option value="Seletiva">Coleta Seletiva</option>
+                                    <option value="Especial">Coleta Especial</option>
+
+                                </select>
+
+                            </div>
+
+                        </div>
+
+                        <div class="form-row">
+
+                            <div class="form-group">
+
+                                <label for="coleta_dias">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    Dias de Coleta <span class="required">*</span>
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="coleta_dias"
+                                    placeholder="Ex: SEGUNDA-QUARTA-SEXTA"
+                                    required
+                                >
+
+                                <small>Use - (hífen) para separar os dias</small>
+
+                            </div>
+
+                            <div class="form-group">
+
+                                <label for="coleta_horario">
+                                    <i class="fas fa-clock"></i>
+                                    Horário
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="coleta_horario"
+                                    placeholder="Ex: 07:00-12:00"
+                                >
+
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label for="coleta_observacao">
+                                <i class="fas fa-comment"></i>
+                                Observação
+                            </label>
+
+                            <textarea
+                                id="coleta_observacao"
+                                rows="2"
+                                placeholder="Informações adicionais sobre a coleta..."
+                            ></textarea>
+
+                        </div>
+
+                        <button type="submit" class="btn-submit">
+                            <i class="fas fa-paper-plane"></i>
+                            Enviar Informações
+                        </button>
+
+                    </form>
+
+                </div>
+
+                <!-- Lista de bairros cadastrados -->
+                <div class="lista-cadastrados">
+
+                    <h3>
+                        <i class="fas fa-list"></i>
+                        Bairros Cadastrados
+                    </h3>
+
+                    <div id="listaBairros" class="lista-items">
+
+                        <p class="sem-dados">
+                            Nenhum bairro cadastrado.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- PEVs -->
+            <div id="tab-pev" class="tab-content">
+
+                <div class="tab-header">
+
+                    <h2>
+                        <i class="fas fa-map-marker-alt"></i>
+                        Pontos de Entrega Voluntária (PEVs)
+                    </h2>
+
+                    <p>
+                        Cadastre os pontos de coleta de resíduos da sua cidade
+                    </p>
+
+                </div>
+
+                <div class="form-container">
+
+                    <form id="formPEV">
+
+                        <div class="form-row">
+
+                            <div class="form-group">
+
+                                <label for="pev_nome">
+                                    <i class="fas fa-building"></i>
+                                    Nome do Ponto <span class="required">*</span>
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="pev_nome"
+                                    placeholder="Ex: UBS Centro"
+                                    required
+                                >
+
+                            </div>
+
+                            <div class="form-group">
+
+                                <label for="pev_endereco">
+                                    <i class="fas fa-address"></i>
+                                    Endereço <span class="required">*</span>
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="pev_endereco"
+                                    placeholder="Ex: Rua XV de Novembro, 123"
+                                    required
+                                >
+
+                            </div>
+
+                        </div>
+
+                        <div class="form-row">
+
+                            <div class="form-group">
+
+                                <label for="pev_latitude">
+                                    <i class="fas fa-arrow-up"></i>
+                                    Latitude
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="pev_latitude"
+                                    placeholder="Ex: -23.1600000"
+                                >
+
+                            </div>
+
+                            <div class="form-group">
+
+                                <label for="pev_longitude">
+                                    <i class="fas fa-arrow-right"></i>
+                                    Longitude
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="pev_longitude"
+                                    placeholder="Ex: -49.9698000"
+                                >
+
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label for="pev_materiais">
+                                <i class="fas fa-recycle"></i>
+                                Materiais Aceitos
+                            </label>
+
+                            <div class="materiais-checkboxes">
+
+                                <label class="checkbox-label">
+                                    <input type="checkbox" value="papel">
+                                    Papel
+                                </label>
+
+                                <label class="checkbox-label">
+                                    <input type="checkbox" value="plastico">
+                                    Plástico
+                                </label>
+
+                                <label class="checkbox-label">
+                                    <input type="checkbox" value="vidro">
+                                    Vidro
+                                </label>
+
+                                <label class="checkbox-label">
+                                    <input type="checkbox" value="metal">
+                                    Metal
+                                </label>
+
+                                <label class="checkbox-label">
+                                    <input type="checkbox" value="eletronicos">
+                                    Eletrônicos
+                                </label>
+
+                                <label class="checkbox-label">
+                                    <input type="checkbox" value="oleo">
+                                    Óleo
+                                </label>
+
+                            </div>
+
+                        </div>
+
+                        <button type="submit" class="btn-submit">
+                            <i class="fas fa-plus-circle"></i>
+                            Cadastrar PEV
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+            <!-- CAMPANHAS -->
+            <div id="tab-campanhas" class="tab-content">
+
+                <div class="tab-header">
+
+                    <h2>
+                        <i class="fas fa-bullhorn"></i>
+                        Campanhas e Eventos
+                    </h2>
+
+                    <p>
+                        Divulgue campanhas ambientais da sua cidade
+                    </p>
+
+                </div>
+
+                <div class="form-container">
+
+                    <form id="formCampanha">
+
+                        <div class="form-row">
+
+                            <div class="form-group">
+
+                                <label for="campanha_titulo">
+                                    <i class="fas fa-tag"></i>
+                                    Título <span class="required">*</span>
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="campanha_titulo"
+                                    placeholder="Ex: Mutirão de Reciclagem"
+                                    required
+                                >
+
+                            </div>
+
+                            <div class="form-group">
+
+                                <label for="campanha_tipo">
+                                    <i class="fas fa-tag"></i>
+                                    Tipo <span class="required">*</span>
+                                </label>
+
+                                <select id="campanha_tipo" required>
+
+                                    <option value="">Selecione o tipo</option>
+                                    <option value="campanha">Campanha</option>
+                                    <option value="evento">Evento</option>
+                                    <option value="mutirao">Mutirão</option>
+                                    <option value="reciclagem">Reciclagem</option>
+                                    <option value="comunicado">Comunicado</option>
+
+                                </select>
+
+                            </div>
+
+                        </div>
+
+                        <div class="form-row">
+
+                            <div class="form-group">
+
+                                <label for="campanha_data_inicio">
+                                    <i class="fas fa-calendar-plus"></i>
+                                    Data de Início <span class="required">*</span>
+                                </label>
+
+                                <input
+                                    type="date"
+                                    id="campanha_data_inicio"
+                                    required
+                                >
+
+                            </div>
+
+                            <div class="form-group">
+
+                                <label for="campanha_data_fim">
+                                    <i class="fas fa-calendar-minus"></i>
+                                    Data de Término
+                                </label>
+
+                                <input
+                                    type="date"
+                                    id="campanha_data_fim"
+                                >
+
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label for="campanha_local">
+                                <i class="fas fa-map-pin"></i>
+                                Local
+                            </label>
+
+                            <input
+                                type="text"
+                                id="campanha_local"
+                                placeholder="Ex: Praça Rui Barbosa"
+                            >
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label for="campanha_descricao">
+                                <i class="fas fa-align-left"></i>
+                                Descrição <span class="required">*</span>
+                            </label>
+
+                            <textarea
+                                id="campanha_descricao"
+                                rows="4"
+                                placeholder="Descreva a campanha/evento..."
+                                required
+                            ></textarea>
+
+                        </div>
+
+                        <button type="submit" class="btn-submit">
+                            <i class="fas fa-paper-plane"></i>
+                            Enviar Campanha
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+            <!-- COMUNICADOS -->
+            <div id="tab-comunicados" class="tab-content">
+
+                <div class="tab-header">
+
+                    <h2>
+                        <i class="fas fa-envelope"></i>
+                        Comunicados
+                    </h2>
+
+                    <p>
+                        Envie avisos importantes para a população
+                    </p>
+
+                </div>
+
+                <div class="form-container">
+
+                    <form id="formComunicado">
+
+                        <div class="form-group">
+
+                            <label for="comunicado_titulo">
+                                <i class="fas fa-tag"></i>
+                                Título <span class="required">*</span>
+                            </label>
+
+                            <input
+                                type="text"
+                                id="comunicado_titulo"
+                                placeholder="Ex: Alteração na coleta do Centro"
+                                required
+                            >
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label for="comunicado_mensagem">
+                                <i class="fas fa-align-left"></i>
+                                Mensagem <span class="required">*</span>
+                            </label>
+
+                            <textarea
+                                id="comunicado_mensagem"
+                                rows="5"
+                                placeholder="Escreva o comunicado..."
+                                required
+                            ></textarea>
+
+                        </div>
+
+                        <button type="submit" class="btn-submit">
+                            <i class="fas fa-paper-plane"></i>
+                            Enviar Comunicado
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+            <!-- HISTÓRICO -->
+            <div id="tab-historico" class="tab-content">
+
+                <div class="tab-header">
+
+                    <h2>
+                        <i class="fas fa-history"></i>
+                        Histórico de Envios
+                    </h2>
+
+                    <p>
+                        Acompanhe todos os envios e seus status
+                    </p>
+
+                </div>
+
+                <div class="filtro-historico">
+
+                    <select id="filtroHistorico">
+
+                        <option value="todos">Todos</option>
+                        <option value="pendente">Pendentes</option>
+                        <option value="aprovado">Aprovados</option>
+                        <option value="rejeitado">Rejeitados</option>
+
+                    </select>
+
+                    <button class="btn-filtrar" onclick="filtrarHistorico()">
+                        <i class="fas fa-filter"></i>
+                        Filtrar
+                    </button>
+
+                </div>
+
+                <div id="listaHistorico" class="historico-lista">
+
+                    <p class="sem-dados">
+                        Nenhum envio registrado.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <!-- PERFIL -->
+            <div id="tab-perfil" class="tab-content">
+
+                <div class="tab-header">
+
+                    <h2>
+                        <i class="fas fa-cog"></i>
+                        Perfil da Prefeitura
+                    </h2>
+
+                    <p>
+                        Gerencie as informações da sua prefeitura
+                    </p>
+
+                </div>
+
+                <div class="form-container">
+
+                    <form id="formPerfil">
+
+                        <div class="form-row">
+
+                            <div class="form-group">
+
+                                <label for="perfil_nome">
+                                    <i class="fas fa-building"></i>
+                                    Nome da Prefeitura
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="perfil_nome"
+                                    disabled
+                                >
+
+                            </div>
+
+                            <div class="form-group">
+
+                                <label for="perfil_cidade">
+                                    <i class="fas fa-city"></i>
+                                    Cidade
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="perfil_cidade"
+                                    disabled
+                                >
+
+                            </div>
+
+                        </div>
+
+                        <div class="form-row">
+
+                            <div class="form-group">
+
+                                <label for="perfil_cnpj">
+                                    <i class="fas fa-id-card"></i>
+                                    CNPJ
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="perfil_cnpj"
+                                    disabled
+                                >
+
+                            </div>
+
+                            <div class="form-group">
+
+                                <label for="perfil_telefone">
+                                    <i class="fas fa-phone"></i>
+                                    Telefone
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="perfil_telefone"
+                                    placeholder="(43) 9999-9999"
+                                >
+
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label for="perfil_email">
+                                <i class="fas fa-envelope"></i>
+                                E-mail
+                            </label>
+
+                            <input
+                                type="email"
+                                id="perfil_email"
+                                placeholder="prefeitura@cidade.gov.br"
+                            >
+
+                        </div>
+
+                        <button type="submit" class="btn-submit">
+                            <i class="fas fa-save"></i>
+                            Atualizar Perfil
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- MODAL -->
+    <div id="modal" class="modal">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <h3 id="modalTitulo">Título</h3>
+
+                <button class="modal-close" onclick="fecharModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+
+            </div>
+
+            <div id="modalCorpo" class="modal-body">
+
+                <p>Conteúdo do modal</p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="../../js/prefeitura/dashboard.js"></script>
+
+</body>
+
+</html>

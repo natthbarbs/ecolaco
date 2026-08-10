@@ -1,0 +1,115 @@
+<!-- html/prefeitura/login.html - Atualizado -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login da Prefeitura | EcoLaço</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/prefeitura/login.css">
+</head>
+
+<body>
+
+    <div class="login-container">
+
+        <div class="login-card">
+
+            <a href="../index.html" class="logo-link">
+                <div class="logo">EcoLaço</div>
+            </a>
+
+            <h1>
+                <i class="fas fa-lock"></i>
+                Área da Prefeitura
+            </h1>
+
+            <p>
+                Utilize seu e-mail e senha para acessar a área exclusiva
+                da sua prefeitura.
+            </p>
+
+            <form id="formLogin">
+
+                <div class="form-campo">
+
+                    <label for="email">
+                        <i class="fas fa-envelope"></i> E-mail
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="prefeitura@cidade.gov.br"
+                        required
+                    >
+
+                </div>
+
+                <div class="form-campo">
+
+                    <label for="senha">
+                        <i class="fas fa-key"></i> Senha
+                    </label>
+
+                    <div class="senha-wrapper">
+
+                        <input
+                            type="password"
+                            id="senha"
+                            name="senha"
+                            placeholder="Digite sua senha"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            class="btn-mostrar-senha"
+                            onclick="mostrarSenha('senha')"
+                        >
+
+                            <i class="fas fa-eye"></i>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <button type="submit" class="btn-login">
+                    <i class="fas fa-sign-in-alt"></i>
+                    Entrar
+                </button>
+
+            </form>
+
+            <div id="mensagem" class="mensagem"></div>
+
+            <div class="login-links">
+
+                <a href="#" class="esqueci">
+                    <i class="fas fa-question-circle"></i>
+                    Esqueci minha senha
+                </a>
+
+                <div class="divisor"></div>
+
+                <a href="cadastro.html" class="cadastrar">
+                    <i class="fas fa-user-plus"></i>
+                    Minha prefeitura quer ser parceira
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="../../js/prefeitura/login.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoLaço - Dias de Coleta</title>
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <!-- CSS do projeto -->
+    <link rel="stylesheet" href="../css/coleta.css">
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="logo">
+            <i class="fas fa-leaf"></i> EcoLaço
+        </div>
+        <a href="../index.html" class="back-button">
+            <i class="fas fa-arrow-left"></i> Voltar
+        </a>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero-calendario">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <i class="fas fa-calendar-check"></i> Dias de Coleta
+            </div>
+            <h1>Dias de Coleta</h1>
+            <p>Clique no mapa sobre a cidade desejada para visualizar os dias de coleta seletiva.</p>
+        </div>
+    </section>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="container">
+
+        <!-- MAPA -->
+        <div class="mapa-container">
+            <div class="mapa-header">
+                <h2><i class="fas fa-map-marked-alt"></i> Mapa do Norte Pioneiro</h2>
+
+                <div class="search-box">
+                    <input
+                        type="text"
+                        class="search-input"
+                        placeholder="Buscar cidade..."
+                        id="searchCidade"
+                    />
+                    <button class="search-button" id="btnBuscar">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div id="mapa-regiao"></div>
+        </div>
+
+        <!-- CIDADE SELECIONADA -->
+        <div id="cidade-selecionada" class="cidade-selecionada"></div>
+
+        <!-- AVISO LEGADO -->
+        <div class="info-box">
+            <i class="fas fa-info-circle"></i>
+            <div>
+                <strong>Informações</strong><br>
+                Ao clicar em uma cidade, os dias de coleta serão exibidos abaixo do mapa.
+            </div>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>🌿 EcoLaço - Coleta Seletiva</p>
+        <p style="opacity:0.7; font-size:0.9rem;">
+            Informações atualizadas sobre coleta seletiva na região.
+        </p>
+    </footer>
+
+    <!-- LEAFET JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <!-- JS DO PROJETO -->
+    <script src="../js/coleta.js"></script>
+
+</body>
+</html>

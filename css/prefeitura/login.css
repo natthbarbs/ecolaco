@@ -1,0 +1,263 @@
+/* =========================
+   LOGIN DA PREFEITURA
+========================= */
+
+:root {
+
+    --verde-escuro: #025940;
+    --verde: #04A64B;
+    --verde-claro: #9AEBA3;
+    --verde-soft: #dbe8cf;
+
+    --branco: #FFFFFF;
+    --cinza: #666666;
+    --cinza-claro: #F5F5F5;
+    --fundo: #F4F7F3;
+    --erro: #D32F2F;
+    --sucesso: #2E7D32;
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: var(--fundo);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+
+.login-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-card {
+    width: 100%;
+    max-width: 430px;
+    background: var(--branco);
+    padding: 45px 40px 40px;
+    border-radius: 24px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+}
+
+.logo-link {
+    text-decoration: none;
+    display: block;
+    text-align: center;
+}
+
+.logo {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--verde-escuro);
+    margin-bottom: 25px;
+    letter-spacing: -1px;
+}
+
+.login-card h1 {
+    text-align: center;
+    color: var(--verde-escuro);
+    margin-bottom: 10px;
+    font-size: 1.8rem;
+}
+
+.login-card h1 i {
+    color: var(--verde);
+}
+
+.login-card p {
+    text-align: center;
+    color: var(--cinza);
+    line-height: 1.6;
+    margin-bottom: 30px;
+    font-size: 0.95rem;
+}
+
+.form-campo {
+    margin-bottom: 20px;
+}
+
+.form-campo label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #333;
+    font-size: 0.95rem;
+}
+
+.form-campo label i {
+    color: var(--verde);
+}
+
+.form-campo input {
+    width: 100%;
+    padding: 14px 16px;
+    border: 2px solid #E0E0E0;
+    border-radius: 12px;
+    font-size: 1rem;
+    outline: none;
+    transition: 0.3s;
+}
+
+.form-campo input:focus {
+    border-color: var(--verde);
+    box-shadow: 0 0 0 3px rgba(4,166,75,0.12);
+}
+
+.senha-wrapper {
+    position: relative;
+}
+
+.senha-wrapper input {
+    padding-right: 50px;
+}
+
+.btn-mostrar-senha {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--cinza);
+    font-size: 1.1rem;
+    padding: 5px;
+}
+
+.btn-mostrar-senha:hover {
+    color: var(--verde-escuro);
+}
+
+.btn-login {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 12px;
+    background: var(--verde-escuro);
+    color: white;
+    font-size: 1.05rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 5px;
+}
+
+.btn-login:hover {
+    background: #014330;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(2,89,64,0.3);
+}
+
+.btn-login:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.mensagem {
+    margin-top: 18px;
+    padding: 12px 16px;
+    border-radius: 12px;
+    display: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.mensagem.sucesso {
+    display: block;
+    background: #E8F5E9;
+    color: var(--sucesso);
+    border: 1px solid #A5D6A7;
+}
+
+.mensagem.erro {
+    display: block;
+    background: #FFEBEE;
+    color: var(--erro);
+    border: 1px solid #EF9A9A;
+}
+
+.mensagem.carregando {
+    display: block;
+    background: #E3F2FD;
+    color: #1565C0;
+    border: 1px solid #90CAF9;
+}
+
+.login-links {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.esqueci {
+    color: var(--cinza);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.esqueci:hover {
+    color: var(--verde-escuro);
+    text-decoration: underline;
+}
+
+.divisor {
+    width: 60px;
+    height: 1px;
+    background: #E0E0E0;
+}
+
+.cadastrar {
+    color: var(--verde-escuro);
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: 0.3s;
+}
+
+.cadastrar:hover {
+    text-decoration: underline;
+    transform: translateX(3px);
+}
+
+@media (max-width: 600px) {
+    .login-card {
+        padding: 30px 25px;
+        border-radius: 16px;
+    }
+
+    .login-card h1 {
+        font-size: 1.5rem;
+    }
+
+    .form-campo input {
+        padding: 12px 14px;
+        font-size: 0.95rem;
+    }
+}

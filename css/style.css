@@ -662,3 +662,228 @@ CONTATO
 html {
     scroll-behavior: smooth;
 }
+
+/* =========================
+   PREFEITURAS CHAMADA - INDEX
+========================= */
+
+.prefeituras-chamada {
+    padding: 60px 20px 80px;
+    background: linear-gradient(135deg, #2e7d32 0%, var(--bg) 40%, var(--bg2) 100%);
+}
+
+.chamada-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.chamada-texto {
+    padding: 20px;
+}
+
+.chamada-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px;
+    border-radius: 999px;
+    background: var(--verde-escuro);
+    color: white;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+}
+
+.chamada-texto h2 {
+    font-size: 2.8rem;
+    color: var(--verde-escuro);
+    font-weight: 800;
+    margin-bottom: 18px;
+    line-height: 1.1;
+}
+
+.chamada-texto p {
+    color: var(--cinza);
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 25px;
+}
+
+.chamada-beneficios {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 30px;
+}
+
+.chamada-beneficios li {
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    color: #333;
+    font-size: 1rem;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.chamada-beneficios li:last-child {
+    border-bottom: none;
+}
+
+.chamada-beneficios li i {
+    color: var(--verde);
+    font-size: 1.2rem;
+    width: 24px;
+}
+
+.chamada-botoes {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.btn-chamada {
+    padding: 16px 30px;
+    border-radius: 14px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.05rem;
+}
+
+.btn-chamada.primario {
+    background: rgb(143, 198, 143);
+    color: var(--verde-escuro);
+    border: 2px solid var(--verde-escuro);
+}
+
+.btn-chamada.primario:hover {
+    background: #2e7d32;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(2,89,64,0.3);
+}
+
+.btn-chamada.secundario {
+    background: rgb(143, 198, 143);;
+    color: var(--verde-escuro);
+    border: 2px solid var(--verde-escuro);
+}
+
+.btn-chamada.secundario:hover {
+    background: #2e7d32;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(2,89,64,0.3);
+}
+
+.chamada-imagem {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 300px;
+}
+
+.chamada-ilustracao {
+    font-size: 12rem;
+    color: var(--verde-soft);
+    opacity: 0.5;
+}
+
+.chamada-card-destaque {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background: white;
+    border-radius: 20px;
+    padding: 20px 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.destaque-numero {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--verde-escuro);
+}
+
+.destaque-texto {
+    display: flex;
+    flex-direction: column;
+}
+
+.destaque-texto span {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #333;
+}
+
+.destaque-texto small {
+    color: var(--cinza);
+    font-size: 0.85rem;
+}
+
+/* RESPONSIVO CHAMADA */
+@media (max-width: 968px) {
+    .chamada-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        text-align: center;
+    }
+
+    .chamada-texto {
+        padding: 0;
+    }
+
+    .chamada-beneficios {
+        text-align: left;
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .chamada-botoes {
+        justify-content: center;
+    }
+
+    .chamada-imagem {
+        min-height: 200px;
+    }
+
+    .chamada-ilustracao {
+        font-size: 8rem;
+    }
+
+    .chamada-card-destaque {
+        position: relative;
+        bottom: auto;
+        left: auto;
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .chamada-texto h2 {
+        font-size: 2rem;
+    }
+
+    .btn-chamada {
+        width: 100%;
+        justify-content: center;
+        padding: 14px 20px;
+        font-size: 0.95rem;
+    }
+
+    .chamada-card-destaque {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+}
