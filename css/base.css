@@ -1,0 +1,547 @@
+/* =========================================================
+   ECOLAÇO • BASE DA IDENTIDADE VISUAL
+   Tokens, tipografia e componentes compartilhados por
+   todas as páginas do site (index, coleta, calendário...).
+   Carregar este arquivo ANTES do CSS específico da página.
+========================================================= */
+
+@font-face {
+    font-family: 'Bonstar';
+    src: url('../imagens/marca/Bonstar.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,600&family=Work+Sans:wght@400;500;600;700&display=swap');
+
+:root {
+    --verde-musgo: #7b9042;
+    --verde-claro: #b2bb52;
+    --verde-escuro: #4a5726;
+    --verde-escuro-2: #3c4720;
+    --creme: #f2d9b1;
+    --creme-clara: #faf1de;
+    --laranja: #f89f2b;
+    --terracota: #c35431;
+    --terracota-escuro: #9c3f22;
+
+    --sombra: 0 10px 30px rgba(74, 87, 38, 0.12);
+    --sombra-forte: 0 20px 45px rgba(74, 87, 38, 0.18);
+    --radius: 24px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Work Sans', sans-serif;
+    background: var(--creme);
+    color: var(--verde-escuro-2);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+img { max-width: 100%; display: block; }
+
+/* textura sutil de papel, aplicada no body de cada página */
+.grao {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 5;
+    opacity: 0.045;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* =========================
+   CABEÇALHO / NAVEGAÇÃO
+========================= */
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+
+    padding: 14px clamp(16px, 4vw, 40px);
+
+    background: rgba(242, 217, 177, 0.86);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(74, 87, 38, 0.08);
+}
+
+header .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Bonstar', cursive;
+    font-size: 1.6rem;
+    color: var(--verde-musgo);
+    letter-spacing: 0;
+    text-decoration: none;
+}
+
+header .logo img {
+    height: 32px;
+    width: auto;
+}
+
+.header-esquerda,
+.header-direita {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: clamp(16px, 2.6vw, 30px);
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--verde-escuro-2);
+    font-weight: 600;
+    font-size: 0.92rem;
+    position: relative;
+    padding: 4px 0;
+    transition: color .2s ease;
+}
+
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    height: 2px;
+    width: 0%;
+    background: var(--laranja);
+    transition: width .2s ease;
+}
+
+.nav-links a:hover::after { width: 100%; }
+
+.menu-icon {
+    width: 46px;
+    height: 46px;
+    border-radius: 14px;
+    background: var(--creme-clara);
+    border: 1px solid rgba(74, 87, 38, 0.14);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform .2s ease, background .2s ease;
+}
+
+.menu-icon:hover {
+    transform: translateY(-2px);
+    background: #fff;
+}
+
+.menu-icon i { font-size: 1.1rem; color: var(--verde-musgo); }
+
+.back-button {
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    color: var(--verde-escuro-2);
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 10px 18px;
+    border-radius: 999px;
+    background: var(--creme-clara);
+    border: 1px solid rgba(74, 87, 38, 0.14);
+    transition: transform .2s ease, background .2s ease;
+}
+
+.back-button:hover {
+    transform: translateY(-2px);
+    background: #fff;
+}
+
+/* =========================
+   BOTÕES
+========================= */
+
+.btn,
+.btn-chamada,
+.search-button,
+.btn-voltar {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6em;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+}
+
+.btn,
+.btn-chamada.primario {
+    background: var(--laranja);
+    color: #fff;
+    padding: 0.85em 1.7em;
+    border-radius: 999px;
+    box-shadow: 0 5px 0 var(--terracota);
+    font-size: 0.95rem;
+}
+
+.btn:hover,
+.btn-chamada.primario:hover {
+    background: #ffab47;
+    transform: translateY(2px);
+    box-shadow: 0 3px 0 var(--terracota);
+}
+
+.btn:active,
+.btn-chamada.primario:active {
+    transform: translateY(5px);
+    box-shadow: 0 0 0 var(--terracota);
+}
+
+.btn-chamada.secundario {
+    background: transparent;
+    color: var(--verde-escuro);
+    padding: 0.85em 1.7em;
+    border-radius: 999px;
+    border: 2px solid var(--verde-escuro);
+}
+
+.btn-chamada.secundario:hover {
+    background: var(--verde-escuro);
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+/* =========================
+   RODAPÉ (completo, reutilizável)
+========================= */
+
+footer.rodape-completo {
+    margin: 0;
+    padding: 64px clamp(20px, 6vw, 64px) 28px;
+    background: var(--terracota);
+    color: var(--creme-clara);
+}
+
+.rodape-grid {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.3fr 0.8fr 0.8fr 1fr;
+    gap: 40px;
+    padding-bottom: 40px;
+}
+
+.rodape-marca .logo-mark {
+    height: 30px;
+    margin-bottom: 16px;
+}
+
+.rodape-marca p {
+    opacity: 0.82;
+    font-size: 0.92rem;
+    line-height: 1.6;
+    max-width: 32ch;
+}
+
+.rodape-col h4 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-bottom: 16px;
+}
+
+.rodape-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+
+.rodape-col a {
+    color: var(--creme-clara);
+    opacity: 0.82;
+    text-decoration: none;
+    font-size: 0.92rem;
+    transition: opacity .2s ease;
+}
+
+.rodape-col a:hover { opacity: 1; text-decoration: underline; }
+
+.rodape-social { display: flex; gap: 10px; margin-top: 4px; }
+
+.rodape-social a {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(250,241,222,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background .2s ease, transform .2s ease;
+}
+
+.rodape-social a:hover { background: rgba(250,241,222,0.16); transform: translateY(-2px); }
+
+.rodape-baixo {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding-top: 24px;
+    border-top: 1px solid rgba(250,241,222,0.2);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-size: 0.82rem;
+    opacity: 0.75;
+}
+
+@media (max-width: 900px) {
+    .rodape-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 560px) {
+    .rodape-grid { grid-template-columns: 1fr; gap: 30px; }
+}
+
+/* =========================
+   SELO DA MARCA (badge-cluster)
+   Elemento de assinatura visual — reutilizado nos heros
+========================= */
+
+.badge-cluster { position: relative; width: 100%; height: 100%; }
+
+.badge-cluster .badge {
+    position: absolute;
+    border-radius: 22px;
+}
+
+.badge-cluster .badge-front {
+    width: 58%; left: 20%; top: 6%;
+    transform: rotate(-5deg);
+    box-shadow: 0 22px 44px rgba(74,87,38,0.20);
+    z-index: 2;
+}
+
+.badge-cluster .badge-back {
+    width: 36%; left: 0%; top: 48%;
+    transform: rotate(11deg);
+    box-shadow: 0 16px 30px rgba(74,87,38,0.22);
+    z-index: 1;
+}
+
+/* =========================
+   BUSCA RÁPIDA (hero)
+========================= */
+
+.busca-rapida {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 26px 0 8px;
+}
+
+.busca-rapida input {
+    flex: 1 1 240px;
+    padding: 14px 18px;
+    border-radius: 14px;
+    border: 1px solid rgba(74, 87, 38, 0.16);
+    background: #fff;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.96rem;
+    color: var(--verde-escuro-2);
+}
+
+.busca-rapida input:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(123, 144, 66, 0.25);
+}
+
+/* =========================
+   GRADE DE FUNCIONALIDADES (reutilizável)
+========================= */
+
+.funcionalidades-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.func-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    background: var(--creme-clara);
+    border: 1px solid rgba(74, 87, 38, 0.10);
+    border-radius: 22px;
+    padding: 30px 26px;
+    box-shadow: var(--sombra);
+    transition: transform .25s ease, box-shadow .25s ease;
+    cursor: pointer;
+}
+
+.func-card:hover { transform: translateY(-6px); box-shadow: var(--sombra-forte); }
+
+.func-card .icone-grande {
+    width: 52px; height: 52px;
+    border-radius: 15px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 18px;
+    font-size: 1.3rem;
+    background: var(--laranja);
+    color: #fff;
+}
+
+.func-card.c-terracota .icone-grande { background: var(--terracota); }
+.func-card.c-verdeclaro .icone-grande { background: var(--verde-claro); color: var(--verde-escuro-2); }
+.func-card.c-verdemusgo .icone-grande { background: var(--verde-musgo); }
+.func-card.c-creme .icone-grande { background: var(--creme); color: var(--terracota); }
+
+.func-card h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--verde-escuro-2);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.func-card p { font-size: 0.92rem; opacity: 0.75; line-height: 1.55; }
+
+.func-card .seta { margin-left: auto; opacity: 0.4; transition: transform .2s ease, opacity .2s ease; }
+.func-card:hover .seta { opacity: 0.9; transform: translateX(3px); }
+
+@media (max-width: 900px) {
+    .funcionalidades-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 560px) {
+    .funcionalidades-grid { grid-template-columns: 1fr; }
+}
+
+/* =========================
+   AVISO DE DADOS DE DEMONSTRAÇÃO
+========================= */
+
+.aviso-demo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-align: center;
+    padding: 10px 20px;
+    background: var(--laranja);
+    color: #fff;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+.aviso-demo i { flex-shrink: 0; }
+
+/* =========================
+   TEXTO EYEBROW (rótulo pequeno acima de títulos)
+========================= */
+
+.eyebrow {
+    display: inline-block;
+    font-weight: 600;
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--terracota);
+    margin-bottom: 10px;
+}
+
+/* =========================
+   SEÇÃO — cabeçalho padrão
+========================= */
+
+.secao-cabecalho {
+    max-width: 620px;
+    margin: 0 auto 44px;
+    text-align: center;
+}
+
+.secao-cabecalho h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    margin: 8px 0 12px;
+    color: var(--verde-musgo);
+}
+
+.secao-cabecalho p { opacity: 0.78; line-height: 1.6; }
+
+/* =========================
+   BORDA ORGÂNICA (transição entre blocos)
+========================= */
+
+.borda-rasgada {
+    clip-path: polygon(0.0% 4.0px, 6.25% 25.4px, 12.5% 22.9px, 18.75% 7.7px, 25.0% 14.9px, 31.25% 13.5px, 37.5% 19.5px, 43.75% 23.7px, 50.0% 2.8px, 56.25% 0.9px, 62.5% 25.1px, 68.75% 13.0px, 75.0% 22.9px, 81.25% 0.1px, 87.5% 13.4px, 93.75% 21.6px, 100.0% 6.9px, 100% 100%, 0% 100%);
+    margin-top: -1px;
+    padding-top: calc(2.5rem + 26px) !important;
+}
+
+.borda-rasgada-2 {
+    clip-path: polygon(0.0% 28.7px, 6.25% 28.4px, 12.5% 1.7px, 18.75% 2.5px, 25.0% 25.1px, 31.25% 22.1px, 37.5% 20.1px, 43.75% 9.2px, 50.0% 18.2px, 56.25% 18.2px, 62.5% 17.4px, 68.75% 4.8px, 75.0% 12.9px, 81.25% 11.8px, 87.5% 21.7px, 93.75% 29.8px, 100.0% 28.5px, 100% 100%, 0% 100%);
+    margin-top: -1px;
+    padding-top: calc(2.5rem + 30px) !important;
+}
+
+.borda-rasgada-3 {
+    clip-path: polygon(0.0% 7.1px, 6.25% 16.3px, 12.5% 11.1px, 18.75% 18.1px, 25.0% 18.8px, 31.25% 2.0px, 37.5% 0.4px, 43.75% 25.1px, 50.0% 7.8px, 56.25% 7.0px, 62.5% 29.9px, 68.75% 14.1px, 75.0% 25.1px, 81.25% 14.3px, 87.5% 19.2px, 93.75% 4.5px, 100.0% 19.0px, 100% 100%, 0% 100%);
+    margin-top: -1px;
+    padding-top: calc(2.5rem + 30px) !important;
+}
+
+/* =========================
+   ANIMAÇÕES
+========================= */
+
+@keyframes subir {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1);
+}
+
+.reveal.in { opacity: 1; transform: translateY(0); }
+
+@media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+    .reveal { opacity: 1; transform: none; }
+}
+
+/* =========================
+   RESPONSIVO (header)
+========================= */
+
+@media (max-width: 768px) {
+    .nav-links { display: none; }
+    header { padding: 12px 16px; }
+}
+
+@media (max-width: 480px) {
+    header .logo { font-size: 1.35rem; }
+    header .logo img { height: 26px; }
+    .menu-icon { width: 42px; height: 42px; }
+}

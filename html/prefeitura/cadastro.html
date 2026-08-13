@@ -1,348 +1,147 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Cadastro da Prefeitura | EcoLaço</title>
-
+    <title>Cadastro da Prefeitura | Ecolaço</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="../../css/style.css">
-    <link rel="stylesheet" href="../../css/prefeitura/cadastro.css">
-
+    <link rel="stylesheet" href="../../css/base.css">
+    <link rel="stylesheet" href="../../css/prefeitura/auth.css">
 </head>
-
 <body>
 
-    <!-- HEADER -->
-    <header>
+<div class="grao"></div>
 
-        <div class="header-esquerda">
+<header>
+    <a href="../index.html" class="logo-link logo">
+        <img src="../../imagens/marca/logo.png" alt="Ecolaço">
+    </a>
+    <a href="login.html" class="link-login">
+        <i class="fas fa-arrow-right"></i> Já tem cadastro?
+    </a>
+</header>
 
-            <a href="../index.html" class="logo-link">
+<main class="cadastro-container">
+    <div class="cadastro-card">
 
-                <div class="logo">
-                    EcoLaço
+        <div class="cadastro-header">
+            <h1><i class="fas fa-building"></i> Cadastro da Prefeitura</h1>
+            <p>Preencha os dados abaixo para solicitar o cadastro da sua prefeitura como parceira do Ecolaço.</p>
+        </div>
+
+        <form id="formCadastro" class="cadastro-form">
+
+            <!-- DADOS DA PREFEITURA -->
+            <div class="form-grupo">
+                <h3 class="form-subtitulo"><i class="fas fa-info-circle"></i> Dados da Prefeitura</h3>
+
+                <div class="form-linha">
+                    <div class="form-campo">
+                        <label for="nome">Nome da Prefeitura <span class="obrigatorio">*</span></label>
+                        <input type="text" id="nome" name="nome" placeholder="Prefeitura Municipal de Jacarezinho" required>
+                    </div>
+                    <div class="form-campo">
+                        <label for="cidade">Cidade <span class="obrigatorio">*</span></label>
+                        <select id="cidade" name="cidade" required>
+                            <option value="">Selecione a cidade</option>
+                        </select>
+                    </div>
                 </div>
 
-            </a>
+                <div class="form-linha">
+                    <div class="form-campo">
+                        <label for="cnpj">CNPJ <span class="obrigatorio">*</span></label>
+                        <input type="text" id="cnpj" name="cnpj" placeholder="00.000.000/0001-00" required>
+                    </div>
+                    <div class="form-campo">
+                        <label for="telefone">Telefone</label>
+                        <input type="text" id="telefone" name="telefone" placeholder="(43) 9999-9999">
+                    </div>
+                </div>
 
-        </div>
-
-        <div class="header-direita">
-
-            <a href="login.html" class="link-login">
-                <i class="fas fa-arrow-right"></i> Já tem cadastro?
-            </a>
-
-        </div>
-
-    </header>
-
-    <!-- CONTEÚDO -->
-    <main class="cadastro-container">
-
-        <div class="cadastro-card">
-
-            <div class="cadastro-header">
-
-                <h1>
-                    <i class="fas fa-building"></i>
-                    Cadastro da Prefeitura
-                </h1>
-
-                <p>
-                    Preencha os dados abaixo para solicitar o cadastro da sua
-                    prefeitura como parceira do EcoLaço.
-                </p>
-
+                <div class="form-campo">
+                    <label for="email">E-mail <span class="obrigatorio">*</span></label>
+                    <input type="email" id="email" name="email" placeholder="prefeitura@cidade.gov.br" required>
+                </div>
             </div>
 
-            <form id="formCadastro" class="cadastro-form">
+            <!-- USUÁRIO ADMIN -->
+            <div class="form-grupo">
+                <h3 class="form-subtitulo"><i class="fas fa-user-cog"></i> Usuário Administrador</h3>
 
-                <!-- INFORMAÇÕES DA PREFEITURA -->
-                <div class="form-grupo">
-
-                    <h3 class="form-subtitulo">
-                        <i class="fas fa-info-circle"></i>
-                        Dados da Prefeitura
-                    </h3>
-
-                    <div class="form-linha">
-
-                        <div class="form-campo">
-
-                            <label for="nome">
-                                Nome da Prefeitura <span class="obrigatorio">*</span>
-                            </label>
-
-                            <input
-                                type="text"
-                                id="nome"
-                                name="nome"
-                                placeholder="Prefeitura Municipal de Jacarezinho"
-                                required
-                            >
-
-                        </div>
-
-                        <div class="form-campo">
-
-                            <label for="cidade">
-                                Cidade <span class="obrigatorio">*</span>
-                            </label>
-
-                            <select id="cidade" name="cidade" required>
-
-                                <option value="">Selecione a cidade</option>
-                                <!-- Opções serão carregadas via JavaScript -->
-
-                            </select>
-
-                        </div>
-
-                    </div>
-
-                    <div class="form-linha">
-
-                        <div class="form-campo">
-
-                            <label for="cnpj">
-                                CNPJ <span class="obrigatorio">*</span>
-                            </label>
-
-                            <input
-                                type="text"
-                                id="cnpj"
-                                name="cnpj"
-                                placeholder="00.000.000/0001-00"
-                                required
-                            >
-
-                        </div>
-
-                        <div class="form-campo">
-
-                            <label for="telefone">
-                                Telefone
-                            </label>
-
-                            <input
-                                type="text"
-                                id="telefone"
-                                name="telefone"
-                                placeholder="(43) 9999-9999"
-                            >
-
-                        </div>
-
-                    </div>
-
+                <div class="form-linha">
                     <div class="form-campo">
-
-                        <label for="email">
-                            E-mail <span class="obrigatorio">*</span>
-                        </label>
-
-                        <input
-                            type="email"
-                            id="email"
-                            name="email"
-                            placeholder="prefeitura@cidade.gov.br"
-                            required
-                        >
-
+                        <label for="usuario_email">E-mail do Responsável <span class="obrigatorio">*</span></label>
+                        <input type="email" id="usuario_email" name="usuario_email" placeholder="responsavel@cidade.gov.br" required>
                     </div>
-
-                </div>
-
-                <!-- USUÁRIO ADMIN -->
-                <div class="form-grupo">
-
-                    <h3 class="form-subtitulo">
-                        <i class="fas fa-user-cog"></i>
-                        Usuário Administrador
-                    </h3>
-
-                    <div class="form-linha">
-
-                        <div class="form-campo">
-
-                            <label for="usuario_email">
-                                E-mail do Responsável <span class="obrigatorio">*</span>
-                            </label>
-
-                            <input
-                                type="email"
-                                id="usuario_email"
-                                name="usuario_email"
-                                placeholder="responsavel@cidade.gov.br"
-                                required
-                            >
-
-                        </div>
-
-                        <div class="form-campo">
-
-                            <label for="usuario_senha">
-                                Senha <span class="obrigatorio">*</span>
-                            </label>
-
-                            <div class="senha-wrapper">
-
-                                <input
-                                    type="password"
-                                    id="usuario_senha"
-                                    name="usuario_senha"
-                                    placeholder="Mínimo 6 caracteres"
-                                    required
-                                    minlength="6"
-                                >
-
-                                <button
-                                    type="button"
-                                    class="btn-mostrar-senha"
-                                    onclick="mostrarSenha('usuario_senha')"
-                                >
-
-                                    <i class="fas fa-eye"></i>
-
-                                </button>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
                     <div class="form-campo">
-
-                        <label for="usuario_senha_confirm">
-                            Confirmar Senha <span class="obrigatorio">*</span>
-                        </label>
-
+                        <label for="usuario_senha">Senha <span class="obrigatorio">*</span></label>
                         <div class="senha-wrapper">
-
-                            <input
-                                type="password"
-                                id="usuario_senha_confirm"
-                                name="usuario_senha_confirm"
-                                placeholder="Digite a senha novamente"
-                                required
-                                minlength="6"
-                            >
-
-                            <button
-                                type="button"
-                                class="btn-mostrar-senha"
-                                onclick="mostrarSenha('usuario_senha_confirm')"
-                            >
-
+                            <input type="password" id="usuario_senha" name="usuario_senha" placeholder="Mínimo 6 caracteres" required minlength="6">
+                            <button type="button" class="btn-mostrar-senha" onclick="mostrarSenha('usuario_senha')" aria-label="Mostrar senha">
                                 <i class="fas fa-eye"></i>
-
                             </button>
-
                         </div>
-
                     </div>
-
                 </div>
 
-                <!-- DOCUMENTOS -->
-                <div class="form-grupo">
+                <div class="form-campo">
+                    <label for="usuario_senha_confirm">Confirmar Senha <span class="obrigatorio">*</span></label>
+                    <div class="senha-wrapper">
+                        <input type="password" id="usuario_senha_confirm" name="usuario_senha_confirm" placeholder="Digite a senha novamente" required minlength="6">
+                        <button type="button" class="btn-mostrar-senha" onclick="mostrarSenha('usuario_senha_confirm')" aria-label="Mostrar senha">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
 
-                    <h3 class="form-subtitulo">
-                        <i class="fas fa-file-alt"></i>
-                        Documentos
-                    </h3>
+            <!-- DOCUMENTOS -->
+            <div class="form-grupo">
+                <h3 class="form-subtitulo"><i class="fas fa-file-alt"></i> Documentos</h3>
 
-                    <div class="form-campo documento">
+                <div class="form-campo documento">
+                    <label for="oficio">Ofício de Adesão <span class="obrigatorio">*</span></label>
 
-                        <label for="oficio">
-                            Ofício de Adesão <span class="obrigatorio">*</span>
+                    <div class="upload-area">
+                        <input type="file" id="oficio" name="oficio" accept=".pdf,.doc,.docx" required>
+                        <label for="oficio" class="upload-label">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <span>Clique para enviar o ofício</span>
+                            <small>PDF, DOC ou DOCX — Máx 5MB</small>
                         </label>
-
-                        <div class="upload-area">
-
-                            <input
-                                type="file"
-                                id="oficio"
-                                name="oficio"
-                                accept=".pdf,.doc,.docx"
-                                required
-                            >
-
-                            <label for="oficio" class="upload-label">
-
-                                <i class="fas fa-cloud-upload-alt"></i>
-                                <span>Clique para enviar o ofício</span>
-                                <small>PDF, DOC ou DOCX - Máx 5MB</small>
-
-                            </label>
-
-                        </div>
-
-                        <div class="arquivo-info">
-
-                            <i class="fas fa-info-circle"></i>
-
-                            <span>
-                                Baixe o modelo do ofício clicando
-                                <a href="#" class="link-modelo">aqui</a>
-                            </span>
-
-                        </div>
-
                     </div>
 
-                </div>
-
-                <!-- TERMO -->
-                <div class="form-grupo termo-grupo">
-
-                    <div class="form-checkbox">
-
-                        <input
-                            type="checkbox"
-                            id="aceite_termo"
-                            name="aceite_termo"
-                            required
-                        >
-
-                        <label for="aceite_termo">
-
-                            Declaro que li e concordo com os
-                            <a href="termo.html" target="_blank">
-                                Termos de Parceria
-                            </a>
-                            do EcoLaço.
-
-                        </label>
-
+                    <div class="arquivo-info">
+                        <i class="fas fa-info-circle"></i>
+                        <span>Baixe o modelo do ofício clicando <a href="#" class="link-modelo">aqui</a></span>
                     </div>
-
                 </div>
+            </div>
 
-                <!-- BOTÃO -->
-                <button type="submit" class="btn-cadastrar">
+            <!-- TERMO -->
+            <div class="form-grupo termo-grupo">
+                <div class="form-checkbox">
+                    <input type="checkbox" id="aceite_termo" name="aceite_termo" required>
+                    <label for="aceite_termo">
+                        Declaro que li e concordo com os
+                        <a href="termo.html" target="_blank">Termos de Parceria</a>
+                        do Ecolaço.
+                    </label>
+                </div>
+            </div>
 
-                    <i class="fas fa-paper-plane"></i>
-                    Solicitar Cadastro
+            <button type="submit" class="btn-cadastrar">
+                <i class="fas fa-paper-plane"></i> Solicitar Cadastro
+            </button>
 
-                </button>
+            <div id="mensagem" class="mensagem"></div>
 
-                <div id="mensagem" class="mensagem"></div>
+        </form>
+    </div>
+</main>
 
-            </form>
-
-        </div>
-
-    </main>
-
-    <script src="../../js/prefeituras/cadastro.js"></script>
+<script src="../../js/prefeitura/cadastro.js"></script>
 
 </body>
-
 </html>

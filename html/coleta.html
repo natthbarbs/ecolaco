@@ -3,92 +3,117 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EcoLaço - Dias de Coleta</title>
+    <title>Dias de Coleta - Ecolaço</title>
 
-    <!-- Leaflet CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-
-    <!-- CSS do projeto -->
+    <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/coleta.css">
 </head>
 <body>
 
-    <!-- HEADER -->
-    <header>
-        <div class="logo">
-            <i class="fas fa-leaf"></i> EcoLaço
-        </div>
-        <a href="../index.html" class="back-button">
-            <i class="fas fa-arrow-left"></i> Voltar
-        </a>
-    </header>
+<div class="grao"></div>
 
-    <!-- HERO -->
-    <section class="hero-calendario">
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <div class="hero-badge">
-                <i class="fas fa-calendar-check"></i> Dias de Coleta
-            </div>
-            <h1>Dias de Coleta</h1>
-            <p>Clique no mapa sobre a cidade desejada para visualizar os dias de coleta seletiva.</p>
-        </div>
-    </section>
+<!-- HEADER -->
+<header>
+    <a href="index.html" class="logo">
+        <img src="../imagens/marca/logo.png" alt="Ecolaço">
+    </a>
+    <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="coleta.html">Dias de coleta</a>
+        <a href="calendario.html">Calendário</a>
+    </nav>
+    <a href="index.html" class="back-button">
+        <i class="fas fa-arrow-left"></i> Voltar
+    </a>
+</header>
 
-    <!-- CONTEÚDO PRINCIPAL -->
-    <main class="container">
+<div class="aviso-demo">
+    <i class="fas fa-flask"></i>
+    Cidades e horários de coleta abaixo incluem dados de demonstração, criados para fins de apresentação — os dados de Jacarezinho, Cambará e Cornélio Procópio são reais.
+</div>
 
-        <!-- MAPA -->
-        <div class="mapa-container">
-            <div class="mapa-header">
-                <h2><i class="fas fa-map-marked-alt"></i> Mapa do Norte Pioneiro</h2>
+<!-- HERO -->
+<section class="hero-coleta">
+    <span class="eyebrow">Coleta seletiva</span>
+    <h1>Encontre a coleta do seu bairro</h1>
+    <p>Busque sua cidade ou clique diretamente no mapa para ver os dias e horários de coleta seletiva mais próximos de você.</p>
+</section>
 
-                <div class="search-box">
-                    <input
-                        type="text"
-                        class="search-input"
-                        placeholder="Buscar cidade..."
-                        id="searchCidade"
-                    />
-                    <button class="search-button" id="btnBuscar">
-                        <i class="fas fa-search"></i>
-                    </button>
-                </div>
-            </div>
+<!-- MAPA -->
+<main class="container">
 
-            <div id="mapa-regiao"></div>
-        </div>
+    <div class="mapa-container">
+        <div class="mapa-header">
+            <h2><i class="fas fa-map-marked-alt"></i> Mapa do Norte Pioneiro</h2>
 
-        <!-- CIDADE SELECIONADA -->
-        <div id="cidade-selecionada" class="cidade-selecionada"></div>
-
-        <!-- AVISO LEGADO -->
-        <div class="info-box">
-            <i class="fas fa-info-circle"></i>
-            <div>
-                <strong>Informações</strong><br>
-                Ao clicar em uma cidade, os dias de coleta serão exibidos abaixo do mapa.
+            <div class="search-box">
+                <input type="text" class="search-input" placeholder="Buscar cidade..." id="searchCidade">
+                <button class="search-button" id="btnBuscar" aria-label="Buscar">
+                    <i class="fas fa-search"></i>
+                </button>
             </div>
         </div>
 
-    </main>
+        <div id="mapa-regiao"></div>
+    </div>
 
-    <!-- FOOTER -->
-    <footer>
-        <p>🌿 EcoLaço - Coleta Seletiva</p>
-        <p style="opacity:0.7; font-size:0.9rem;">
-            Informações atualizadas sobre coleta seletiva na região.
-        </p>
-    </footer>
+    <div id="cidade-selecionada" class="cidade-selecionada"></div>
 
-    <!-- LEAFET JS -->
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <div class="info-box">
+        <i class="fas fa-info-circle"></i>
+        <div>
+            <strong>Como funciona</strong><br>
+            Clique em uma cidade no mapa, ou use a busca acima — os dias de coleta do bairro aparecem logo abaixo.
+        </div>
+    </div>
 
-    <!-- JS DO PROJETO -->
-    <script src="../js/coleta.js"></script>
+</main>
+
+<!-- FOOTER -->
+<footer class="rodape-completo borda-rasgada-3">
+    <div class="rodape-grid">
+        <div class="rodape-marca">
+            <img src="../imagens/marca/logo.png" class="logo-mark" alt="Ecolaço">
+            <p>Conectando bairros e cidades com a sustentabilidade — coleta, reciclagem e datas ambientais, tudo num só lugar.</p>
+            <div class="rodape-social">
+                <a href="https://www.instagram.com/ecolacoifpr?igsh=MTRvNGFmbXJ0cjkzbA==" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="mailto:ecolacositeifpr@gmail.com" aria-label="E-mail"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+        <div class="rodape-col">
+            <h4>Navegação</h4>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="coleta.html">Dias de coleta</a></li>
+                <li><a href="calendario.html">Calendário</a></li>
+            </ul>
+        </div>
+        <div class="rodape-col">
+            <h4>Prefeituras</h4>
+            <ul>
+                <li><a href="prefeitura/termo.html">Seja parceira</a></li>
+                <li><a href="prefeitura/login.html">Área da prefeitura</a></li>
+            </ul>
+        </div>
+        <div class="rodape-col">
+            <h4>Contato</h4>
+            <ul>
+                <li><a href="mailto:ecolacositeifpr@gmail.com">ecolacositeifpr@gmail.com</a></li>
+                <li><a href="index.html#contato">Fale conosco</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="rodape-baixo">
+        <span>© 2026 Ecolaço. Todos os direitos reservados.</span>
+        <span>Projeto do IFPR — Campus Jacarezinho</span>
+    </div>
+</footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="../js/coleta.js"></script>
 
 </body>
 </html>

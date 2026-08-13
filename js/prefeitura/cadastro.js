@@ -73,6 +73,19 @@ document.addEventListener('DOMContentLoaded', function() {
         this.value = mascaraTelefone(this.value);
     });
 
+    // Mostrar nome do arquivo escolhido
+    const oficio = document.getElementById('oficio');
+    if (oficio) {
+        oficio.addEventListener('change', function() {
+            const span = document.querySelector('.upload-label span');
+            if (span) {
+                span.textContent = this.files && this.files.length
+                    ? this.files[0].name
+                    : 'Clique para enviar o ofício';
+            }
+        });
+    }
+
     // Validação de senha em tempo real
     const senha = document.getElementById('usuario_senha');
     const confirmar = document.getElementById('usuario_senha_confirm');

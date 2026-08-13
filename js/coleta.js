@@ -96,6 +96,7 @@ async function carregarCidades() {
 
         adicionarMarcadores();
         ajustarMapaParaCidades();
+        aplicarBuscaDaURL();
 
     } catch (erro) {
         console.error('ERRO AO CARREGAR CIDADES:', erro);
@@ -448,6 +449,21 @@ function buscarCidade() {
 
     mapa.setView(cidadeEncontrada.coordenadas, 13);
     selecionarCidade(cidadeEncontrada);
+}
+
+// ======================================================
+// BUSCA VINDA DA HOME (?cidade=...)
+// ======================================================
+
+function aplicarBuscaDaURL() {
+    const params = new URLSearchParams(window.location.search);
+    const cidade = params.get('cidade');
+    if (!cidade) return;
+
+    const campo = document.getElementById('searchCidade');
+    if (campo) campo.value = cidade;
+
+    buscarCidade();
 }
 
 // ======================================================

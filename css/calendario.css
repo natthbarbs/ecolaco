@@ -1,350 +1,241 @@
+/* =========================================================
+   ECOLAÇO • CALENDÁRIO
+   Depende de base.css
+========================================================= */
+
 /* =========================
-   CALENDÁRIO • ECOLAÇO
+   INTRO
 ========================= */
 
-:root{
-    --bg:#edf3e7;
+.intro-calendario {
+    padding: clamp(50px, 9vh, 90px) clamp(20px, 6vw, 64px) 46px;
+    text-align: center;
 
-    --green-dark:#183222;
-    --green:#3d6b49;
-    --green-light:#87a878;
-    --green-soft:#dbe7d3;
-
-    --white:#ffffff;
-
-    --glass:rgba(255,255,255,0.18);
-
-    --border:rgba(255,255,255,0.25);
-
-    --shadow:
-        0 15px 35px rgba(0,0,0,0.08);
-
-    --radius:30px;
+    background-image:
+        radial-gradient(ellipse 420px 340px at 12% 20%, rgba(248,159,43,0.18), transparent 68%),
+        radial-gradient(ellipse 460px 380px at 88% 80%, rgba(178,187,82,0.28), transparent 68%);
 }
 
-/* FUNDO */
-
-body{
-    background:
-        radial-gradient(circle at top left,
-        #f7fbf3 0%,
-        #edf3e7 45%,
-        #dde7d6 100%);
+.intro-calendario h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    color: var(--verde-musgo);
+    font-size: clamp(1.9rem, 4vw, 2.8rem);
+    margin-bottom: 12px;
 }
 
-/* HERO */
-
-.hero-calendario{
-    width:calc(100% - 40px);
-
-    margin:30px auto;
-
-    padding:70px 60px;
-
-    border-radius:40px;
-
-    position:relative;
-
-    overflow:hidden;
-
-    background:
-        linear-gradient(rgba(15,25,15,0.5),
-        rgba(15,25,15,0.5)),
-
-        url('https://images.unsplash.com/photo-1497436072909-f5e4be66e4e0?q=80&w=1600');
-
-    background-size:cover;
-    background-position:center;
-
-    color:white;
-
-    box-shadow:var(--shadow);
+.intro-calendario p {
+    max-width: 52ch;
+    margin: 0 auto;
+    line-height: 1.6;
+    opacity: 0.82;
 }
 
-.hero-calendario h1{
-    font-size:3.5rem;
+/* =========================
+   PRÓXIMOS EVENTOS
+========================= */
 
-    font-weight:900;
-
-    line-height:1.05;
-
-    letter-spacing:-2px;
-
-    margin-bottom:20px;
+.secao-proximos {
+    padding: 10px clamp(20px, 6vw, 64px) 54px;
+    max-width: 1300px;
+    margin: 0 auto;
 }
 
-.hero-calendario p{
-    max-width:700px;
-
-    line-height:1.8;
-
-    font-size:1.08rem;
-
-    opacity:.92;
+.proximos-eventos-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
 }
 
-/* GRID */
-
-.container-calendario{
-    width:calc(100% - 40px);
-
-    max-width:1450px;
-
-    margin:40px auto;
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(auto-fit,minmax(260px,1fr));
-
-    gap:28px;
+.proximo-evento-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: var(--creme-clara);
+    border: 1px solid rgba(74, 87, 38, 0.10);
+    border-radius: 18px;
+    padding: 16px 18px;
+    box-shadow: var(--sombra);
+    transition: transform .2s ease;
 }
 
-/* CARD MÊS */
+.proximo-evento-card:hover { transform: translateY(-4px); }
 
-.mes-card{
-    position:relative;
-
-    overflow:hidden;
-
-    border-radius:var(--radius);
-
-    background:var(--glass);
-
-    backdrop-filter:blur(16px);
-
-    border:1px solid var(--border);
-
-    box-shadow:var(--shadow);
-
-    transition:.35s;
+.proximo-evento-data {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    flex-shrink: 0;
+    border-radius: 14px;
+    background: var(--laranja);
+    color: #fff;
 }
 
-.mes-card:hover{
-    transform:
-        translateY(-8px)
-        scale(1.01);
+.proximo-evento-data .dia { font-family: 'Fraunces', serif; font-size: 1.15rem; font-weight: 700; line-height: 1; }
+.proximo-evento-data .mes { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.05em; opacity: 0.9; }
+
+.proximo-evento-info { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+.proximo-evento-info strong { font-size: 0.9rem; color: var(--verde-escuro-2); line-height: 1.3; }
+.proximo-evento-info span { font-size: 0.78rem; color: var(--terracota); font-weight: 600; }
+
+/* =========================
+   LAYOUT GERAL
+========================= */
+
+.container {
+    width: calc(100% - 40px);
+    max-width: 1300px;
+    margin: auto;
+    padding-bottom: 60px;
 }
 
-/* TOPO */
-
-.mes-card h2{
-    padding:24px;
-
-    font-size:1.3rem;
-
-    font-weight:800;
-
-    letter-spacing:-1px;
-
-    color:var(--green-dark);
-
-    background:
-        linear-gradient(to right,
-        rgba(255,255,255,0.25),
-        transparent);
+.layout-calendario > h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    color: var(--verde-musgo);
+    font-size: 1.5rem;
+    margin: 10px 0 20px;
 }
 
-/* GRID DO CALENDÁRIO */
+/* =========================
+   GRID DE MESES
+========================= */
 
-.calendario-grid{
-    padding:24px;
-
-    display:grid;
-
-    grid-template-columns:repeat(7,1fr);
-
-    gap:10px;
+.container-calendario {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 60px;
 }
 
-/* DIAS SEMANA */
-
-.calendario-grid div:nth-child(-n+7){
-    font-size:.7rem;
-
-    font-weight:700;
-
-    color:var(--green);
-
-    opacity:.8;
+.mes-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    background: var(--creme-clara);
+    border: 1px solid rgba(74, 87, 38, 0.10);
+    box-shadow: var(--sombra);
+    transition: transform .25s ease, box-shadow .25s ease;
 }
 
-/* DIAS */
+.mes-card:hover { transform: translateY(-4px); box-shadow: var(--sombra-forte); }
 
-.calendario-grid div{
-    aspect-ratio:1;
-
-    display:flex;
-
-    justify-content:center;
-    align-items:center;
-
-    border-radius:50%;
-
-    font-size:.88rem;
-
-    font-weight:600;
-
-    transition:.25s;
+.mes-card h2 {
+    margin: 0;
+    padding: 16px 20px;
+    font-family: 'Fraunces', serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--verde-musgo);
+    background: rgba(123, 144, 66, 0.08);
+    border-bottom: 1px solid rgba(74, 87, 38, 0.08);
 }
 
-/* HOVER DIA */
-
-.calendario-grid div:hover{
-    background:rgba(61,107,73,0.12);
+.calendario-grid {
+    padding: 16px;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 6px;
 }
 
-/* EVENTO */
-
-.dia-evento{
-    background:var(--green-dark);
-
-    color:white;
-
-    box-shadow:
-        0 8px 18px rgba(24,50,34,0.25);
+.calendario-grid div:nth-child(-n+7) {
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: var(--verde-musgo);
+    opacity: 0.7;
+    padding-bottom: 4px;
 }
 
-/* EVENTOS */
-
-.eventos-container{
-    width:calc(100% - 40px);
-
-    max-width:1300px;
-
-    margin:70px auto;
+.calendario-grid div {
+    aspect-ratio: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--verde-escuro-2);
+    transition: background .2s ease;
+    cursor: default;
 }
 
-.eventos-container h2{
-    font-size:2rem;
+.calendario-grid div:hover { background: rgba(123, 144, 66, 0.14); }
 
-    color:var(--green-dark);
-
-    margin-bottom:30px;
-
-    font-weight:800;
+.dia-evento {
+    background: var(--laranja);
+    color: #fff;
+    font-weight: 700;
+    box-shadow: 0 5px 12px rgba(248, 159, 43, 0.35);
+    cursor: help;
 }
 
-/* GRID EVENTOS */
-
-.eventos-grid{
-    display:grid;
-
-    grid-template-columns:
-        repeat(auto-fit,minmax(280px,1fr));
-
-    gap:24px;
+.dia-hoje {
+    box-shadow: 0 0 0 2px var(--terracota);
+    font-weight: 800;
 }
 
-/* CARD EVENTO */
+/* =========================
+   TODAS AS DATAS DO ANO
+========================= */
 
-.evento-card{
-    position:relative;
+.eventos-container { width: 100%; }
 
-    overflow:hidden;
-
-    padding:28px;
-
-    border-radius:28px;
-
-    background:rgba(255,255,255,0.2);
-
-    backdrop-filter:blur(14px);
-
-    border:1px solid rgba(255,255,255,0.3);
-
-    box-shadow:var(--shadow);
-
-    transition:.3s;
+.eventos-lista {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0 40px;
+    background: var(--creme-clara);
+    border: 1px solid rgba(74, 87, 38, 0.10);
+    border-radius: 22px;
+    padding: 10px 30px;
+    box-shadow: var(--sombra);
 }
 
-.evento-card:hover{
-    transform:translateY(-6px);
+.evento-mes {
+    padding: 18px 0;
+    border-bottom: 1px solid rgba(74, 87, 38, 0.08);
 }
 
-/* LINHA DECORATIVA */
+.eventos-lista .evento-mes:nth-last-child(-n+1),
+.eventos-lista .evento-mes:nth-last-child(-n+2):nth-child(3n+1) { border-bottom: none; }
 
-.evento-card::before{
-    content:"";
-
-    position:absolute;
-
-    top:0;
-    left:0;
-
-    width:100%;
-    height:6px;
-
-    background:
-        linear-gradient(to right,
-        var(--green-dark),
-        var(--green-light));
+.evento-mes h3 {
+    font-family: 'Fraunces', serif;
+    color: var(--verde-musgo);
+    font-size: 0.98rem;
+    font-weight: 600;
+    margin-bottom: 8px;
 }
 
-/* TÍTULO */
-
-.evento-card h3{
-    margin-bottom:16px;
-
-    color:var(--green-dark);
-
-    font-size:1.2rem;
-
-    font-weight:800;
+.evento-mes p {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: var(--verde-escuro-2);
+    opacity: 0.85;
 }
 
-/* TEXTO */
+.evento-mes p strong { color: var(--terracota); opacity: 1; margin-right: 4px; }
 
-.evento-card p{
-    margin-bottom:10px;
+/* =========================
+   RESPONSIVO
+========================= */
 
-    color:#4d5c4f;
-
-    line-height:1.6;
+@media (max-width: 900px) {
+    .proximos-eventos-grid { grid-template-columns: repeat(2, 1fr); }
+    .eventos-lista { grid-template-columns: repeat(2, 1fr); }
+    .eventos-lista .evento-mes { border-bottom: 1px solid rgba(74, 87, 38, 0.08) !important; }
 }
 
-/* DATA */
-
-.evento-card strong{
-    color:var(--green-dark);
+@media (max-width: 600px) {
+    .calendario-grid { gap: 4px; padding: 12px; }
+    .calendario-grid div { font-size: 0.72rem; }
 }
 
-/* RESPONSIVO */
-
-@media(max-width:900px){
-
-    .hero-calendario{
-        padding:55px 35px;
-    }
-
-    .hero-calendario h1{
-        font-size:2.5rem;
-    }
-
-}
-
-@media(max-width:600px){
-
-    .hero-calendario{
-        padding:45px 25px;
-        border-radius:28px;
-    }
-
-    .hero-calendario h1{
-        font-size:2rem;
-    }
-
-    .hero-calendario p{
-        font-size:.95rem;
-    }
-
-    .calendario-grid{
-        gap:7px;
-        padding:18px;
-    }
-
-    .calendario-grid div{
-        font-size:.78rem;
-    }
-
+@media (max-width: 480px) {
+    .proximos-eventos-grid { grid-template-columns: 1fr; }
+    .eventos-lista { grid-template-columns: 1fr; padding: 10px 20px; }
 }

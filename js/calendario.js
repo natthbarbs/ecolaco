@@ -1,27 +1,4 @@
-// Funções para abrir e fechar o menu
-function abrirMenu() {
-    document.getElementById('menu-overlay').style.display = 'flex';
-    document.body.style.overflow = 'hidden'; // Impede scroll da página principal
-}
-
-function fecharMenu() {
-    document.getElementById('menu-overlay').style.display = 'none';
-    document.body.style.overflow = 'auto'; // Restaura scroll da página principal
-}
-
-// Fechar o menu ao clicar fora dele
-document.getElementById('menu-overlay').addEventListener('click', function(e) {
-    if (e.target === this) {
-        fecharMenu();
-    }
-});
-
-// Fechar o menu com a tecla ESC
-document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-        fecharMenu();
-    }
-});
+// Abrir/fechar menu: ver js/menu.js (compartilhado entre páginas)
 
 console.log("JS carregou");
 
@@ -85,6 +62,11 @@ function gerarCalendarioAno() {
     const container = document.getElementById("calendario-container");
     const ano = 2026;
 
+    const hoje = new Date();
+    const hojeAno = hoje.getFullYear();
+    const hojeMes = hoje.getMonth();
+    const hojeDia = hoje.getDate();
+
     meses.forEach((mesNome, index) => {
         const primeiroDia = new Date(ano, index, 1).getDay();
         const diasNoMes = new Date(ano, index + 1, 0).getDate();
@@ -107,10 +89,15 @@ function gerarCalendarioAno() {
             const mesNumero = String(index + 1).padStart(2, '0');
             const diaFormatado = String(dia).padStart(2, '0');
             const chave = `${mesNumero}-${diaFormatado}`;
+            const nomeEvento = eventos[chave];
 
-            const classe = eventos[chave] ? "dia-evento" : "";
+            const classes = [];
+            if (nomeEvento) classes.push("dia-evento");
+            if (ano === hojeAno && index === hojeMes && dia === hojeDia) classes.push("dia-hoje");
 
-            html += `<div class="${classe}">${dia}</div>`;
+            const titulo = nomeEvento ? ` title="${nomeEvento}"` : '';
+
+            html += `<div class="${classes.join(' ')}"${titulo}>${dia}</div>`;
         }
 
         html += `</div></div>`;
@@ -121,17 +108,51 @@ function gerarCalendarioAno() {
 
 gerarCalendarioAno();
 
-function listarEventos() {
-    const container = document.getElementById("lista-eventos");
+// ======================================================
+// PRÓXIMOS EVENTOS (a partir de hoje, com virada de ano)
+// ======================================================
 
-    for (let data in eventos) {
-        const [mes, dia] = data.split("-");
-        const nomeMes = meses[mes - 1];
+function renderizarProximosEventos(qtd = 4) {
+    const container = document.getElementById("proximos-eventos");
+    if (!container) return;
 
-        container.innerHTML += `
-            <p><strong>${dia}/${mes}</strong> - ${eventos[data]}</p>
+    const agora = new Date();
+    const hoje = new Date(agora.getFullYear(), agora.getMonth(), agora.getDate());
+    const anoAtual = hoje.getFullYear();
+
+    const lista = Object.entries(eventos).map(([chave, nome]) => {
+        const [mes, dia] = chave.split("-").map(Number);
+        let data = new Date(anoAtual, mes - 1, dia);
+        if (data < hoje) {
+            data = new Date(anoAtual + 1, mes - 1, dia);
+        }
+        return { nome, data, mes, dia };
+    });
+
+    lista.sort((a, b) => a.data - b.data);
+
+    const proximos = lista.slice(0, qtd);
+
+    container.innerHTML = proximos.map(evento => {
+        const diffDias = Math.round((evento.data - hoje) / 86400000);
+        let rotulo;
+        if (diffDias <= 0) rotulo = "Hoje";
+        else if (diffDias === 1) rotulo = "Amanhã";
+        else rotulo = `em ${diffDias} dias`;
+
+        return `
+            <div class="proximo-evento-card">
+                <div class="proximo-evento-data">
+                    <span class="dia">${String(evento.dia).padStart(2, '0')}</span>
+                    <span class="mes">${meses[evento.mes - 1].slice(0, 3)}</span>
+                </div>
+                <div class="proximo-evento-info">
+                    <strong>${evento.nome}</strong>
+                    <span>${rotulo}</span>
+                </div>
+            </div>
         `;
-    }
+    }).join('');
 }
 
-listarEventos();
+renderizarProximosEventos();

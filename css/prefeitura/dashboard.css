@@ -4,17 +4,17 @@
 
 :root {
 
-    --verde-escuro: #025940;
-    --verde: #04A64B;
-    --verde-claro: #9AEBA3;
-    --verde-soft: #dbe8cf;
+    --verde-escuro: #4a5726;
+    --verde: #7b9042;
+    --verde-claro: #b2bb52;
+    --verde-soft: #eef1de;
 
     --branco: #FFFFFF;
-    --cinza: #666666;
-    --cinza-claro: #F5F5F5;
-    --fundo: #F4F7F3;
-    --erro: #D32F2F;
-    --sucesso: #2E7D32;
+    --cinza: #5c6b3a;
+    --cinza-claro: #faf1de;
+    --fundo: #f2d9b1;
+    --erro: #c35431;
+    --sucesso: #7b9042;
 
     --sidebar-width: 260px;
 
@@ -28,7 +28,7 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Work Sans', sans-serif;
     background: var(--fundo);
     display: flex;
     flex-direction: column;
@@ -54,11 +54,14 @@ body {
 }
 
 .logo {
-    font-size: 1.7rem;
-    font-weight: 800;
+    font-family: 'Bonstar', cursive;
+    font-size: 1.6rem;
+    font-weight: 400;
     color: var(--verde-escuro);
-    letter-spacing: -1px;
+    letter-spacing: 0;
 }
+
+.logo img { height: 30px; display: block; }
 
 .header-direita {
     display: flex;
@@ -80,7 +83,7 @@ body {
     padding: 8px 18px;
     border: none;
     border-radius: 10px;
-    background: #FFEBEE;
+    background: #fde3da;
     color: var(--erro);
     font-weight: 600;
     cursor: pointer;
@@ -91,7 +94,7 @@ body {
 }
 
 .btn-sair:hover {
-    background: #FFCDD2;
+    background: #f6c7b3;
     transform: translateY(-2px);
 }
 
@@ -182,8 +185,10 @@ body {
 }
 
 .tab-header h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
     color: var(--verde-escuro);
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     margin-bottom: 8px;
 }
 
@@ -231,9 +236,10 @@ body {
 }
 
 .stat-number {
-    font-size: 1.8rem;
-    font-weight: 800;
-    color: var(--verde-escuro);
+    font-family: 'Fraunces', serif;
+    font-size: 1.9rem;
+    font-weight: 700;
+    color: var(--terracota, var(--erro));
 }
 
 .stat-label {
@@ -283,9 +289,9 @@ body {
     font-size: 0.9rem;
 }
 
-.atividade-icon.pendente { background: #FFF3E0; color: #E65100; }
-.atividade-icon.aprovado { background: #E8F5E9; color: #2E7D32; }
-.atividade-icon.rejeitado { background: #FFEBEE; color: #D32F2F; }
+.atividade-icon.pendente { background: #fdecd3; color: #c35431; }
+.atividade-icon.aprovado { background: #eef1de; color: #4a5726; }
+.atividade-icon.rejeitado { background: #fde3da; color: #c35431; }
 
 .atividade-texto {
     flex: 1;
@@ -338,18 +344,18 @@ body {
 }
 
 .status-badge.pendente {
-    background: #FFF3E0;
-    color: #E65100;
+    background: #fdecd3;
+    color: #c35431;
 }
 
 .status-badge.ativo {
-    background: #E8F5E9;
-    color: #2E7D32;
+    background: #eef1de;
+    color: #4a5726;
 }
 
 .status-badge.inativo {
-    background: #FFEBEE;
-    color: #D32F2F;
+    background: #fde3da;
+    color: #c35431;
 }
 
 .status-texto {
@@ -472,7 +478,7 @@ body {
 }
 
 .btn-submit:hover {
-    background: #014330;
+    background: var(--verde-escuro);
     transform: translateY(-3px);
     box-shadow: 0 8px 25px rgba(2,89,64,0.3);
 }
@@ -546,18 +552,18 @@ body {
 }
 
 .item-lista .status.pendente {
-    background: #FFF3E0;
-    color: #E65100;
+    background: #fdecd3;
+    color: #c35431;
 }
 
 .item-lista .status.aprovado {
-    background: #E8F5E9;
-    color: #2E7D32;
+    background: #eef1de;
+    color: #4a5726;
 }
 
 .item-lista .status.rejeitado {
-    background: #FFEBEE;
-    color: #D32F2F;
+    background: #fde3da;
+    color: #c35431;
 }
 
 /* HISTÓRICO */
@@ -590,7 +596,7 @@ body {
 }
 
 .btn-filtrar:hover {
-    background: #014330;
+    background: var(--verde-escuro);
 }
 
 .historico-lista {
@@ -635,18 +641,18 @@ body {
 }
 
 .historico-status.pendente {
-    background: #FFF3E0;
-    color: #E65100;
+    background: #fdecd3;
+    color: #c35431;
 }
 
 .historico-status.aprovado {
-    background: #E8F5E9;
-    color: #2E7D32;
+    background: #eef1de;
+    color: #4a5726;
 }
 
 .historico-status.rejeitado {
-    background: #FFEBEE;
-    color: #D32F2F;
+    background: #fde3da;
+    color: #c35431;
 }
 
 /* MODAL */
