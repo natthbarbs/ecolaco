@@ -1,0 +1,260 @@
+/* =========================
+   ÁREA PRIVADA - PREFEITURAS
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+
+    --verde-escuro: #025940;
+    --verde: #04A64B;
+    --verde-claro: #9AEBA3;
+
+    --cinza: #666;
+    --fundo: #F4F7F3;
+    --branco: #FFFFFF;
+
+}
+
+body {
+
+    background: var(--fundo);
+
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+}
+
+/* HEADER */
+.logo-link {
+    text-decoration: none;
+}
+
+.btn-voltar-header {
+    text-decoration: none;
+    color: var(--verde-escuro);
+    font-weight: 600;
+    padding: 10px 18px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.3);
+    transition: 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-voltar-header:hover {
+    background: rgba(255,255,255,0.5);
+    transform: translateY(-2px);
+}
+
+/* CONTAINER */
+.container-area-prefeitura {
+
+    flex: 1;
+
+    width: 100%;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 40px 20px;
+
+}
+
+/* CARD */
+.card-area-prefeitura {
+
+    width: 100%;
+    max-width: 760px;
+
+    background: var(--branco);
+
+    border-radius: 24px;
+
+    padding: 50px;
+
+    text-align: center;
+
+    box-shadow: 0 10px 40px rgba(0,0,0,.08);
+
+}
+
+.logo-area {
+
+    width: 110px;
+
+    margin-bottom: 25px;
+
+}
+
+.card-area-prefeitura h1 {
+
+    color: var(--verde-escuro);
+
+    font-size: 2rem;
+
+    margin-bottom: 20px;
+}
+
+.card-area-prefeitura h1 i {
+
+    color: var(--verde);
+    margin-right: 10px;
+
+}
+
+.descricao-area {
+
+    color: var(--cinza);
+
+    line-height: 1.8;
+
+    font-size: 1rem;
+
+    margin-bottom: 40px;
+
+}
+
+.botoes-area {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 20px;
+
+    flex-wrap: wrap;
+
+}
+
+.btn-area {
+
+    padding: 16px 35px;
+
+    border-radius: 12px;
+
+    text-decoration: none;
+
+    font-weight: 600;
+
+    transition: .25s;
+
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
+    font-size: 1.05rem;
+
+}
+
+.btn-principal {
+
+    background: var(--verde-escuro);
+
+    color: white;
+
+}
+
+.btn-principal:hover {
+
+    background: #014330;
+
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(2,89,64,0.3);
+
+}
+
+.btn-secundario {
+
+    border: 2px solid var(--verde-escuro);
+
+    color: var(--verde-escuro);
+
+    background: white;
+
+}
+
+.btn-secundario:hover {
+
+    background: var(--verde-escuro);
+
+    color: white;
+
+    transform: translateY(-3px);
+
+}
+
+/* FOOTER */
+footer {
+
+    margin: 0 20px 20px;
+
+    border-radius: 20px;
+
+    padding: 30px;
+
+    background: #13261a;
+
+    color: white;
+
+    text-align: center;
+
+}
+
+footer p:first-child {
+
+    font-size: 1.1rem;
+
+    font-weight: 700;
+
+    margin-bottom: 5px;
+
+}
+
+/* RESPONSIVO */
+@media(max-width:700px){
+
+    .card-area-prefeitura {
+
+        padding: 35px 25px;
+
+    }
+
+    .card-area-prefeitura h1 {
+
+        font-size: 1.7rem;
+
+    }
+
+    .descricao-area {
+
+        font-size: .95rem;
+
+    }
+
+    .botoes-area {
+
+        flex-direction: column;
+
+        align-items: center;
+
+    }
+
+    .btn-area {
+
+        width: 100%;
+        justify-content: center;
+
+    }
+
+}

@@ -1,0 +1,509 @@
+/* =========================================================
+   ECOLAÇO • ÁREA DA PREFEITURA (hub, login, cadastro, termo)
+   Depende de ../base.css
+========================================================= */
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: var(--creme);
+    background-image:
+        radial-gradient(ellipse 420px 340px at 10% 10%, rgba(248,159,43,0.14), transparent 68%),
+        radial-gradient(ellipse 460px 380px at 90% 90%, rgba(178,187,82,0.22), transparent 68%);
+    background-attachment: fixed;
+}
+
+header .logo-link { text-decoration: none; }
+
+main { flex: 1; }
+
+/* =========================
+   HUB (index.html)
+========================= */
+
+.container-area-prefeitura {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 20px;
+}
+
+.card-area-prefeitura {
+    max-width: 620px;
+    width: 100%;
+    background: var(--creme-clara);
+    border: 1px solid rgba(74, 87, 38, 0.10);
+    border-radius: 28px;
+    padding: 50px 44px;
+    box-shadow: var(--sombra-forte);
+    text-align: center;
+}
+
+.logo-area { height: 40px; margin: 0 auto 24px; }
+
+.card-area-prefeitura h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 1.7rem;
+    color: var(--verde-musgo);
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.card-area-prefeitura h1 i {
+    width: 44px; height: 44px;
+    border-radius: 12px;
+    background: var(--laranja);
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+}
+
+.descricao-area {
+    line-height: 1.7;
+    color: var(--verde-escuro-2);
+    opacity: 0.82;
+    margin-bottom: 34px;
+}
+
+.botoes-area {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.btn-area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 15px 24px;
+    border-radius: 14px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.98rem;
+    transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+}
+
+.btn-area.btn-principal {
+    background: var(--laranja);
+    color: #fff;
+    box-shadow: 0 5px 0 var(--terracota);
+}
+
+.btn-area.btn-principal:hover { background: #ffab47; transform: translateY(2px); box-shadow: 0 3px 0 var(--terracota); }
+
+.btn-area.btn-secundario {
+    background: transparent;
+    color: var(--verde-musgo);
+    border: 2px solid rgba(74, 87, 38, 0.16);
+}
+
+.btn-area.btn-secundario:hover { border-color: var(--verde-musgo); transform: translateY(-2px); }
+
+/* =========================
+   LOGIN
+========================= */
+
+.login-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+.login-card {
+    max-width: 420px;
+    width: 100%;
+    background: var(--creme-clara);
+    border: 1px solid rgba(74, 87, 38, 0.10);
+    border-radius: 26px;
+    padding: 44px 38px;
+    box-shadow: var(--sombra-forte);
+    text-align: center;
+}
+
+.login-card .logo {
+    font-family: 'Bonstar', cursive;
+    font-size: 1.6rem;
+    color: var(--verde-musgo);
+    margin-bottom: 24px;
+    display: inline-block;
+}
+
+.login-card h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: var(--verde-musgo);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.login-card > p {
+    color: var(--verde-escuro-2);
+    opacity: 0.78;
+    font-size: 0.92rem;
+    line-height: 1.6;
+    margin-bottom: 28px;
+}
+
+.form-campo { text-align: left; margin-bottom: 18px; }
+
+.form-campo label {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--verde-escuro-2);
+    margin-bottom: 7px;
+}
+
+.form-campo input,
+.form-campo select {
+    width: 100%;
+    padding: 12px 16px;
+    border-radius: 12px;
+    border: 1px solid rgba(74, 87, 38, 0.16);
+    background: #fff;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.94rem;
+    color: var(--verde-escuro-2);
+}
+
+.form-campo input:focus,
+.form-campo select:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(123, 144, 66, 0.22);
+    border-color: var(--verde-musgo);
+}
+
+.senha-wrapper { position: relative; }
+
+.btn-mostrar-senha {
+    position: absolute;
+    right: 6px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 34px; height: 34px;
+    border: none;
+    background: transparent;
+    color: var(--verde-escuro-2);
+    opacity: 0.5;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+.btn-mostrar-senha:hover { opacity: 0.9; background: rgba(74,87,38,0.06); }
+
+.btn-login,
+.btn-cadastrar {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px;
+    border: none;
+    border-radius: 14px;
+    background: var(--laranja);
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.98rem;
+    cursor: pointer;
+    box-shadow: 0 5px 0 var(--terracota);
+    transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+    margin-top: 6px;
+}
+
+.btn-login:hover,
+.btn-cadastrar:hover { background: #ffab47; transform: translateY(2px); box-shadow: 0 3px 0 var(--terracota); }
+.btn-login:disabled,
+.btn-cadastrar:disabled { opacity: 0.7; cursor: not-allowed; transform: none; }
+
+.mensagem {
+    margin-top: 16px;
+    padding: 12px 16px;
+    border-radius: 12px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    display: none;
+}
+
+.mensagem:not(:empty) { display: block; }
+.mensagem.erro { background: #fde3da; color: var(--terracota-escuro); }
+.mensagem.sucesso { background: rgba(178,187,82,0.22); color: var(--verde-escuro); }
+.mensagem.carregando { background: rgba(123,144,66,0.1); color: var(--verde-musgo); }
+
+.login-links {
+    margin-top: 26px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+}
+
+.login-links a {
+    color: var(--verde-musgo);
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.login-links a:hover { text-decoration: underline; }
+.login-links .divisor { width: 100%; height: 1px; background: rgba(74, 87, 38, 0.1); }
+
+/* =========================
+   CADASTRO
+========================= */
+
+.cadastro-container {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 48px 20px 70px;
+}
+
+.cadastro-card {
+    background: var(--creme-clara);
+    border: 1px solid rgba(74, 87, 38, 0.10);
+    border-radius: 26px;
+    padding: 44px;
+    box-shadow: var(--sombra);
+}
+
+.cadastro-header { text-align: center; margin-bottom: 34px; }
+
+.cadastro-header h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 1.7rem;
+    color: var(--verde-musgo);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
+.cadastro-header p { color: var(--verde-escuro-2); opacity: 0.78; line-height: 1.6; }
+
+.form-grupo {
+    padding-top: 26px;
+    margin-top: 26px;
+    border-top: 1px solid rgba(74, 87, 38, 0.10);
+}
+
+.form-grupo:first-of-type { border-top: none; margin-top: 0; padding-top: 0; }
+
+.form-subtitulo {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    color: var(--verde-musgo);
+    font-size: 1.02rem;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin-bottom: 18px;
+}
+
+.form-linha {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+.obrigatorio { color: var(--terracota); }
+
+.upload-area { position: relative; }
+.upload-area input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+
+.upload-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 28px 20px;
+    border: 2px dashed rgba(74, 87, 38, 0.22);
+    border-radius: 16px;
+    text-align: center;
+    color: var(--verde-escuro-2);
+    transition: border-color .2s ease, background .2s ease;
+}
+
+.upload-area:hover .upload-label { border-color: var(--verde-musgo); background: rgba(123,144,66,0.05); }
+.upload-label i { font-size: 1.6rem; color: var(--verde-musgo); }
+.upload-label small { opacity: 0.65; }
+
+.arquivo-info {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-top: 10px;
+    font-size: 0.82rem;
+    color: var(--verde-escuro-2);
+    opacity: 0.75;
+}
+
+.link-modelo { color: var(--verde-musgo); font-weight: 600; }
+
+.termo-grupo { border-top: none; }
+
+.form-checkbox {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.9rem;
+    color: var(--verde-escuro-2);
+}
+
+.form-checkbox input { margin-top: 3px; accent-color: var(--verde-musgo); }
+.form-checkbox a { color: var(--verde-musgo); font-weight: 600; }
+
+.link-login {
+    color: var(--verde-escuro-2);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.link-login:hover { color: var(--verde-musgo); }
+
+/* =========================
+   TERMO
+========================= */
+
+.termo-container { max-width: 820px; margin: 0 auto; padding: 48px 20px 70px; }
+
+.termo-card {
+    background: var(--creme-clara);
+    border: 1px solid rgba(74, 87, 38, 0.10);
+    border-radius: 26px;
+    overflow: hidden;
+    box-shadow: var(--sombra);
+}
+
+.termo-header {
+    text-align: center;
+    padding: 44px 30px 34px;
+    background: var(--verde-escuro);
+    color: var(--creme-clara);
+}
+
+.termo-icon {
+    width: 58px; height: 58px;
+    border-radius: 16px;
+    background: var(--laranja);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin-bottom: 18px;
+}
+
+.termo-header h1 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 1.7rem; margin-bottom: 8px; }
+.termo-header p { opacity: 0.82; font-size: 0.95rem; }
+
+.termo-corpo { padding: 36px 40px 10px; }
+.termo-secao { margin-bottom: 30px; }
+
+.termo-secao h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--verde-musgo);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.termo-secao > p {
+    color: var(--verde-escuro-2);
+    opacity: 0.82;
+    line-height: 1.7;
+    margin-bottom: 10px;
+    font-size: 0.94rem;
+}
+
+.termo-lista { list-style: none; }
+
+.termo-lista li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 8px 0;
+    color: var(--verde-escuro-2);
+    opacity: 0.85;
+    font-size: 0.92rem;
+    line-height: 1.55;
+}
+
+.termo-lista li i { color: var(--verde-musgo); margin-top: 3px; }
+.termo-lista.beneficios li i { color: var(--laranja); }
+
+.termo-secao.destaque {
+    background: rgba(248, 159, 43, 0.10);
+    border-radius: 16px;
+    padding: 20px;
+}
+
+.termo-obs { display: flex; gap: 12px; }
+.termo-obs i { color: var(--terracota); font-size: 1.2rem; margin-top: 2px; }
+.termo-obs strong { color: var(--terracota); display: block; margin-bottom: 4px; }
+.termo-obs p { color: var(--verde-escuro-2); opacity: 0.85; font-size: 0.9rem; line-height: 1.6; }
+
+.termo-footer {
+    padding: 30px 40px 40px;
+    text-align: center;
+    border-top: 1px solid rgba(74, 87, 38, 0.10);
+    margin-top: 10px;
+}
+
+.termo-aceite { font-size: 0.85rem; opacity: 0.7; margin-bottom: 20px; }
+
+.termo-botoes { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+.btn-termo {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 13px 26px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.92rem;
+    transition: transform .2s ease;
+}
+
+.btn-termo.primario { background: var(--laranja); color: #fff; box-shadow: 0 5px 0 var(--terracota); }
+.btn-termo.primario:hover { transform: translateY(2px); box-shadow: 0 3px 0 var(--terracota); }
+.btn-termo.secundario { background: transparent; color: var(--verde-escuro-2); border: 2px solid rgba(74,87,38,0.16); }
+.btn-termo.secundario:hover { border-color: var(--verde-musgo); }
+
+/* =========================
+   RESPONSIVO
+========================= */
+
+@media (max-width: 640px) {
+    .card-area-prefeitura, .login-card, .cadastro-card { padding: 32px 24px; }
+    .form-linha { grid-template-columns: 1fr; }
+    .termo-corpo, .termo-footer { padding-left: 22px; padding-right: 22px; }
+}

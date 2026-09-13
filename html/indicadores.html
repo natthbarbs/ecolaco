@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indicadores Ambientais - Ecolaço</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/indicadores.css">
+    <link rel="stylesheet" href="../css/menu.css">
+</head>
+<body>
+
+<div class="grao"></div>
+
+<!-- HEADER -->
+<header>
+    <div class="header-esquerda">
+        <div class="menu-icon" onclick="abrirMenu()" role="button" aria-label="Abrir menu" tabindex="0">
+            <i class="fas fa-bars"></i>
+        </div>
+        <a href="index.html" class="logo">
+            <img src="../imagens/marca/logo.png" alt="Ecolaço">
+        </a>
+    </div>
+    <div class="header-direita">
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="coleta.html">Dias de coleta</a>
+            <a href="calendario.html">Calendário</a>
+            <a href="indicadores.html">Indicadores</a>
+        </nav>
+    </div>
+</header>
+
+<!-- INTRO -->
+<section class="intro-indicadores">
+    <span class="eyebrow">Transparência ambiental · Norte Pioneiro do PR</span>
+    <h1>Indicadores Ambientais</h1>
+    <p>Acompanhe, por cidade, o que já está mapeado sobre coleta seletiva e os números que as prefeituras parceiras enviam sobre volume coletado, reciclagem e pontos de coleta ativos.</p>
+</section>
+
+<div class="aviso-demo">
+    <i class="fas fa-flask"></i>
+    Alguns números abaixo são dados de demonstração enquanto as prefeituras parceiras enviam seus indicadores oficiais — eles ficam claramente identificados como "dado de demonstração".
+</div>
+
+<main class="container">
+
+    <!-- KPIs -->
+    <section class="indic-secao">
+        <div class="secao-cabecalho" style="margin-bottom:26px;">
+            <span class="eyebrow">Panorama da região</span>
+            <h2>Números gerais</h2>
+        </div>
+        <div class="indic-kpis" id="indic-kpis">
+            <div class="indic-kpi indic-skel"></div>
+            <div class="indic-kpi indic-skel"></div>
+            <div class="indic-kpi indic-skel"></div>
+            <div class="indic-kpi indic-skel"></div>
+        </div>
+    </section>
+
+    <!-- IMPACTO ESTIMADO -->
+    <section class="indic-secao">
+        <div class="secao-cabecalho" style="margin-bottom:26px;">
+            <span class="eyebrow">A partir do material reciclável reportado</span>
+            <h2>Impacto ambiental estimado</h2>
+        </div>
+        <div class="indic-impacto" id="indic-impacto">
+            <div class="indic-kpi indic-skel"></div>
+            <div class="indic-kpi indic-skel"></div>
+        </div>
+        <div class="info-box" id="indic-metodologia">
+            <i class="fas fa-info-circle"></i>
+            <div><strong>Como calculamos</strong><br>Carregando metodologia...</div>
+        </div>
+    </section>
+
+    <!-- COMPARATIVO ENTRE CIDADES -->
+    <section class="indic-secao">
+        <div class="secao-cabecalho" style="margin-bottom:26px;">
+            <span class="eyebrow">Coleta seletiva cadastrada</span>
+            <h2>Comparativo entre cidades</h2>
+            <p>Percentual de bairros com coleta seletiva registrada no cronograma de cada cidade.</p>
+        </div>
+
+        <div class="indic-grafico" id="indic-grafico">
+            <p class="indic-carregando">Carregando comparativo...</p>
+        </div>
+
+        <div class="indic-tabela-wrap">
+            <table class="indic-tabela" id="indic-tabela">
+                <thead>
+                    <tr>
+                        <th>Cidade</th>
+                        <th>Bairros mapeados</th>
+                        <th>Coleta seletiva</th>
+                        <th>Período enviado</th>
+                        <th>Volume coletado</th>
+                        <th>Volume reciclável</th>
+                        <th>Pontos ativos</th>
+                    </tr>
+                </thead>
+                <tbody id="indic-tabela-corpo">
+                    <tr><td colspan="7" class="indic-carregando">Carregando dados por cidade...</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- PARA PREFEITURAS -->
+    <section class="indic-secao indic-cta">
+        <div class="indic-cta-conteudo">
+            <h2><i class="fas fa-building"></i> É gestor público na região?</h2>
+            <p>Prefeituras parceiras enviam seus indicadores de coleta e reciclagem direto pelo painel — depois de aprovados pela equipe do Ecolaço, os números aparecem nesta página automaticamente.</p>
+        </div>
+        <div class="indic-cta-botoes">
+            <a href="prefeitura/login.html" class="btn"><i class="fas fa-chart-line"></i> Enviar indicadores</a>
+            <a href="prefeitura/termo.html" class="btn-chamada secundario">Seja parceira</a>
+        </div>
+    </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="rodape-completo borda-rasgada-3">
+    <div class="rodape-grid">
+        <div class="rodape-marca">
+            <img src="../imagens/marca/logo.png" class="logo-mark" alt="Ecolaço">
+            <p>Conectando bairros e cidades com a sustentabilidade — coleta, reciclagem e datas ambientais, tudo num só lugar.</p>
+            <div class="rodape-social">
+                <a href="https://www.instagram.com/ecolacoifpr?igsh=MTRvNGFmbXJ0cjkzbA==" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="mailto:ecolacositeifpr@gmail.com" aria-label="E-mail"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+        <div class="rodape-col">
+            <h4>Navegação</h4>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="coleta.html">Dias de coleta</a></li>
+                <li><a href="calendario.html">Calendário</a></li>
+                <li><a href="indicadores.html">Indicadores</a></li>
+            </ul>
+        </div>
+        <div class="rodape-col">
+            <h4>Prefeituras</h4>
+            <ul>
+                <li><a href="prefeitura/termo.html">Seja parceira</a></li>
+                <li><a href="prefeitura/login.html">Área da prefeitura</a></li>
+            </ul>
+        </div>
+        <div class="rodape-col">
+            <h4>Contato</h4>
+            <ul>
+                <li><a href="mailto:ecolacositeifpr@gmail.com">ecolacositeifpr@gmail.com</a></li>
+                <li><a href="index.html#contato">Fale conosco</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="rodape-baixo">
+        <span>© 2026 Ecolaço. Todos os direitos reservados.</span>
+        <span>Projeto do IFPR — Campus Jacarezinho</span>
+    </div>
+</footer>
+
+<!--MENU-->
+<div id="menu-overlay" class="menu-overlay">
+    <div class="menu-container">
+        <div class="menu-header">
+            <div class="logo">Ecolaço</div>
+            <div class="fechar-menu" onclick="fecharMenu()" role="button" aria-label="Fechar menu">
+                <i class="fas fa-times"></i>
+            </div>
+        </div>
+
+        <div class="menu-section">
+            <div class="section-title">
+                <div class="section-icon leaf-icon"><i class="fas fa-leaf"></i></div>
+                <span>Funcionalidades</span>
+            </div>
+            <button class="menu-button" onclick="emDesenvolvimento()"><i class="far fa-clock"></i>Horários de funcionamento dos pontos de coleta</button>
+            <button class="menu-button" onclick="emDesenvolvimento()"><i class="fas fa-map-marker-alt"></i>Localização por material</button>
+            <button class="menu-button" onclick="emDesenvolvimento()"><i class="fas fa-video"></i>Vídeos curtos com dicas sustentáveis</button>
+            <button class="menu-button" onclick="emDesenvolvimento()"><i class="fas fa-users"></i>Acesso Público</button>
+            <a href="indicadores.html" class="menu-button"><i class="fas fa-chart-bar"></i>Indicadores ambientais</a>
+            <a href="prefeitura/index.html" class="menu-button"><i class="fas fa-lock"></i>Acesso Privado - Prefeitura</a>
+        </div>
+
+        <div class="menu-section">
+            <div class="section-title">
+                <div class="section-icon plus-icon"><i class="fas fa-plus"></i></div>
+                <span>Extras</span>
+            </div>
+            <button class="menu-button" onclick="emDesenvolvimento()"><i class="fas fa-gamepad"></i>Quiz ecológico e jogos</button>
+            <button class="menu-button" onclick="emDesenvolvimento()"><i class="fas fa-trophy"></i>Sistema de gamificação</button>
+            <button class="menu-button" onclick="emDesenvolvimento()"><i class="fas fa-lightbulb"></i>Seção de "Sabia que..."</button>
+            <button class="menu-button" onclick="emDesenvolvimento()"><i class="fas fa-robot"></i>Chatbot para dúvidas sobre reciclagem</button>
+            <button class="menu-button" onclick="emDesenvolvimento()"><i class="fas fa-star"></i>Nos dê sua avaliação como utilizador!</button>
+        </div>
+
+        <div class="menu-footer">
+            <div class="footer-icon"><i class="fas fa-info"></i></div>
+            <div class="footer-icon"><i class="fas fa-bell"></i></div>
+            <div class="footer-icon"><i class="fas fa-exclamation-triangle"></i></div>
+        </div>
+    </div>
+</div>
+
+<script src="../js/menu.js"></script>
+<script src="../js/indicadores.js"></script>
+</body>
+</html>

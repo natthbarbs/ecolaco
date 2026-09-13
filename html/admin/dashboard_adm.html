@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Ecolaço</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../css/base.css">
+    <link rel="stylesheet" href="../../css/admin/dashboard_adm.css">
+</head>
+
+<body>
+
+    <!-- HEADER ADMIN -->
+    <header class="admin-header">
+        <div class="header-esquerda">
+            <div class="logo">
+                <img src="../../imagens/marca/logo.png" alt="Ecolaço">
+                <span class="badge-admin">ADMIN</span>
+            </div>
+        </div>
+        <div class="header-direita">
+            <!-- NOTIFICAÇÕES -->
+            <div class="notificacoes-container">
+                <button class="btn-notificacoes" onclick="toggleNotificacoes()">
+                    <i class="fas fa-bell"></i>
+                    <span class="badge-notificacao" id="notificacaoBadge">0</span>
+                </button>
+                <div class="dropdown-notificacoes" id="dropdownNotificacoes">
+                    <div class="dropdown-header">
+                        <span>Notificações</span>
+                        <button class="btn-marcar-todas" onclick="marcarTodasLidas()">
+                            Marcar todas como lidas
+                        </button>
+                    </div>
+                    <div id="listaNotificacoes" class="dropdown-lista">
+                        <p class="sem-notificacoes">Nenhuma notificação</p>
+                    </div>
+                </div>
+            </div>
+
+            <span class="admin-nome" id="adminNome">
+                <i class="fas fa-user-cog"></i> Carregando...
+            </span>
+            <button class="btn-sair" onclick="logout()">
+                <i class="fas fa-sign-out-alt"></i> Sair
+            </button>
+        </div>
+    </header>
+
+    <!-- DASHBOARD -->
+    <div class="admin-container">
+
+        <!-- SIDEBAR -->
+        <aside class="admin-sidebar">
+            <nav class="sidebar-nav">
+                <button class="nav-item active" data-tab="resumo">
+                    <i class="fas fa-chart-pie"></i> Resumo
+                </button>
+                <button class="nav-item" data-tab="prefeituras">
+                    <i class="fas fa-building"></i> Prefeituras
+                </button>
+                <button class="nav-item" data-tab="aprovacoes">
+                    <i class="fas fa-check-double"></i> Aprovações
+                </button>
+                <button class="nav-item" data-tab="dados">
+                    <i class="fas fa-database"></i> Dados Enviados
+                </button>
+            </nav>
+        </aside>
+
+        <!-- CONTEÚDO -->
+        <main class="admin-content">
+
+            <!-- RESUMO -->
+            <div id="tab-resumo" class="tab-content active">
+
+                <div class="tab-header">
+                    <h2><i class="fas fa-chart-pie"></i> Resumo Geral</h2>
+                    <p>Visão geral do sistema Ecolaço</p>
+                </div>
+
+                <div class="stats-grid" id="statsGerais">
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background:#eef1de; color:#7b9042;">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-number" id="totalPrefeituras">0</span>
+                            <span class="stat-label">Prefeituras</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background:#fdecd3; color:#f89f2b;">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-number" id="totalPendentes">0</span>
+                            <span class="stat-label">Pendentes</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background:#e3ecd6; color:#b2bb52;">
+                            <i class="fas fa-recycle"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-number" id="totalDados">0</span>
+                            <span class="stat-label">Dados Enviados</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background:#f2e4da; color:#9c3f22;">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-number" id="totalCidades">0</span>
+                            <span class="stat-label">Cidades</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Últimas atividades -->
+                <div class="atividades-container">
+                    <h3><i class="fas fa-clock"></i> Últimas Atividades</h3>
+                    <div id="ultimasAtividades" class="atividades-lista">
+                        <p class="sem-dados">Nenhuma atividade recente.</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- PREFEITURAS -->
+            <div id="tab-prefeituras" class="tab-content">
+
+                <div class="tab-header">
+                    <h2><i class="fas fa-building"></i> Prefeituras</h2>
+                    <p>Gerencie as prefeituras cadastradas</p>
+                </div>
+
+                <div class="filtros">
+                    <select id="filtroPrefeituras" onchange="carregarPrefeituras()">
+                        <option value="todos">Todas</option>
+                        <option value="pendente">Pendentes</option>
+                        <option value="ativo">Ativas</option>
+                        <option value="inativo">Inativas</option>
+                    </select>
+                    <button class="btn-filtrar" onclick="carregarPrefeituras()">
+                        <i class="fas fa-filter"></i> Filtrar
+                    </button>
+                </div>
+
+                <div id="listaPrefeituras" class="lista-prefeituras">
+                    <p class="sem-dados">Carregando...</p>
+                </div>
+
+            </div>
+
+            <!-- APROVAÇÕES -->
+            <div id="tab-aprovacoes" class="tab-content">
+
+                <div class="tab-header">
+                    <h2><i class="fas fa-check-double"></i> Aprovações Pendentes</h2>
+                    <p>Analise e aprove as solicitações das prefeituras</p>
+                </div>
+
+                <div id="listaAprovacoes" class="lista-aprovacoes">
+                    <p class="sem-dados">Nenhuma aprovação pendente.</p>
+                </div>
+
+            </div>
+
+            <!-- DADOS -->
+            <div id="tab-dados" class="tab-content">
+
+                <div class="tab-header">
+                    <h2><i class="fas fa-database"></i> Dados Enviados</h2>
+                    <p>Acompanhe todos os dados enviados pelas prefeituras</p>
+                </div>
+
+                <div class="filtros">
+                    <select id="filtroDados" onchange="carregarDados()">
+                        <option value="todos">Todos</option>
+                        <option value="pendente">⏳ Pendentes</option>
+                        <option value="aprovado">✅ Aprovados</option>
+                        <option value="rejeitado">❌ Rejeitados</option>
+                    </select>
+                    <button class="btn-filtrar" onclick="carregarDados()">
+                        <i class="fas fa-filter"></i> Filtrar
+                    </button>
+                </div>
+
+                <div id="listaDados" class="lista-dados">
+                    <p class="sem-dados">Nenhum dado enviado.</p>
+                </div>
+
+            </div>
+
+        </main>
+
+    </div>
+
+    <!-- MODAL -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitulo">Título</h3>
+                <button class="modal-close" onclick="fecharModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div id="modalCorpo" class="modal-body"></div>
+        </div>
+    </div>
+
+    <script src="../../js/admin/dashboard_adm.js"></script>
+
+</body>
+
+</html>

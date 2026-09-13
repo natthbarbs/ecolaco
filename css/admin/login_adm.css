@@ -1,0 +1,176 @@
+/* =========================================================
+   ECOLAÇO • LOGIN ADMIN
+   Depende de ../base.css (tokens, fontes, .grao)
+========================================================= */
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    background: var(--verde-escuro-2);
+    background-image:
+        radial-gradient(ellipse 460px 380px at 12% 15%, rgba(178,187,82,0.16), transparent 65%),
+        radial-gradient(ellipse 420px 340px at 88% 85%, rgba(248,159,43,0.12), transparent 65%);
+}
+
+.login-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-card {
+    width: 100%;
+    max-width: 430px;
+    background: var(--creme-clara);
+    padding: 46px 40px 40px;
+    border-radius: 26px;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.35);
+    position: relative;
+    z-index: 1;
+}
+
+.logo {
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.logo img { height: 34px; margin: 0 auto 10px; }
+
+.badge-admin {
+    display: inline-block;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    background: var(--terracota);
+    color: #fff;
+    padding: 3px 12px;
+    border-radius: 20px;
+}
+
+.login-card h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    text-align: center;
+    color: var(--verde-musgo);
+    margin: 14px 0 10px;
+    font-size: 1.4rem;
+}
+
+.login-card p {
+    text-align: center;
+    color: var(--verde-escuro-2);
+    opacity: 0.78;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    font-size: 0.92rem;
+}
+
+.form-campo { margin-bottom: 18px; }
+
+.form-campo label {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--verde-escuro-2);
+    font-size: 0.88rem;
+}
+
+.form-campo label i { color: var(--verde-musgo); }
+
+.form-campo input {
+    width: 100%;
+    padding: 13px 16px;
+    border: 1px solid rgba(74, 87, 38, 0.16);
+    border-radius: 12px;
+    background: #fff;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.95rem;
+    color: var(--verde-escuro-2);
+    outline: none;
+    transition: box-shadow .2s ease, border-color .2s ease;
+}
+
+.form-campo input:focus {
+    border-color: var(--verde-musgo);
+    box-shadow: 0 0 0 3px rgba(123, 144, 66, 0.22);
+}
+
+.senha-wrapper { position: relative; }
+.senha-wrapper input { padding-right: 48px; }
+
+.btn-mostrar-senha {
+    position: absolute;
+    right: 6px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 34px; height: 34px;
+    border: none;
+    background: transparent;
+    color: var(--verde-escuro-2);
+    opacity: 0.5;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+.btn-mostrar-senha:hover { opacity: 0.9; background: rgba(74,87,38,0.06); }
+
+.btn-login {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 14px;
+    background: var(--laranja);
+    color: #fff;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.98rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 6px;
+    box-shadow: 0 5px 0 var(--terracota);
+    transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+}
+
+.btn-login:hover { background: #ffab47; transform: translateY(2px); box-shadow: 0 3px 0 var(--terracota); }
+.btn-login:disabled { opacity: 0.65; cursor: not-allowed; transform: none; }
+
+.mensagem {
+    margin-top: 18px;
+    padding: 12px 16px;
+    border-radius: 12px;
+    display: none;
+    font-weight: 600;
+    font-size: 0.88rem;
+    text-align: center;
+}
+
+.mensagem.sucesso { display: block; background: rgba(178,187,82,0.22); color: var(--verde-escuro); }
+.mensagem.erro { display: block; background: #fde3da; color: var(--terracota-escuro); }
+.mensagem.carregando { display: block; background: rgba(123,144,66,0.1); color: var(--verde-musgo); }
+
+.voltar {
+    display: block;
+    margin-top: 22px;
+    text-align: center;
+    text-decoration: none;
+    color: var(--verde-escuro-2);
+    opacity: 0.7;
+    font-weight: 600;
+    font-size: 0.88rem;
+    transition: opacity .2s ease;
+}
+
+.voltar:hover { opacity: 1; color: var(--verde-musgo); }
+
+@media (max-width: 600px) {
+    .login-card { padding: 34px 26px; border-radius: 20px; }
+}

@@ -1,0 +1,297 @@
+/* =========================================================
+   ECOLAÇO • INDICADORES AMBIENTAIS
+   Depende de base.css (tokens, header, botões, footer, aviso-demo, info-box)
+========================================================= */
+
+/* =========================
+   INTRO / HERO
+========================= */
+
+.intro-indicadores {
+    padding: clamp(50px, 9vh, 90px) clamp(20px, 6vw, 64px) 54px;
+    text-align: center;
+
+    background-image:
+        radial-gradient(ellipse 420px 340px at 12% 20%, rgba(248,159,43,0.20), transparent 68%),
+        radial-gradient(ellipse 460px 380px at 88% 85%, rgba(178,187,82,0.30), transparent 68%),
+        radial-gradient(ellipse 320px 260px at 55% 100%, rgba(195,84,49,0.14), transparent 68%);
+}
+
+.intro-indicadores h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: clamp(1.9rem, 4vw, 2.8rem);
+    color: var(--verde-musgo);
+    margin-bottom: 14px;
+}
+
+.intro-indicadores p {
+    max-width: 60ch;
+    margin: 0 auto;
+    font-size: 1.02rem;
+    line-height: 1.65;
+    color: var(--verde-escuro-2);
+    opacity: 0.85;
+}
+
+/* =========================
+   CONTAINER / SEÇÕES
+========================= */
+
+.container {
+    width: calc(100% - 40px);
+    max-width: 1200px;
+    margin: auto;
+    padding-bottom: 60px;
+}
+
+.indic-secao { margin-top: 54px; }
+.indic-secao:first-child { margin-top: 44px; }
+
+.indic-carregando {
+    text-align: center;
+    padding: 30px 10px;
+    opacity: 0.65;
+    font-size: 0.92rem;
+}
+
+/* =========================
+   STAT TILES (KPIs)
+========================= */
+
+.indic-kpis {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 18px;
+}
+
+.indic-kpi {
+    background: var(--creme-clara);
+    border: 1px solid rgba(74, 87, 38, 0.10);
+    border-radius: 20px;
+    padding: 22px 24px;
+    box-shadow: var(--sombra);
+}
+
+.indic-kpi.indic-skel {
+    min-height: 96px;
+    background: linear-gradient(90deg, var(--creme-clara) 25%, #fff 37%, var(--creme-clara) 63%);
+    background-size: 400% 100%;
+    animation: indic-shimmer 1.4s ease infinite;
+}
+
+@keyframes indic-shimmer {
+    0% { background-position: 100% 50%; }
+    100% { background-position: 0 50%; }
+}
+
+.indic-kpi .indic-valor {
+    display: block;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 700;
+    font-size: clamp(1.6rem, 2.6vw, 2.1rem);
+    color: var(--terracota);
+    line-height: 1.15;
+    margin-bottom: 6px;
+    font-variant-numeric: proportional-nums;
+}
+
+.indic-kpi .indic-rotulo {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--verde-escuro-2);
+    opacity: 0.78;
+    line-height: 1.4;
+}
+
+.indic-kpi.indic-destaque {
+    background: var(--verde-escuro-2);
+    border-color: var(--verde-escuro-2);
+}
+
+.indic-kpi.indic-destaque .indic-valor { color: var(--verde-claro); }
+.indic-kpi.indic-destaque .indic-rotulo { color: var(--creme-clara); opacity: 0.85; }
+
+/* =========================
+   IMPACTO ESTIMADO
+========================= */
+
+.indic-impacto {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px;
+    margin-bottom: 18px;
+}
+
+/* =========================
+   GRÁFICO COMPARATIVO (barras horizontais)
+========================= */
+
+.indic-grafico {
+    background: var(--creme-clara);
+    border: 1px solid rgba(74, 87, 38, 0.10);
+    border-radius: 22px;
+    padding: 28px 28px 22px;
+    box-shadow: var(--sombra);
+    margin-bottom: 22px;
+}
+
+.indic-bar-row {
+    display: grid;
+    grid-template-columns: 150px 1fr 56px;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 18px;
+}
+
+.indic-bar-row:last-child { margin-bottom: 0; }
+
+.indic-bar-nome {
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--verde-escuro-2);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.indic-bar-track {
+    position: relative;
+    height: 24px;
+    background: rgba(74, 87, 38, 0.08);
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.indic-bar-fill {
+    height: 100%;
+    min-width: 4px;
+    background: var(--terracota);
+    border-radius: 999px;
+    transition: width .6s cubic-bezier(.22,1,.36,1);
+}
+
+.indic-bar-valor {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--terracota);
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+}
+
+/* =========================
+   TABELA COMPARATIVA
+========================= */
+
+.indic-tabela-wrap {
+    background: var(--creme-clara);
+    border: 1px solid rgba(74, 87, 38, 0.10);
+    border-radius: 22px;
+    box-shadow: var(--sombra);
+    overflow-x: auto;
+}
+
+.indic-tabela {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 720px;
+    font-size: 0.9rem;
+}
+
+.indic-tabela th,
+.indic-tabela td {
+    padding: 14px 18px;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.indic-tabela thead th {
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 700;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--verde-musgo);
+    border-bottom: 2px solid rgba(74, 87, 38, 0.12);
+}
+
+.indic-tabela tbody tr { border-bottom: 1px solid rgba(74, 87, 38, 0.08); }
+.indic-tabela tbody tr:last-child { border-bottom: none; }
+.indic-tabela tbody td { color: var(--verde-escuro-2); }
+.indic-tabela tbody td.indic-cidade { font-weight: 700; }
+
+.indic-tag-demo {
+    display: inline-block;
+    margin-left: 8px;
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: rgba(248, 159, 43, 0.18);
+    color: var(--terracota-escuro);
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    vertical-align: middle;
+}
+
+.indic-sem-dado { opacity: 0.55; font-style: italic; }
+
+/* =========================
+   CTA PREFEITURAS
+========================= */
+
+.indic-cta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    background: var(--verde-musgo);
+    color: var(--creme-clara);
+    border-radius: 26px;
+    padding: 36px clamp(24px, 5vw, 46px);
+}
+
+.indic-cta-conteudo h2 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.indic-cta-conteudo p {
+    max-width: 60ch;
+    line-height: 1.6;
+    opacity: 0.92;
+}
+
+.indic-cta-botoes {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    flex-shrink: 0;
+}
+
+.indic-cta .btn-chamada.secundario {
+    color: var(--creme-clara);
+    border-color: rgba(250,241,222,0.6);
+}
+
+.indic-cta .btn-chamada.secundario:hover {
+    background: var(--creme-clara);
+    color: var(--verde-escuro-2);
+}
+
+/* =========================
+   RESPONSIVO
+========================= */
+
+@media (max-width: 640px) {
+    .indic-bar-row {
+        grid-template-columns: 96px 1fr 44px;
+        gap: 10px;
+    }
+    .indic-cta { flex-direction: column; align-items: flex-start; }
+}
